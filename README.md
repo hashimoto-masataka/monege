@@ -17,10 +17,10 @@
 ### 主な利用シーン
 ・1日の終わり
 ・外出先での買い物時
-・月末の収支の確認時>
+・月末の収支の確認時
 
 ## 設計書
-<...>
+https://drive.google.com/file/d/1-JYl3zFIcufgSyTRHMS-HLWcM8geuRiJ/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
