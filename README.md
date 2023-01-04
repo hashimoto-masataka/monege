@@ -21,6 +21,8 @@
 
 ## 設計書
 https://drive.google.com/file/d/1-JYl3zFIcufgSyTRHMS-HLWcM8geuRiJ/view?usp=sharing
+##テーブル定義書
+https://docs.google.com/spreadsheets/d/1TfrIHoF6Z97zbK4YMurC-GcZUtltmlSQ8Wy2CXK35TA/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
