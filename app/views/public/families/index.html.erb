@@ -1,2 +1,45 @@
-<h1>Public::Families#index</h1>
-<p>Find me in app/views/public/families/index.html.erb</p>
+
+<div class = "container">
+<div class = "row">
+  <div class="col-12">
+    <h2 class= "head-line mt-4 ml-5">家族登録/一覧</h2>
+    <div class= "error" >
+
+    </div>
+
+    <%= form_with model:@family,local: true do |f| %>
+      <div class="addres col-12 mt-5">
+        <div class="form-group col-xs-12">
+          <%=f.label :"家族名",class: "col-3 control-label" %>
+          <%=f.text_field :family_name, class: "col-3 form-control-static postal_code" %>
+          <%= f.submit '新規登録' ,class: "offset--3 col--2 btn-lg btn-success right" %>
+        </div>
+      </div>
+      <% end %>
+
+
+  <div class="row">
+    <div class="col-10 mt-5 ">
+      <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>家族名</th>
+          <th colspan="2"></th>
+          </tr>
+      </thead>
+      <% @families.each do |family| %>
+      <tbody>
+       <div class="list">
+        <tr>
+          <td ><%= family.family_name %></td>
+          <td class= "text-center"><%= link_to "編集する",edit_family_path(family), class: "btn btn-sm btn-success" %></td>
+          <td class= "text-center"><%=link_to "削除する",family_path(family),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+        </tr>
+       </div>
+      </tbody>
+     <% end %>
+    </table>
+   </div>
+  </div>
+</div>
+</div>

@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 
  scope module: :public do
 
-  resources :customers, only: [:index, :update,]
-   get "/customers/my_page" => "customers#show"
-   get "/customers/information/edit" => "customers#edit"
-   patch "customers/information" => "customers#update"
-   get "/customers/unsubscribe" => "customers#unsubscribe"
-   patch "/customers/withdraw" => "customers#withdraw"
+  resources :users, only: [:index, :update,]
+   get "/users/my_page" => "users#show"
+   get "/users/information/edit" => "users#edit"
+   patch "users/information" => "users#update"
+   get "/users/unsubscribe" => "users#unsubscribe"
+   patch "/users/withdraw" => "users#withdraw"
   resources :families, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :categories, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :incomes, only: [:new,:index, :edit, :create, :update, :destroy]

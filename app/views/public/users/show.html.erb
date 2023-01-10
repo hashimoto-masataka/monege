@@ -1,0 +1,43 @@
+<div class="container">
+<div class="row">
+	<div class="col-md-offset-1 col-md-9">
+
+		<h2 class="head-line col-md-6 text-center title_h2 m-4">マイページ</h2>
+		<strong>登録情報</strong>
+		<% if current_user.name != "guestcustomer" %>
+			<%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
+		<% end %>
+
+			</p>
+
+			<table class="table table-bordered table-condensed" >
+				<tbody>
+					<tr>
+						<td class="info">氏名</td>
+						<td class="text-left "><%= @user.name %>
+					</tr>
+					<tr>
+						<td class="info">年代</td>
+						<td class="text-left"><%= @user.age %></td>
+					</tr>
+					<tr>
+						<td class="info">仕事</td>
+						<td class="text-left"><%= @user.job %></td>
+					</tr>
+					<tr>
+						<td class="info">年収</td>
+						<td class="text-left"><%= @user.annual_income %></td>
+					</tr>
+					<tr>
+						<td class="info">都道府県</td>
+						<td class="text-left"><%= @user.prefecture %></td>
+					</tr>
+					<tr>
+						<td class="info">メールアドレス</td>
+						<td class="text-left"><%= @user.email %></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			</div>
+			</div>

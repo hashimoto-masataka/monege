@@ -20,7 +20,7 @@
             <% elsif user_signed_in? %>
               <li class= "nav-link text-light">
                 ようこそ！ <%= link_to users_my_page_path(current_user), class: "text-white font-weight-bold" do %>
-                <%= current_use.name %>
+                <%= current_user.name %>
                 <% end %>
                 さん
               </li>

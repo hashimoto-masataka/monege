@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2023_01_09_132243) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.string "category_name"
     t.string "color"
     t.integer "target_price"
@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(version: 2023_01_09_132243) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
+    t.integer "category_id"
     t.integer "family_id"
     t.integer "price"
     t.string "note"
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_01_09_132243) do
 
   create_table "families", force: :cascade do |t|
     t.string "family_name"
-    t.integer "customer_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -59,13 +60,13 @@ ActiveRecord::Schema.define(version: 2023_01_09_132243) do
   end
 
   create_table "households", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.integer "family_id"
     t.integer "price"
     t.string "note"

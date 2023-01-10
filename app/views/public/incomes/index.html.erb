@@ -1,2 +1,50 @@
-<h1>Public::Incomes#index</h1>
-<p>Find me in app/views/public/incomes/index.html.erb</p>
+<div class = "container">
+<div class = "row">
+  <div class="col-12">
+    <h2 class= "head-line mt-4 ml-5">収入一覧</h2>
+    <div class= "error" >
+     <!--%= column_chart Income.pluck(:income, :price) %>
+               <!%= pie_chart Income.pluck(:income, :price) % -->
+    </div>
+
+
+
+  <div class="row">
+    <div class="col-10 mt-5 ">
+       <h2>収入額の合計：
+      <span><%= @sum_price %>円</span></h2>
+      <% if @incomes.present? %>
+      <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>収入金額</th>
+          <th>備考欄</th>
+          <th>家族名</th>
+          <th colspan="2"></th>
+          </tr>
+      </thead>
+
+      <% @incomes.each do |income| %>
+      <tbody>
+       <div class="list">
+        <tr>
+           <td ><%= I18n.l income.created_at, format: :short %></td>
+          <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
+          <td ><%= income.price.floor.to_s(:delimited)%></td>
+          <td ><%= income.note%></td>
+          <td ><%= income.family.family_name %></td>
+          <td class= "text-center"><%= link_to "編集する",edit_income_path(income), class: "btn btn-sm btn-success" %></td>
+          <td class= "text-center"><%=link_to "削除する",incomes_path(income),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+        </tr>
+       </div>
+      </tbody>
+     <% end %>
+    </table>
+    <% else %>
+    登録がありません
+    <% end %>
+   </div>
+  </div>
+</div>
+</div>

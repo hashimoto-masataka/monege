@@ -1,2 +1,99 @@
-<h1>Public::Categories#index</h1>
-<p>Find me in app/views/public/categories/index.html.erb</p>
+<div class = "container">
+<div class = "row">
+  <div class="col-12">
+    <h2 class= "head-line mt-4 ml-5">項目登録/一覧</h2>
+    <!--<div class= "column" style='width:400px; height: 400px;'>
+ <%#= column_chart Category.pluck(:category, :target_price) %>
+ <canvas id="column_chart" ></canvas>
+</div> -->
+    </div>
+    </div>
+    
+    
+<div class="row">
+    <div class="col-lg-5">
+       <span>目標額の合計：</span>
+         <span><%= @sum_target_price %></span>
+            <div class= "chart" style='width:400px; height: 400px;'>
+               <canvas id="pie_chart" ></canvas>
+            </div>
+     </div>
+
+
+    <div class="col-lg-6 mt-5">
+      <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>項目名</th>
+          <th colspan="2"></th>
+          </tr>
+      </thead>
+
+      <%= link_to "新規登録",new_category_path %>
+      <% @categories.each do |category| %>
+       <%= link_to edit_category_path(category) do %>
+      <tbody>
+        <tr>
+          <td class = "col-2"><div style="color: <%= category.color %>;"> <%= category.category_name %></div></td>
+          <td>&yen;<%= "#{category.target_price.to_s(:delimited)} (#{((category.target_price.to_f / @sum_target_price.to_f) * 100).round(2)} %)" %>
+          </td>
+          <td class= "text-center"><%= link_to "編集する",edit_category_path(category), class: "btn btn-sm btn-success" %></td>
+          <td class= "text-center"><%=link_to "削除する",category_path(category),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+        </tr>
+
+        </tbody>
+         <% end %>
+     <% end %>
+    </table>
+   </div>
+  </div>
+</div>
+
+<script>
+
+const category_data = {
+  labels: [
+    <% @categories.all.each do | category| %>
+      '<%= category.category_name %>',
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: 'カテゴリー表',
+      data: [
+        <% Category.all.each do | category| %>
+          '<%= category.target_price %>',
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const pie_ctx = document.getElementById('pie_chart');
+new Chart(pie_ctx, {
+    type: 'pie',
+    data: category_data,
+    options: {
+  /*    scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+      */
+    }
+  });
+const column_ctx = document.getElementById('column_chart');
+new Chart(column_ctx, {
+    type: 'bar',
+    data: category_data,
+    options: {
+  /*    scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+      */
+    }
+  });
+
+</script>

@@ -1,2 +1,131 @@
-<h1>Public::Expenses#index</h1>
-<p>Find me in app/views/public/expenses/index.html.erb</p>
+<div class = "container-fluid">
+  <div class = "row">
+    <div class ="col-12">
+      <%= link_to "前の月のリンク",expenses_path(month: @month.prev_month) %>
+     <%= link_to "次の月のリンク",expenses_path(month: @month.next_month) %>
+    </div>
+  　<div class= "col-5">
+  　  <div class="month">
+  　    <%= @month %>
+  　  </div>
+      <div class= "chart m-5" style='width:400px; height: 400px;'>
+               <canvas id="pie_chart" ></canvas>
+      </div>
+    </div>
+  <div class="col-6">
+    <% if @expenses.present? %>
+     <h3 class="text-center m-5">家族別支出一覧　</h3>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="col-2">日付</th>
+            <th class="col-2">支出金額</th>
+            <th>項目</th>
+            <th>家族名</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+      <% @expenses.each do |expense| %>
+
+        <tbody>
+         <div class="list">
+          <tr>
+            <td ><%= I18n.l expense.created_at, format: :short %></td>
+                <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
+            <td><%= expense.price.floor.to_s(:delimited)%> 円 </td>
+            <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></td>
+            <td><%= expense.family.family_name %></td>
+            </tr>
+         </div>
+        </tbody>
+
+      <% end %>
+
+     </table>
+    <% else %>
+   登録がありません
+    <% end %>
+
+   </div>
+  </div>
+  <div class="row">
+    <div class="col">
+     <%= render "new" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+const category_data = {
+  labels: [
+    <% @expenses.all.each do |expense| %>
+      '<%= expense.category.category_name %>',
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: '金額',
+      data: [
+        <% @expenses.each do |expense| %>
+          '<%= expense.price %>',
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const pie_ctx = document.getElementById('pie_chart');
+new Chart(pie_ctx, {
+    type: 'pie',
+    data: category_data,
+    options: {
+  /*    scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+      */
+    }
+  });
+
+</script>
+<script>
+
+const category_data = {
+  labels: [
+    <% @expenses.all.each do |expense| %>
+      '<%= expense.category.category_name %>',
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: '金額',
+      data: [
+        <% Expense.all.each do |expense| %>
+          '<%= expense.price %>',
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const pie_ctx = document.getElementById('category');
+new Chart(pie_ctx, {
+    type: 'pie',
+    data: category_data,
+    options: {
+  /*    scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+      */
+    }
+  });
+
+
+</script>

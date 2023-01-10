@@ -1,0 +1,45 @@
+<div class="container">
+<div class="row">
+    <%= form_with(model:@customer, url:customers_information_path, local: true ) do |f| %>
+
+
+      <div class="col-12">
+        <div class="form-group col-12 mt-5">
+          <%= f.label :nickname, "ニックネーム", class: "col-6 control-label" %>
+          <%= f.text_field :nickname, class: "col-5 form-control-static" %>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :prefecture, "都道府県", class: "col-6 control-label" %>
+          <%= f.select :prefecture, Customer.prefectures.map{ |k, v| [k, k] }, {}, class: "form-control-static name" %>
+          <%#mapメソッドはprefecture変数の要素をk＝文字、v＝id で定義、enum_helpを実装し、prefectureであればprefecture_i18nと記述することで日本語で実装できる
+          が今回はすでに日本語で登録しているため不要。[k, k] と記述することで保存されるのはIDだが表示は文字になる。[k,v ] と保存するとshow.htmlにはIDが表示される%>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :email, "メールアドレス", class: "col-6 control-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5 form-control-static" %>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :age, "年代", class: "col-6 control-label" %>
+          <%= f.select :age, Customer.ages.map { |k, v| [k, k] }, {}, class: "col-5 form-control-static name" %>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :annual_income, "収入", class: "col-6 control-label" %>
+          <%= f.select :annual_income, Customer.annual_incomes.map { |k, v| [k, k] }, {}, class: "col-5 form-control-static name" %>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :job, "職業", class: "col-6 control-label" %>
+          <%= f.select :job, Customer.jobs.map { |k, v| [k, k] },{}, class: "col-5 form-control-static name" %>
+        </div>
+
+        <div class="actions  ">
+        <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-4 offset-md-3 mr-3" %>
+        <%= link_to '退会する', customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger ml-4"%>
+       </div>
+      </div>
+
+    <% end %>
+
+
+
+  </div>
+</div>
