@@ -51,7 +51,12 @@ class Public::HouseholdAccountsController < ApplicationController
     @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
   end
 
+
   def destroy
+    @household_account = HouseholdAccount.find(params[:id])
+    @household_account.delete
+      redirect_to household_accounts_path
+      flash.now[:notice] = '投稿を削除しました'
   end
 
   private

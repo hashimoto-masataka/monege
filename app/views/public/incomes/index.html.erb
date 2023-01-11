@@ -34,11 +34,11 @@
       <tbody>
        <div class="list">
         <tr>
-           <td ><%= I18n.l income.created_at, format: :short %></td>
+           <td><%= I18n.l income.created_at, format: :short %></td>
           <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
-          <td ><%= income.price.floor.to_s(:delimited)%></td>
-          <td ><%= income.note%></td>
-          <td ><%= income.family.family_name %></td>
+          <td><%= income.price.floor.to_s(:delimited)%></td>
+          <td><%= income.note%></td>
+          <td><%= income.family.family_name %></td>
           <td class= "text-center"><%= link_to "編集する",edit_income_path(income), class: "btn btn-sm btn-success" %></td>
           <td class= "text-center"><%=link_to "削除する",incomes_path(income),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>

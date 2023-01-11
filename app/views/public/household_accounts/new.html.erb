@@ -51,7 +51,7 @@ const household_account_data = {
     {
       label: 'カテゴリー表',
       data: [
-        <% Category.all.each do | category| %>
+        <% @categories.all.each do | category| %>
           '<%= category.target_price %>',
         <% end %>
       ],
