@@ -11,9 +11,14 @@
 
   <div class="row">
     <div class="col-10 mt-5 ">
+     <%= link_to "前の月のリンク",incomes_path(month: @month.prev_month) %>
+     <%= link_to "次の月のリンク",incomes_path(month: @month.next_month) %>
+
        <h2>収入額の合計：
       <span><%= @sum_price %>円</span></h2>
+      <%= link_to "新規登録",new_income_path %>
       <% if @incomes.present? %>
+
       <table class="table table-bordered table-hover">
       <thead>
         <tr>
@@ -46,5 +51,6 @@
     <% end %>
    </div>
   </div>
+</div>
 </div>
 </div>
