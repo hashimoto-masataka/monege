@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
- scope module: :public do
+ devise_for :admin,skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
+ scope module: :public do
+  root to: "homes#top"
   resources :users, only: [:index, :update,]
    get "/users/my_page" => "users#show"
    get "/users/information/edit" => "users#edit"
@@ -16,18 +24,10 @@ Rails.application.routes.draw do
 
 end
 
-  devise_for :admin,skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
-  devise_for :users,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+ namespace :admin do
 
-  scope module: :public do
   root to: "homes#top"
-  end
-
+ end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

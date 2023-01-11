@@ -36,6 +36,7 @@
             <td><%= expense.price.floor.to_s(:delimited)%> 円 </td>
             <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></td>
             <td><%= expense.family.family_name %></td>
+            <td class= "text-center"><%= link_to "編集する",edit_expense_path(expense), class: "btn btn-sm btn-success" %></td>
             </tr>
          </div>
         </tbody>
