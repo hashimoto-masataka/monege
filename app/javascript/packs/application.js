@@ -16,3 +16,7 @@ import "../stylesheets/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(function(){
+  setTimeout("$('.notice').fadeOut('slow')", 2000);
+});
