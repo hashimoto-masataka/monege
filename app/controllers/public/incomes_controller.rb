@@ -33,7 +33,7 @@ class Public::IncomesController < ApplicationController
 
   def update
     @income = Income.find(params[:id])
-    if @income.update(incomes_params)
+    if @income.update(income_params)
       redirect_to incomes_path
       flash.now[:notice] = '収入を変更しました'
     else

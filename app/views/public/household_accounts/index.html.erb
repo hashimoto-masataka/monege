@@ -1,76 +1,88 @@
+<div class="container">
 <h2>投稿一覧</h2>
 <%= link_to "新規登録", new_household_account_path %>
     <% @households.each do |household| %>
+
      <div class="row">
       <div class="col-md-3">ニックネーム</div>
       <div class="col-md-9"><%= household.user.name %></div>
      </div>
      <% sum = household.household_accounts.sum(:target_price) %>
      <%= sum %>
+      <div class= "chart" style='width:200px; height: 200px;'>
+               <canvas class ="pie" ></canvas>
+            </div>
     <!--@householdsが変動するためコントローラーではなくviewに記載 -->
      <% household.household_accounts.each do |household_account| %>
       <div class="row">
        <div class="col-md-3">
-        <div class= "pie_chart" style='width:200px; height: 200px;'>
-               <canvas id ="pie_chart" ></canvas>
-            </div>
+        <!--<div class= "chart" style='width:200px; height: 200px;'>-->
+        <!--       <canvas class ="pie" ></canvas>-->
+        <!--    </div>-->
        </div>
        <div class="col-md-9">
         <span style="color: <%= household_account.color %>"><%= household_account.category_name %></span>
         &yen;<%= "#{household_account.target_price.to_s(:delimited)} (#{((household_account.target_price.to_f / sum.to_f) * 100).round(2)} %)" %>
-        <!-- &yenは￥の文字化けを防ぐために使用。#{}はrubyの文字式を入れるためのもの。roundは（）内以下の小数点を四捨五入してくれる-->
+         <!--&yenは￥の文字化けを防ぐために使用。#{}はrubyの文字式を入れるためのもの。roundは（）内以下の小数点を四捨五入してくれる-->
        </div>
       </div>
      <% end %>
     <% end %>
-
+</div>
 
 
 <script>
 
 const category_data = {
   labels: [
-    <% @categories.all.each do | category| %>
-      '<%= category.category_name %>',
+    <% @categories.all.each do | household_account| %>
+      '<%= household_account.category_name %>',
     <% end %>
     ],
   datasets: [
     {
       label: 'カテゴリー表',
       data: [
-        <% Category.all.each do | category| %>
-          '<%= category.target_price %>',
+        <% @categories.all.each do | household_account| %>
+          '<%= household_account.target_price %>',
         <% end %>
       ],
     }
   ]
 };
 
-const pie_ctx = document.getElementsByClassName('pie_chart');
-new Chart(pie_ctx, {
-    type: 'pie',
-    data: category_data,
-    options: {
-  /*    scales: {
-        y: {
-          beginAtZero: true
+const elements = document.getElementsByClassName('pie');
+for(let i = 0; i < elements.length; i++) {
+  new Chart(elements[i], {
+      type: 'pie',
+      data: category_data,
+      options: {
+    /*    scales: {
+          y: {
+            beginAtZero: true
+          }
         }
+        */
       }
-      */
-    }
-  });
-const column_ctx = document.getElementById('column_chart');
-new Chart(column_ctx, {
-    type: 'bar',
-    data: category_data,
-    options: {
-  /*    scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-      */
-    }
-  });
+    });
+}
+// elements.forEach((element) => {
+
+
+
+// })
+// new Chart(xxxxx, {
+//     type: 'pie',
+//     data: category_data,
+//     options: {
+//   /*    scales: {
+//         y: {
+//           beginAtZero: true
+//         }
+//       }
+//       */
+//     }
+//   });
+
 
 </script>

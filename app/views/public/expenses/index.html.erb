@@ -31,12 +31,18 @@
         <tbody>
          <div class="list">
           <tr>
-            <td ><%= I18n.l expense.created_at, format: :short %></td>
+            <td ><%= link_to edit_expense_path(expense) do %>
+            <%= I18n.l expense.created_at, format: :short %>
+            <% end %></td>
                 <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
             <td><%= expense.price.floor.to_s(:delimited)%> 円 </td>
-            <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></td>
+            <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></div></td>
+            <% if expense.family.present? %>
             <td><%= expense.family.family_name %></td>
-            <td class= "text-center"><%= link_to "編集する",edit_expense_path(expense), class: "btn btn-sm btn-success" %></td>
+            <% else %>
+            <td>未設定</td>
+            <% end %>
+            <td><%= expense.note %></td>
             </tr>
          </div>
         </tbody>

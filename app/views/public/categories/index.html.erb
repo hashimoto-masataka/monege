@@ -8,8 +8,8 @@
 </div> -->
     </div>
     </div>
-    
-    
+
+
 <div class="row">
     <div class="col-lg-5">
        <span>目標額の合計：</span>
@@ -53,7 +53,7 @@
 
 const category_data = {
   labels: [
-    <% @categories.all.each do | category| %>
+    <% @categories.each do | category| %>
       '<%= category.category_name %>',
     <% end %>
     ],
@@ -61,7 +61,7 @@ const category_data = {
     {
       label: 'カテゴリー表',
       data: [
-        <% Category.all.each do | category| %>
+        <% @categories.each do | category| %>
           '<%= category.target_price %>',
         <% end %>
       ],
