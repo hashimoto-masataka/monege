@@ -1,0 +1,41 @@
+<div class="container">
+   <div class="row">
+      <div class="col-md-3">
+<h2>投稿一覧</h2>
+<%= link_to "新規登録", new_household_account_path %>
+    <% @households.each do |household| %>
+
+      <%= household.user.name %>
+      <%= household.category_name %>
+      <%= household.target_price %>
+     </div>
+   <% end %>
+ </div>
+</div>
+
+
+
+
+
+<script>
+
+// elements.forEach((element) => {
+
+
+
+// })
+// new Chart(xxxxx, {
+//     type: 'pie',
+//     data: category_data,
+//     options: {
+//   /*    scales: {
+//         y: {
+//           beginAtZero: true
+//         }
+//       }
+//       */
+//     }
+//   });
+
+
+</script>
