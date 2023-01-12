@@ -7,6 +7,7 @@
 		<% if current_user.name != "guestuser" %>
 			<%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
 		<% end %>
+		<p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
 
 			</p>
 
