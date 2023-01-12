@@ -4,7 +4,7 @@
 
 		<h2 class="head-line col-md-6 text-center title_h2 m-4">マイページ</h2>
 		<strong>登録情報</strong>
-		<% if current_user.name != "guestcustomer" %>
+		<% if current_user.name != "guestuser" %>
 			<%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
 		<% end %>
 
