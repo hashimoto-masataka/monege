@@ -1,0 +1,24 @@
+<% @favorite_household_account.each do |household_account|%>
+
+      <div class="row">
+       <div class="col-md-3">
+        <!--<div class= "chart" style='width:200px; height: 200px;'>-->
+        <!--       <canvas class ="pie" ></canvas>-->
+        <!--    </div>-->
+       </div>
+       <div class="col-md-9">
+        <span style="color: <%= household_account.color %>"><%= household_account.category_name %></span>
+          <!--&yenは￥の文字化けを防ぐために使用。#{}はrubyの文字式を入れるためのもの。roundは（）内以下の小数点を四捨五入してくれる-->
+         <% if household_account.favorited_by?(current_user) %>
+          <p><%= link_to household_account_favorites_path(household_account), method: :delete do %>
+          ❤️<%= household_account.favorites.count %>いいね
+          <% end %></p>
+        <% else %>
+          <p><%= link_to household_account_favorites_path(household_account), method: :post do %>
+          🤍<%= household_account.favorites.count %>いいね
+          <% end %></p>
+        <% end %>
+
+       </div>
+      </div>
+     <% end %>

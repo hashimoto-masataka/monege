@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
  scope module: :public do
   root to: "homes#top"
-  resources :users, only: [:index, :update,]
+  resources :users, only: [:index, :update,] do
+   member do
+      get :favorites
+   end
+  end
    get "/users/my_page" => "users#show"
    get "/users/information/edit" => "users#edit"
    patch "users/information" => "users#update"
@@ -25,7 +29,9 @@ Rails.application.routes.draw do
   resources :categories, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :incomes, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :expenses, only: [:new, :index, :edit, :create, :update, :destroy]
-  resources :household_accounts, only: [:new, :index, :show, :create, :destroy]
+  resources :household_accounts, only: [:new, :index, :show, :create, :destroy]do
+   resource:favorites, only: [:create, :destroy]
+  end
 
 end
 
