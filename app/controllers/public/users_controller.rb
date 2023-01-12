@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
 
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:edit ,:unsubscribe]
   #ゲストユーザーがカスタマーの編集ページに直接入力しても遷移できないようにする。
 
   def show
@@ -44,9 +44,8 @@ class Public::UsersController < ApplicationController
 
 
  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) ,notice: 'ゲストユーザーはマイページの編集はできません。'
+    if (current_user.name == "guestuser")&&(current_user.email == 'guest@example.com')
+      redirect_to root_path ,notice: 'ゲストユーザーはマイページの編集はできません。'
     end
  end
 end
