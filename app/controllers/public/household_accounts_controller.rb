@@ -1,4 +1,6 @@
 class Public::HouseholdAccountsController < ApplicationController
+  before_action :ensure_guest_user, only: [:new ,:destory]
+
    def new
     @household_account = HouseholdAccount.new
     @categories = current_user.categories
@@ -63,5 +65,11 @@ class Public::HouseholdAccountsController < ApplicationController
 
   def household_account_params
     params.require(:household_account).permit(:category_id)
+  end
+
+  def ensure_guest_user
+    if (current_user.name == "guestuser")&&(current_user.email == 'guest@example.com')
+      redirect_to root_path ,notice: 'ゲストユーザーは投稿できません。'
+    end
   end
 end
