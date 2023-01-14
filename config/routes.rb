@@ -29,9 +29,11 @@ Rails.application.routes.draw do
   resources :categories, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :incomes, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :expenses, only: [:new, :index, :edit, :create, :update, :destroy]
-  resources :household_accounts, only: [:new, :index, :show, :create, :destroy]do
+  resources :household_accounts, only: [:new, :index, :show, :create, :destroy]
+  resources :households, only: [:index, :destroy] do
    resource:favorites, only: [:create, :destroy]
   end
+
 
 end
 

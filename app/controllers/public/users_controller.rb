@@ -3,9 +3,15 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit ,:unsubscribe]
   #ゲストユーザーがカスタマーの編集ページに直接入力しても遷移できないようにする。
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = current_user
 
+    @now = Date.today
+    @categories = @user.categories
   end
 
   def edit
@@ -37,10 +43,12 @@ class Public::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    favorites= Favorite.where(user_id: @user.id).pluck(:household_account_id)
-    @favorite_household_account = HouseholdAccount.find(favorites)
+    favorites= Favorite.where(user_id: @user.id).pluck(:household_id)
+    @favorite_household = Household.find(favorites)
      @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
+
   end
+
 
 	private
 

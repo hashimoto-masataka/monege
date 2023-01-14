@@ -1,5 +1,24 @@
-<% @favorite_household_account.each do |household_account|%>
+ <% @favorite_household.each do |household|%>
 
+     <div class="row">
+      <div class="col-md-11">
+       <%= household.user.name %>
+       <%= household.user.job %>
+       <%= household.user.age %>
+       <%= household.user.annual_income %>
+       <%= household.user.prefecture %>
+       </div>
+     </div>
+     トータル目標支出額
+     &yen;<% sum = household.household_accounts.sum(:target_price) %>
+     <%= sum %>円
+      <div class= "chart" style='width:200px; height: 200px;'>
+               <canvas class ="pie" ></canvas>
+            </div>
+
+
+    <!--@householdsが変動するためコントローラーではなくviewに記載 -->
+     <% household.household_accounts.each do |household_account| %>
       <div class="row">
        <div class="col-md-3">
         <!--<div class= "chart" style='width:200px; height: 200px;'>-->
@@ -8,17 +27,12 @@
        </div>
        <div class="col-md-9">
         <span style="color: <%= household_account.color %>"><%= household_account.category_name %></span>
-          <!--&yenは￥の文字化けを防ぐために使用。#{}はrubyの文字式を入れるためのもの。roundは（）内以下の小数点を四捨五入してくれる-->
-         <% if household_account.favorited_by?(current_user) %>
-          <p><%= link_to household_account_favorites_path(household_account), method: :delete do %>
-          ❤️<%= household_account.favorites.count %>いいね
-          <% end %></p>
-        <% else %>
-          <p><%= link_to household_account_favorites_path(household_account), method: :post do %>
-          🤍<%= household_account.favorites.count %>いいね
-          <% end %></p>
-        <% end %>
+        &yen;<%= "#{household_account.target_price.to_s(:delimited)} (#{((household_account.target_price.to_f / sum.to_f) * 100).round(2)} %)" %>
+         <!--&yenは￥の文字化けを防ぐために使用。#{}はrubyの文字式を入れるためのもの。roundは（）内以下の小数点を四捨五入してくれる-->
 
        </div>
       </div>
      <% end %>
+    <% end %>
+</div>
+

@@ -1,16 +1,31 @@
-<div class="container">
-<div class="row">
-	<div class="col-md-offset-1 col-md-9">
+<div class="container-fluie">
+	<div class="row">
+			<div class = "col-4">
+				<h2>目標家計簿</h2>
+            <div class= "chart" style='width:400px; height: 400px;'>
+               <canvas id="pie_chart" ></canvas>
+            </div>
+			</div>
+			<div class = "col-3">
+				<h3>差額</h3>
+				</div>
+			<div class = "col-4">
+				<h2>現在の家計簿</h2>
+			</div>
 
-		<h2 class="head-line col-md-6 text-center title_h2 m-4">マイページ</h2>
-		<strong>登録情報</strong>
-		<% if current_user.name != "guestuser" %>
-			<%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
-		<% end %>
-		<p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
 
-			</p>
+	</div>
+	<div class = "row">
+		<div class="col-md-offset-1 col-md-9">
 
+			<h2 class="head-line col-md-6 text-center title_h2 m-4">マイページ</h2>
+			 <%= link_to "ユーザー一覧",users_path %>
+				<strong>登録情報</strong>
+					<% if current_user.name != "guestuser" %>
+						<%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
+					<% end %>
+				<p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
+				<p><%=link_to"投稿",households_path(@user) %></p>
 			<table class="table table-bordered table-condensed" >
 				<tbody>
 					<tr>
@@ -39,6 +54,40 @@
 					</tr>
 				</tbody>
 			</table>
-			</div>
-			</div>
-			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+const category_data = {
+  labels: [
+    <% @categories.each do | category| %>
+      '<%= category.category_name %>',
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: 'カテゴリー表',
+      data: [
+        <% @categories.each do | category| %>
+          '<%= category.target_price %>',
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const pie_ctx = document.getElementById('pie_chart');
+new Chart(pie_ctx, {
+    type: 'pie',
+    data: category_data,
+    options: {
+  /*    scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+      */
+    }
+  });

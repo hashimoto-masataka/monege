@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2023_01_12_055838) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "household_account_id"
+    t.integer "household_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2023_01_12_055838) do
 
   create_table "households", force: :cascade do |t|
     t.integer "user_id"
+    t.string "prefecture"
+    t.string "job"
+    t.string "annual_income"
+    t.string "age"
+    t.string "category_name"
+    t.string "target_price"
+    t.string "category_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

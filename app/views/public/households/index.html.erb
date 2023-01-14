@@ -1,24 +1,79 @@
 <div class="container">
-   <div class="row">
-      <div class="col-md-3">
 <h2>投稿一覧</h2>
 <%= link_to "新規登録", new_household_account_path %>
     <% @households.each do |household| %>
 
-      <%= household.user.name %>
-      <%= household.category_name %>
-      <%= household.target_price %>
+     <div class="row">
+      <div class="col-md-11">
+        <%= household.user.name %>
+        <%= household.user.job %>
+        <%= household.user.annual_income %>
+        <%= household.user.prefecture %>
+        <%= household.user.age %>
+        </div>
      </div>
-   <% end %>
- </div>
+     <% sum = household.household_accounts.sum(:target_price) %>
+     <%= sum %>
+      <div class= "chart" style='width:200px; height: 200px;'>
+               <canvas class ="pie" ></canvas>
+            </div>
+    <%= link_to "削除", household_path(household),method: :delete %>
+      <% if household.favorited_by?(current_user) %>
+          <p><%= link_to household_favorites_path(household), method: :delete do %>
+          ❤️<%= household.favorites.count %>いいね
+          <% end %></p>
+        <% else %>
+          <p><%= link_to household_favorites_path(household), method: :post do %>
+          🤍<%= household.favorites.count %>いいね
+          <% end %></p>
+        <% end %>
+    <% household.household_accounts.each do |household_account| %>
+
+      <%= household_account.category_name %>
+
+       <% end %>
+
+    <!--@householdsが変動するためコントローラーではなくviewに記載 -->
+
+    <% end %>
 </div>
-
-
-
 
 
 <script>
 
+const category_data = {
+  labels: [
+    <% @categories.all.each do | category| %>
+      '<%= category.category_name %>',
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: 'カテゴリー表',
+      data: [
+        <% Category.all.each do | category| %>
+          '<%= category.target_price %>',
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const elements = document.getElementsByClassName('pie');
+for(let i = 0; i < elements.length; i++) {
+  new Chart(elements[i], {
+      type: 'pie',
+      data: category_data,
+      options: {
+    /*    scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+        */
+      }
+    });
+}
 // elements.forEach((element) => {
 
 
