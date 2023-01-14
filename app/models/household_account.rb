@@ -1,7 +1,7 @@
 class HouseholdAccount < ApplicationRecord
 
   belongs_to :household
-  has_many :favorites, dependent: :destroy
+
 
   def favorited_by?(user)
     favorites.exists?(user_id:user.id)

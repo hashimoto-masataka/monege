@@ -48,6 +48,8 @@ class User < ApplicationRecord
 
 
 
+
+
    def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
      #find_or_create_byはデータの検索と作成を自動的に判断して処理を行う
