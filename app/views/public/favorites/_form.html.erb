@@ -1,9 +1,0 @@
- <% if householdhousehold_account.favorited_by?(current_user) %>
-          <p><%= link_to household_account_favorites_path(household.household_account), method: :delete do %>
-          ❤️<%=household. household_account.favorites.count %>いいね
-          <% end %></p>
-        <% else %>
-          <p><%= link_to household_account_favorites_path(household.household_account), method: :post do %>
-          🤍<%= household.household_account.favorites.count %>いいね
-          <% end %></p>
-        <% end %>

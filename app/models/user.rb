@@ -10,8 +10,6 @@ class User < ApplicationRecord
    has_many :categories, dependent: :destroy
    has_many :incomes, dependent: :destroy
    has_many :expenses, dependent: :destroy
-   has_many :household_accounts, dependent: :destroy
-   has_many :favorites, dependent: :destroy
 
     enum prefecture:{
      お住いの地域（未入力）:0,
