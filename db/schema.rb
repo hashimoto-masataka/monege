@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_12_055838) do
+ActiveRecord::Schema.define(version: 2023_01_15_020935) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,40 +50,18 @@ ActiveRecord::Schema.define(version: 2023_01_12_055838) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "household_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "household_accounts", force: :cascade do |t|
-    t.integer "household_id"
-    t.string "category_name"
-    t.string "color"
-    t.integer "target_price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "households", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "prefecture"
-    t.string "job"
-    t.string "annual_income"
-    t.string "age"
-    t.string "category_name"
-    t.string "target_price"
-    t.string "category_color"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "incomes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "family_id"
     t.integer "price"
     t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

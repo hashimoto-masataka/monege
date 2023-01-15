@@ -22,10 +22,10 @@
 			 <%= link_to "ユーザー一覧",users_path %>
 				<strong>登録情報</strong>
 					<% if current_user.name != "guestuser" %>
-						<%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
+						<p><%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %></p>
+						<p><%=link_to"参考にしたユーザー",user_followings_path(@user) %></p>
+						<p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
 					<% end %>
-				<p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
-				<p><%=link_to"投稿",households_path(@user) %></p>
 			<table class="table table-bordered table-condensed" >
 				<tbody>
 					<tr>

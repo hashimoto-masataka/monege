@@ -8,12 +8,16 @@ class Public::CategoriesController < ApplicationController
     @categories = current_user.categories
     @category= Category.new
     @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
+  end
 
+  def show
+    @user = User.find(params[:id])
+    @categories = @user.categories
+    @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
   end
 
   def edit
     @category= Category.find(params[:id])
-
   end
 
   def create

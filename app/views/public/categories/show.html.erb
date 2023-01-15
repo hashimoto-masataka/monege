@@ -1,14 +1,20 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-12">
-      <h2 class= "head-line mt-4 ml-5">家計簿作成</h2>
-       <span>目標額の合計：</span>
-       <span><%= @sum_target_price %></span>
-       <%= link_to "新規登録",new_category_path %>
+      <h2 class= "head-line mt-4 ml-5">家計簿詳細</h2>
+      　<div class = "plofile">
+      　   <%= @user.name %>
+      　   <%= @user.job %>
+      　   <%= @user.age %>
+      　   <%= @user.annual_income %>
+      　   <%= @user.prefecture %>
+      　   <%= render "relationships/btn", user: @user %>
+      　</div>
+
     </div>
 
     <%= render 'index', categories: @categories , sum_target_price: @sum_target_price %>
-    
+
   </div>
 </div>
 

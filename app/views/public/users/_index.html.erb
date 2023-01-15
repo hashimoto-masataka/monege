@@ -1,0 +1,80 @@
+<div class ="container">
+  <div class="row">
+    <div class ="col">
+      <h2>ユーザー一覧</h2>
+      <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+            <th>名前</th>
+            <th>仕事</th>
+            <th>年代</th>
+            <th>都道府県</th>
+            <th>年収</th>
+          </tr>
+      </thead>
+      <% users.each do |user| %>
+      <tbody>
+       <div class="list">
+        <tr>
+          <td>
+            <%= link_to category_path(user) do %>
+            <div class= "chart" style='width:200px; height: 200px;'>
+               <canvas class ="pie" ></canvas>
+            </div>
+            <% end %>
+          </td>
+          <td><%= user.name %></td>
+          <td><%= user.job %></td>
+          <td><%= user.age %></td>
+          <td><%= user.prefecture %></td>
+          <td><%= user.annual_income %></td>
+          <td><%= render 'public/relationships/btn', user: user %></td>
+        </tr>
+       </div>
+      </tbody>
+     <% end %>
+    </table>
+    </div>
+  </div>
+</div>
+<script>
+
+const category_data = {
+  labels: [
+    <% users.each do |user| %>
+     <% user.categories.each do | category| %>
+      '<%= category.category_name %>',
+    <% end %>
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: 'カテゴリー表',
+      data: [
+        <% users.each do |user| %>
+           <% user.categories.each do | category| %>
+            '<%= category.target_price %>',
+           <% end %>
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const elements = document.getElementsByClassName('pie');
+for(let i = 0; i < elements.length; i++) {
+  new Chart(elements[i], {
+      type: 'pie',
+      data: category_data,
+      options: {
+    /*    scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+        */
+      }
+    });
+}
+
+</script>
