@@ -26,3 +26,10 @@ body {
   display: none;
 }
 
+
+
+footer{
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
+

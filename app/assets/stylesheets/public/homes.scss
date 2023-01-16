@@ -1,16 +1,51 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.title {
-  font-family: cursive;
+
+#splash {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background:#C0C0C0;
+  text-align:center;
+  color:#fff;
 }
 
-sub-title {
-  font-family: serif;
+#splash_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  width: 100%;
+  transform :translate(-50%, -50%);
+  color: #fff;
+}
+
+.loader_cover {
+  width: 100%;
+  height: 50%;
+  background-color: #333;
+  transition: all .2s cubic-bezier(.04, .435, .315, .9);
+  transform: scaleY(1);
+}
+
+.loader_cover.up {
+  transform-origin: center top;
+}
+
+.loader_cover.down {
+  position: absolute;
+  bottom: 0;
+  transform-origin: center bottom;
+}
+
+.coveranime {
+  transform: scaleY(0);
 }
 
 .cover {
-  height: 100%;
+  height: 80%;
   width: 100%;
   display: table;
   background-image: image-url("image0.jpg");
@@ -19,8 +54,15 @@ sub-title {
   background-size: 100% 100%;
 }
 
-.text-center {
+.container {
   display: table-cell;
   vertical-align: middle;
 }
 
+.title {
+  font-family: cursive;
+}
+
+sub-title {
+  font-family: serif;
+}
