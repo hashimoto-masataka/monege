@@ -2,15 +2,19 @@
 	<div class="row">
 			<div class = "col-4">
 				<h2>目標家計簿</h2>
-            <div class= "chart" style='width:400px; height: 400px;'>
-               <canvas id="pie_chart" ></canvas>
-            </div>
+					<div class= "chart" style='width:200px; height: 200px;'>
+               <canvas id ="pie" ></canvas>
+          </div>
 			</div>
+
 			<div class = "col-3">
 				<h3>差額</h3>
 				</div>
 			<div class = "col-4">
 				<h2>現在の家計簿</h2>
+				<div class= "chart" style='width:200px; height: 200px;'>
+               <canvas id ="chart" ></canvas>
+        </div>
 			</div>
 
 
@@ -78,7 +82,7 @@ const category_data = {
   ]
 };
 
-const pie_ctx = document.getElementById('pie_chart');
+const pie_ctx = document.getElementById('pie');
 new Chart(pie_ctx, {
     type: 'pie',
     data: category_data,
@@ -91,3 +95,38 @@ new Chart(pie_ctx, {
       */
     }
   });
+
+const category_data = {
+  labels: [
+    <% @expenses.all.each do |expense| %>
+      '<%= expense.category.category_name %>',
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: '金額',
+      data: [
+        <% @expenses.each do |expense| %>
+          '<%= expense.price %>',
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const elements  = document.getElementsByClassName('chart');
+new Chart(pie_ctx, {
+    type: 'pie',
+    data: category_data,
+    options: {
+  /*    scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+      */
+    }
+  });
+
+
+</script>

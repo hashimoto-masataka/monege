@@ -41,7 +41,9 @@
 
             <% else %>
             <!--ログイン前時のヘッダー-->
-
+               <li>
+                <%= link_to "トップ", root_path, class: 'nav-link text-light' %>
+              </li>
               <li>
                <%= link_to "ゲストログイン", users_guest_sign_in_path, data: {"turbolinks" => false}, class: 'nav-link text-light',method: :post %>
               </li>
