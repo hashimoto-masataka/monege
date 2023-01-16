@@ -5,14 +5,27 @@ class Public::ExpensesController < ApplicationController
 
 
   def index
-    @now = Date.today
+    @all_ecpenses = current_user.expenses
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     #params[:month]?でmonthが渡れば「：」の左側のData .parse (params [:month]）が適応され、
     #monthがなければ右側のTime.zone.todayが適応される。（なのでindexページは最初は今月分のみ表示される）
     #viewの（month @month.prev_month)でmonthを渡すことでDate.parse(params[:month])が適応される。
-    @expenses = current_user.expenses.where(created_at: @month.all_month)
+    @expenses = @all_ecpenses.where(created_at: @month.all_month)
     #where以下でexpensesのうち、created_atが@monthの月のallが表示される。
     @expense= Expense.new
+
+    line_monthes = (1..12)
+    current_year = Time.zone.now.year
+    current_year_range = (Time.zone.now.beginning_of_year..Time.zone.now.end_of_year)
+    #１年のレンジを定義
+    year_expenses = Expense.where(created_at: current_year_range)
+    @line_monthes = line_monthes.map{|i| i.to_s + "月"}
+    @line_datas = line_monthes.map do |i|
+      time_zone_local = Time.zone.local(current_year, i, 1, 0, 0, 0)
+      #time.zone.local
+      year_expenses.where(created_at: time_zone_local..time_zone_local.end_of_month)
+    end.map{|o| o.any? ? o.pluck(:price).sum : 0 }
+    #「o」はobjectの略、取り出したexpenseにobject（要素）が入っていればpluckでpriceを取り出し、要素がなければ0で取り出す。
 
   end
 

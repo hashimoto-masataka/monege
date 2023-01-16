@@ -58,7 +58,10 @@
   </div>
   <div class="row">
     <div class="col">
-     <%= render "new" %>
+
+      <div class= "chart m-5" style='width:600px; height: 400px;'>
+        <canvas id="line" ></canvas>
+      </div>
       </div>
     </div>
   </div>
@@ -99,39 +102,38 @@ new Chart(pie_ctx, {
     }
   });
 
-</script>
-<script>
-
-const category_data = {
-  labels: [
-    <% @expenses.all.each do |expense| %>
-      '<%= expense.category.category_name %>',
-    <% end %>
-    ],
+const data = {
+  labels: <%== @line_monthes %>,
   datasets: [
     {
-      label: '金額',
-      data: [
-        <% Expense.all.each do |expense| %>
-          '<%= expense.price %>',
-        <% end %>
-      ],
+      label: '支出金額',
+      data: <%= @line_datas %>,
+      pointStyle: 'circle',
+      pointRadius: 10,
+      pointHoverRadius: 15
     }
   ]
 };
 
-const pie_ctx = document.getElementById('category');
-new Chart(pie_ctx, {
-    type: 'pie',
-    data: category_data,
-    options: {
-  /*    scales: {
-        y: {
-          beginAtZero: true
-        }
+const config = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: (ctx) => 'Point Style: ' + ctx.chart.data.datasets[0].pointStyle,
       }
-      */
     }
+  }
+};
+
+const line = document.getElementById('line');
+new Chart(line, {
+    type: 'line',
+    data: data,
+    config
   });
 
 

@@ -12,7 +12,9 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "../stylesheets/public/homes"
 import "./progressbar.js"
+
 
 Rails.start()
 Turbolinks.start()
