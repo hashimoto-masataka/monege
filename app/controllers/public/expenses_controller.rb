@@ -5,7 +5,7 @@ class Public::ExpensesController < ApplicationController
 
 
   def index
-    @all_ecpenses = current_user.expenses
+    @all_expenses = current_user.expenses
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     #params[:month]?でmonthが渡れば「：」の左側のData .parse (params [:month]）が適応され、
     #monthがなければ右側のTime.zone.todayが適応される。（なのでindexページは最初は今月分のみ表示される）

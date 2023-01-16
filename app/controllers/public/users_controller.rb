@@ -10,15 +10,16 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @now = Date.today
     @categories = @user.categories
-    @now = Date.today
+
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     #params[:month]?でmonthが渡れば「：」の左側のData .parse (params [:month]）が適応され、
     #monthがなければ右側のTime.zone.todayが適応される。（なのでindexページは最初は今月分のみ表示される）
     #viewの（month @month.prev_month)でmonthを渡すことでDate.parse(params[:month])が適応される。
     @expenses = current_user.expenses.where(created_at: @month.all_month)
     #where以下でexpensesのうち、created_atが@monthの月のallが表示される。
+    @sum_price = @expenses.where(id: current_user.expense_ids).sum(:price)
+    @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
   end
 
   def edit

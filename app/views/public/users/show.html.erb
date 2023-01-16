@@ -8,10 +8,14 @@
 			</div>
 
 			<div class = "col-3">
-				<h3>差額</h3>
+			  <h3>今月の目標支出</h3>
+			  <%=@sum_target_price %>
+				<h3>今月の支出合計</h3>
+				<%= @sum_price %>
 				</div>
 			<div class = "col-4">
 				<h2>現在の家計簿</h2>
+
 				<div class= "chart" style='width:200px; height: 200px;'>
                <canvas id ="chart" ></canvas>
         </div>
@@ -96,7 +100,7 @@ new Chart(pie_ctx, {
     }
   });
 
-const category_data = {
+const expense_data = {
   labels: [
     <% @expenses.all.each do |expense| %>
       '<%= expense.category.category_name %>',
@@ -114,10 +118,10 @@ const category_data = {
   ]
 };
 
-const elements  = document.getElementsByClassName('chart');
-new Chart(pie_ctx, {
+const expense_ctx = document.getElementById('chart');
+new Chart(expense_ctx, {
     type: 'pie',
-    data: category_data,
+    data: expense_data,
     options: {
   /*    scales: {
         y: {
