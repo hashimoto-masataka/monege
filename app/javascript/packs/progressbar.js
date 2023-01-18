@@ -1,6 +1,6 @@
 var ProgressBar = require('progressbar.js')
 $(document).on('turbolinks:load', function() {
-  var bar = new ProgressBar.Line(splash_text, { //idを指名
+  var bar = new ProgressBar.Line(load_text, { //idを指名
   easing: 'easeInOut',
   duration: 1000,
   strokeWidth: 0.2,
@@ -26,9 +26,10 @@ $(document).on('turbolinks:load', function() {
 });
 
 bar.animate(1.0, function(){
-  $("#splash_text").fadeOut(10);
+  $("#load_text").fadeOut(10);
   $(".loader_cover-up").addClass("coveranime");
   $(".loader_cover-down").addClass("coveranime");
-  $("#splash").delay(500).fadeOut(800);
+  $("#load").fadeOut();
 });
 });
+

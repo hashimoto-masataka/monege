@@ -11,7 +11,7 @@ class Public::IncomesController < ApplicationController
     @incomes = current_user.incomes.where(created_at: @month.all_month)
     #where以下でexpensesのうち、created_atが@monthの月のallが表示される。
     @income= Income.new
-    @sum_price = Income.where(id: current_user.income_ids).sum(:price)
+    @sum_price = @incomes.where(id: current_user.income_ids).sum(:price)
   end
 
   def edit

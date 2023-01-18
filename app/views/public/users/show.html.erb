@@ -1,24 +1,39 @@
+
 <div class="container-fluie">
 	<div class="row">
-			<div class = "col-4">
+	  <div class = "col- offset-3 col-6 col- offset-3 ">
+	    <h3 class= "total mt-5">
+	        <%= link_to "前の月のリンク",users_my_page_path(month: @month.prev_month) %>
+           <%= link_to "次の月のリンク",users_my_page_path(month: @month.next_month) %>
+	        <%= I18n.l @current_month_beginning %> ~
+	        <%= I18n.l @current_month_end %>
+	    </h3>
+	      <h3>収入</h3>
+			  <p class ="text-danger "><%=@sum_price_income %></p>
+				<h3>支出</h3>
+				<%= @sum_price_expense %>
+		</div>
+			<div class = "col-4 p-5">
 				<h2>目標家計簿</h2>
-					<div class= "chart" style='width:200px; height: 200px;'>
+				<% if current_user.category_ids.present? %>
+            <div class= "chart" style='width:200px; height: 200px;'>
                <canvas id ="pie" ></canvas>
           </div>
-			</div>
+        <% else %>
+            <td>未設定</td>
+        <% end %>
 
-			<div class = "col-3">
-			  <h3>今月の目標支出</h3>
-			  <%=@sum_target_price %>
-				<h3>今月の支出合計</h3>
-				<%= @sum_price %>
-				</div>
+			</div>
 			<div class = "col-4">
 				<h2>現在の家計簿</h2>
-
-				<div class= "chart" style='width:200px; height: 200px;'>
+					<% if @expenses.present? %>
+            <div class= "chart" style='width:200px; height: 200px;'>
                <canvas id ="chart" ></canvas>
-        </div>
+       		 </div>
+        <% else %>
+            <td>未設定</td>
+        <% end %>
+
 			</div>
 
 
@@ -65,6 +80,7 @@
 		</div>
 	</div>
 </div>
+
 
 <script>
 

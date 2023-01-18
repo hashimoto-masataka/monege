@@ -34,10 +34,19 @@ class Public::FamiliesController < ApplicationController
   end
 
   def destroy
+    @families = current_user.families
+    @family_new= Family.new
     @family = Family.find(params[:id])
-    @family.delete
+    expenses = current_user.expenses
+    incomes = current_user.incomes
+    if expenses.where(family_id: params[:id]).present? || incomes.whrere(family_id: params[:id]).present?
+      redirect_to families_path
+      flash.now[:notice] = '家族名を収支で使用しているため削除できません'
+    else
+      @family.delete
       redirect_to families_path
       flash.now[:notice] = '家族名を削除しました'
+    end
   end
 
   private

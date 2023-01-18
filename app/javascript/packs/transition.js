@@ -6,6 +6,6 @@ $(window).on('load',function(){
     $('body').addClass('appear');
   });
   $('.splashbg').on('animationend' , function(){
-    
+
   })
 })
