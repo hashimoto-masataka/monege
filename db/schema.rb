@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2023_01_15_020935) do
     t.string "category_name"
     t.string "color"
     t.integer "target_price"
-    t.boolean "status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -76,6 +75,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_020935) do
     t.integer "prefecture", default: 0, null: false
     t.integer "annual_income", default: 0, null: false
     t.boolean "is_deleted", default: false, null: false
+    t.boolean "status", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -75,6 +75,15 @@
 						<td class="info">メールアドレス</td>
 						<td class="text-left"><%= @user.email %></td>
 					</tr>
+					<tr>
+						<td class="info">家計簿ステータス</td>
+						<% if current_user.status == false %>
+					  	<td class="text-left">家計簿は非公開です</td>
+						<% else %>
+						  <td class="text-left">家計簿を公開中</td>
+						<% end %>
+					</tr>
+
 				</tbody>
 			</table>
 		</div>

@@ -17,9 +17,11 @@
             <div><%= link_to "ログアウト", destroy_user_session_path,method: :delete ,class: "gradient4" %></div>
             </div>
           <% else %>
+          <div class ="bottom">
             <div><%= link_to "新規登録",new_user_registration_path ,class: "gradient4" %></div>
             <div><%= link_to "ログイン", new_user_session_path ,class: "gradient4" %></div>
             <div><%= link_to "ゲスト", users_guest_sign_in_path, method: :post ,class: "gradient4" %></div>
+          </div>
           <% end %>
         </div>
       </div>
