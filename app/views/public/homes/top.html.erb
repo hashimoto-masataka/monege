@@ -1,9 +1,9 @@
-<div class="cover">
-  <div id="splash">
-    <div id = "splash_text"></div>
+ <div id="load">
+    <div id = "load_text"></div>
     <div class = "loader_cover loader_cover-up"></div>
     <div class = "loader_cover loader_cover-down"></div>
   </div>
+  <div class="slider">
   <div class="container">
     <div class ="row">
       <div class= "col">
@@ -11,12 +11,15 @@
           <p class="sub-title m-2">〜お金と真摯に向き合おう〜</p>
           <h1 class="title mb-2">MONEGE</h1>
           <% if user_signed_in? %>
-            <h2 class="btn btn-success ml-2"><%= link_to "マイページ", users_my_page_path(current_user) %></h2>
-            <h2 class="btn btn-danger ml-2"><%= link_to "ログアウト", destroy_user_session_path,method: :delete %></h2>
+
+          <div class ="bottom">
+            <div><%= link_to "マイページ", users_my_page_path(current_user) ,class: "gradient4" %></div>
+            <div><%= link_to "ログアウト", destroy_user_session_path,method: :delete ,class: "gradient4" %></div>
+            </div>
           <% else %>
-            <h2 class="btn btn-warning mr-2"><%= link_to "新規登録",new_user_registration_path %></h2>
-            <h2 class="btn btn-success ml-2"><%= link_to "ログイン", new_user_session_path %></h2>
-            <h2 class="btn btn-danger ml-2"><%= link_to "ゲスト", users_guest_sign_in_path, method: :post %></h2>
+            <div><%= link_to "新規登録",new_user_registration_path ,class: "gradient4" %></div>
+            <div><%= link_to "ログイン", new_user_session_path ,class: "gradient4" %></div>
+            <div><%= link_to "ゲスト", users_guest_sign_in_path, method: :post ,class: "gradient4" %></div>
           <% end %>
         </div>
       </div>

@@ -4,7 +4,7 @@
       <h2 class= "head-line mt-4 ml-5">家計簿作成</h2>
        <span>目標額の合計：</span>
        <span><%= @sum_target_price %></span>
-       <%= link_to "新規登録",new_category_path %>
+       <%= link_to "項目を",new_category_path %>
     </div>
 
     <%= render 'index', categories: @categories , sum_target_price: @sum_target_price %>

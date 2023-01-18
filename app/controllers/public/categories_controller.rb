@@ -25,8 +25,7 @@ class Public::CategoriesController < ApplicationController
     @category.user_id= current_user.id
     @categories = current_user.categories
     if @category.save
-      redirect_to categories_path
-      flash.now[:notice] = "新規項目を登録しました"
+      redirect_to categories_path,notice:"新規項目を登録しました"
     else
       render :index
     end
@@ -44,9 +43,16 @@ class Public::CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.delete
-      redirect_to categories_path
-      flash.now[:notice] = '項目を削除しました'
+    expenses = current_user.expenses
+    if expenses.where(category_id: params[:id]).present?
+       @categories = current_user.categories
+       @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
+      render :index
+    else
+      @category.delete
+       redirect_to categories_path
+       flash.now[:notice] = '項目を削除しました'
+    end
   end
 
   private

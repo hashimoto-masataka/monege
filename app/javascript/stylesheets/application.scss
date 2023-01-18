@@ -6,7 +6,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: linear-gradient(red, yellow);
+  background: radial-gradient(#FFF, #FFC778 40%, #F13F79);
 }
 
 .profiler-results {
@@ -14,8 +14,3 @@ body {
 }
 
 
-
-footer{
-    position: absolute;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
-}

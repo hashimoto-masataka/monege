@@ -5,6 +5,7 @@ class CreateCategories < ActiveRecord::Migration[6.1]
       t.string :category_name
       t.string :color
       t.integer :target_price
+      t.boolean :status, default: false, null: false
       t.timestamps
     end
   end
