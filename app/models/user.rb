@@ -61,6 +61,10 @@ class User < ApplicationRecord
      followings.include?(user)
    end
 
+   def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 
    def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|

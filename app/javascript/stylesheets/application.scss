@@ -14,3 +14,83 @@ body {
 }
 
 
+.gnavi {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 50px 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.gnavi a {
+  display: block;
+  padding: 10px 30px;
+  text-decoration: none;
+  color: #333;
+}
+
+.gnavi li {
+  margin-bottom: 20px;
+}
+
+.gnavi li a {
+  position: relative;
+}
+
+.gnavi li a::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #0481A2;
+  transition: all .5s;
+  opacity: 0;
+}
+
+.gnavi li.current a::after,
+.gnavi li a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.gnavi li.current a,
+.gnavi li a:hover {
+  color: #fff;
+}
+
+.btn04 {
+  position: relative;
+  display: inline-block;
+  padding: 10px 30px;
+  color: #333;
+  border: 1px solid #ccc;
+  outline: none;
+  overflow: hidden;
+}
+
+.btn04:hover {
+  color: #ccc;
+  border-color: transparent;
+  transition-delay: .6s;
+}
+
+.btn04 span {
+  display: block;
+  z-index : 2;
+}
+
+.bordercenter span::before,
+.bordercenter span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  transition: all .3s;
+  transform: scale(0,1);
+  transform-origin: center;
+}
+
+
