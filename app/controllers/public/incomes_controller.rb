@@ -1,4 +1,5 @@
 class Public::IncomesController < ApplicationController
+  before_action :authenticate_user!
   def new
     @income = Income.new
   end

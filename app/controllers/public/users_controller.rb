@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit ,:unsubscribe]
   #ゲストユーザーがカスタマーの編集ページに直接入力しても遷移できないようにする。
 

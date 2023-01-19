@@ -1,5 +1,5 @@
 class Public::FamiliesController < ApplicationController
-
+  before_action :authenticate_user!
 
   def index
     @families = current_user.families
