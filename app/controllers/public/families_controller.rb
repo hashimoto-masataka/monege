@@ -3,7 +3,7 @@ class Public::FamiliesController < ApplicationController
 
   def index
     @families = current_user.families
-    @family= Family.new
+    @family_new= Family.new
   end
 
   def edit

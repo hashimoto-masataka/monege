@@ -71,19 +71,20 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.hosts.clear
 
-  
 
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.perform_caching = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    port:                 587,
-    address:              'smtp.gmail.com',
-    domain:               'gmail.com',
-    user_name:            'masatakazy@gmail.com',#Gmailのアドレス
-    password:             '19957422hasshin',#後述！大苦戦しました！
-    authentication:       'login',
-    enable_starttls_auto: true
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => ENV["masatakazy@gmail.com"],
+    :password => ENV["zvcvzagoqryqkrcj"],
+    :authentication => 'login'
   }
 
   # Uncomment if you wish to allow Action Cable access from any origin.
