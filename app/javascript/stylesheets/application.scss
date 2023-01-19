@@ -93,4 +93,19 @@ body {
   transform-origin: center;
 }
 
+.bordercenter span::before {
+  left: 0;
+  top: 0;
+}
+
+.bordercenter span::after {
+  left: 0;
+  top: 0;
+}
+
+.bordercenter:hover span::before,
+.bordercenter:hover span::before {
+  transform: scale(1,1);
+}
+
 
