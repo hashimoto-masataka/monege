@@ -11,7 +11,7 @@ Admin.create(
 )
 
 Category.create!(
-    user_id: 8,
+    user_id: 1,
     category_name: "食費",
     color: '#000000',
     target_price: 100000
