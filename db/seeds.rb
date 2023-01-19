@@ -10,10 +10,15 @@ Admin.create(
     password: '******',
 )
 
+User.create(
+ name:"guestuser",
+ email:"guest@example.com",
+ )
+
+
 Category.create!(
     user_id: 1,
     category_name: "食費",
     color: '#000000',
     target_price: 100000
-
 )
