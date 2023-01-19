@@ -4,7 +4,8 @@ class Public::UsersController < ApplicationController
   #ゲストユーザーがカスタマーの編集ページに直接入力しても遷移できないようにする。
 
   def index
-    @users = User.all
+    user = User.where(status: false)
+    @users = user.all
 
   end
 
@@ -55,19 +56,12 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def favorites
-    @user = User.find(params[:id])
-    favorites= Favorite.where(user_id: @user.id).pluck(:household_id)
-    @favorite_household = Household.find(favorites)
-     @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
-
-  end
 
 
-	private
+private
 
  def user_params
-  	params.require(:user).permit(:name, :email, :job, :age, :annual_income, :prefecture, :is_deleted, :status)
+  	params.require(:user).permit(:name, :email, :job, :age, :annual_income, :prefecture, :status)
 
  end
 
