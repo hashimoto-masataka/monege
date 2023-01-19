@@ -42,7 +42,7 @@
 		<div class="col-md-offset-1 col-md-9">
 
 			<h2 class="head-line col-md-6 text-center title_h2 m-4">マイページ</h2>
-			 <%= link_to "ユーザー一覧",users_path %>
+			 <%= link_to "ユーザー一覧",users_path, 'data-turbolinks': false %>
 				<strong>登録情報</strong>
 					<% if current_user.name != "guestuser" %>
 						<p><%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %></p>
