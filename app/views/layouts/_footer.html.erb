@@ -8,11 +8,11 @@
     <i class="fas fa-coins"></i>
     <p>収入</p>
     <% end %>
-    <%= link_to categories_path, class: "nav-link" do %>
+    <%= link_to categories_path, class: "nav-link", 'data-turbolinks': false do %>
     <i class="fas fa-lg fa-pencil-alt"></i>
     <p>家計簿作成</p>
     <% end %>
-    <%= link_to expenses_path, class: "nav-link" do %>
+    <%= link_to expenses_path, class: "nav-link",'data-turbolinks': false do %>
     <i class="fas fa-chart-bar"></i>
     <p>支出</p>
     <% end %>
