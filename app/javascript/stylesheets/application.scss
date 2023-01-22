@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 html,
 body {
@@ -7,6 +8,21 @@ body {
   margin: 0;
   padding: 0;
   background: radial-gradient(#FFF, #FFC778 40%, #F13F79);
+}
+
+.main {
+  padding-bottom: 70px;
+  box-sizing: border-box;
+}
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+      /* 背景色などは割愛します */
+
 }
 
 .profiler-results {
@@ -64,11 +80,13 @@ body {
 .btn04 {
   position: relative;
   display: inline-block;
+  width: 18%;
   padding: 10px 30px;
   color: #333;
   border: 1px solid #ccc;
   outline: none;
   overflow: hidden;
+  margin: auto;
 }
 
 .btn04:hover {
@@ -88,6 +106,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1px;
+  background: #333;
   transition: all .3s;
   transform: scale(0,1);
   transform-origin: center;
@@ -100,12 +119,30 @@ body {
 
 .bordercenter span::after {
   left: 0;
-  top: 0;
+  bottom: 0;
 }
 
 .bordercenter:hover span::before,
-.bordercenter:hover span::before {
+.bordercenter:hover span::after {
   transform: scale(1,1);
 }
 
+.bordercenter::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(270deg,#fa6c9f 0%, #ffe140 50%, #ff357f 100%);
+  transition: all .3s;
+  transform: scale(0,1);
+  transform-origin: center;
+}
 
+.bordercenter:hover::before {
+  width: 100%;
+  transition-delay: .4s;
+  transform: scale(1,1);
+}

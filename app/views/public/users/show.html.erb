@@ -1,19 +1,36 @@
 
 <div class="container-fluie">
 	<div class="row">
-	  <div class = "col- offset-3 col-6 col- offset-3 ">
-	    <h3 class= "total mt-5">
-	        <%= link_to "前の月のリンク",users_my_page_path(month: @month.prev_month) %>
-           <%= link_to "次の月のリンク",users_my_page_path(month: @month.next_month) %>
+	  <div class = "col-6 col- offset-2 ">
+	    <h3 class= "total mt-5 text-center">
+	        <%= link_to users_my_page_path(month: @month.prev_month) do %>
+	          <i class="fa-solid fa-arrow-left"></i>
+	        <% end %>
 	        <%= I18n.l @current_month_beginning %> ~
 	        <%= I18n.l @current_month_end %>
+	        <%= link_to users_my_page_path(month: @month.next_month) do %>
+	          <i class="fa-solid fa-arrow-right"></i>
+	        <% end %>
 	    </h3>
-	      <h3>収入</h3>
-			  <p class ="text-danger "><%=@sum_price_income %></p>
-				<h3>支出</h3>
-				<%= @sum_price_expense %>
-		</div>
-			<div class = "col-4 p-5">
+		<table class="table table-bordered table-hover">
+	      <thead>
+        	<tr>
+              <th class= "text-center">収入</th>
+              <th class= "text-center">支出</th>
+              <th class= "text-center">貯金</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class= "text-center text-success"><%=@sum_price_income %></p></td>
+              <td class= "text-center text-danger"><%= @sum_price_expense %></td>
+              <td class= "text-center"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+			<div class = "col-4 offset-2 mt-5">
 				<h2>目標家計簿</h2>
 				<% if current_user.category_ids.present? %>
             <div class= "chart" style='width:200px; height: 200px;'>
@@ -24,7 +41,7 @@
         <% end %>
 
 			</div>
-			<div class = "col-4">
+			<div class = "col-4 mt-5">
 				<h2>現在の家計簿</h2>
 					<% if @expenses.present? %>
             <div class= "chart" style='width:200px; height: 200px;'>
@@ -39,15 +56,15 @@
 
 	</div>
 	<div class = "row">
-		<div class="col-md-offset-1 col-md-9">
+		<div class="col-md-9 offset-1">
 
 			<h2 class="head-line col-md-6 text-center title_h2 m-4">マイページ</h2>
 			 <%= link_to "ユーザー一覧",users_path, 'data-turbolinks': false %>
 				<strong>登録情報</strong>
 					<% if current_user.name != "guestuser" %>
-						<p><%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %></p>
 						<p><%=link_to"参考にしたユーザー",user_followings_path(@user) %></p>
 						<p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
+						<p><%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %></p>
 					<% end %>
 			<table class="table table-bordered table-condensed" >
 				<tbody>

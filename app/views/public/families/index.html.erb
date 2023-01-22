@@ -31,7 +31,8 @@
       <tbody>
        <div class="list">
         <tr>
-          <td ><%= family.family_name %></td>
+          <td><%= family.family_name %></td>
+
           <td class= "text-center"><%= link_to "編集する",edit_family_path(family), class: "btn btn-sm btn-success" %></td>
           <td class= "text-center"><%=link_to "削除する",family_path(family),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
