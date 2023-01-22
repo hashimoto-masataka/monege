@@ -53,4 +53,51 @@
     <% end %>
    </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <h2>年間の収入</h2>
+
+      <div class= "chart m-5" style='width:600px; height: 400px;'>
+        <canvas id="line" ></canvas>
+      </div>
+      </div>
+    </div>
 </div>
+
+<script>
+const data = {
+  labels: <%== @line_monthes %>,
+  datasets: [
+    {
+      label: '支出金額',
+      data: <%= @line_datas %>,
+      pointStyle: 'circle',
+      pointRadius: 10,
+      pointHoverRadius: 15
+    }
+  ]
+};
+
+const config = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: (ctx) => 'Point Style: ' + ctx.chart.data.datasets[0].pointStyle,
+      }
+    }
+  }
+};
+
+const line = document.getElementById('line');
+new Chart(line, {
+    type: 'line',
+    data: data,
+    config
+  });
+
+
+</script>

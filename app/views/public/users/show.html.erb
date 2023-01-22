@@ -1,7 +1,7 @@
-
 <div class="container-fluie">
 	<div class="row">
 	  <div class = "col-6 col- offset-2 ">
+	    <h2 class= "head-line text-center m-5 ">マイページ</h2>
 	    <h3 class= "total mt-5 text-center">
 	        <%= link_to users_my_page_path(month: @month.prev_month) do %>
 	          <i class="fa-solid fa-arrow-left"></i>
@@ -12,7 +12,7 @@
 	          <i class="fa-solid fa-arrow-right"></i>
 	        <% end %>
 	    </h3>
-		<table class="table table-bordered table-hover">
+		<table class="table table-bordered table-hover mt-5">
 	      <thead>
         	<tr>
               <th class= "text-center">収入</th>
@@ -58,7 +58,6 @@
 	<div class = "row">
 		<div class="col-md-9 offset-1">
 
-			<h2 class="head-line col-md-6 text-center title_h2 m-4">マイページ</h2>
 			 <%= link_to "ユーザー一覧",users_path, 'data-turbolinks': false %>
 				<strong>登録情報</strong>
 					<% if current_user.name != "guestuser" %>

@@ -15,6 +15,18 @@ class Public::IncomesController < ApplicationController
     @current_month_end = @month.end_of_month
     @income= Income.new
     @sum_price = @incomes.where(id: current_user.income_ids).sum(:price)
+    line_monthes = (1..12)
+    current_year = Time.zone.now.year
+    current_year_range = (Time.zone.now.beginning_of_year..Time.zone.now.end_of_year)
+    #１年のレンジを定義
+    year_incomes = Income.where(created_at: current_year_range)
+    @line_monthes = line_monthes.map{|i| i.to_s + "月"}
+    @line_datas = line_monthes.map do |i|
+      time_zone_local = Time.zone.local(current_year, i, 1, 0, 0, 0)
+      #time.zone.local
+      year_incomes.where(created_at: time_zone_local..time_zone_local.end_of_month)
+    end.map{|o| o.any? ? o.pluck(:price).sum : 0 }
+    #「o」はobjectの略、取り出したexpenseにobject（要素）が入っていればpluckでpriceを取り出し、要素がなければ0で取り出す。
   end
 
   def edit
