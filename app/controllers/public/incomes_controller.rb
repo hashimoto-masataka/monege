@@ -11,6 +11,8 @@ class Public::IncomesController < ApplicationController
     #viewの（month @month.prev_month)でmonthを渡すことでDate.parse(params[:month])が適応される。
     @incomes = current_user.incomes.where(created_at: @month.all_month)
     #where以下でexpensesのうち、created_atが@monthの月のallが表示される。
+    @current_month_beginning = @month.beginning_of_month
+    @current_month_end = @month.end_of_month
     @income= Income.new
     @sum_price = @incomes.where(id: current_user.income_ids).sum(:price)
   end

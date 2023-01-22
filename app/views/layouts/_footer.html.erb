@@ -1,35 +1,25 @@
-<header class="bg-secondary text-light">
-   <nav class="nav footer-nav  ">
-    <%= link_to families_path class: "nav-link" do%>
-    <i class="fas fa-list-ul"></i>
-    <p>家族一覧</p>
+<footer class="footer text-light">
+
+    <%= link_to expenses_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
+        <i class="fas fa-chart-bar"></i>
+        <p>支出</p>
     <% end %>
-    <%= link_to incomes_path, class: "nav-link" do %>
-    <i class="fas fa-coins"></i>
-    <p>収入</p>
+    <%= link_to incomes_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
+        <i class="fas fa-coins"></i>
+        <p>収入</p>
     <% end %>
-    <%= link_to categories_path, class: "nav-link", 'data-turbolinks': false do %>
-    <i class="fas fa-lg fa-pencil-alt"></i>
-    <p>家計簿作成</p>
+    <%= link_to families_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
+        <i class="fas fa-list-ul"></i>
+        <p>家族</p>
     <% end %>
-    <%= link_to expenses_path, class: "nav-link",'data-turbolinks': false do %>
-    <i class="fas fa-chart-bar"></i>
-    <p>支出</p>
+    <%= link_to categories_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
+        <i class="fas fa-lg fa-pencil-alt"></i>
+        <p>目標家計簿</p>
+    <% end %>
+    <%= link_to users_my_page_path(current_user), class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
+        <i class="fas fa-lg fa-pencil-alt"></i>
+        <p>マイページ</p>
     <% end %>
 
-
-  </nav>
-  <ul class = "gnavi">
-  <li class = "current"><a href= "#">Home</a></li>
-  <li ><a href= "#">Home</a></li>
-  <li ><a href= "#">Home</a></li>
-  <li ><a href= "#">Home</a></li>
-  <li ><a href= "#">Home</a></li>
-</ul>
-
-<a href ="#" class="btn04 bordercenter"><span>ボタン</span></a>
-<a href ="#" class="btn04 bordertop"><span>ボタン</span></a>
-<a href ="#" class="btn04 bordertop"><span>ボタン</span></a>
-<a href ="#" class="btn04 bordertop"><span>ボタン</span></a><!--customersログイン時のヘッダー-->
-</header>
+</footer>
 

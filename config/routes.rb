@@ -28,16 +28,13 @@ Rails.application.routes.draw do
    get "/users/my_page" => "users#show"
    get "/users/information/edit" => "users#edit"
    patch "users/information" => "users#update"
-   get "/users/unsubscribe" => "users#unsubscribe"
-   patch "/users/withdraw" => "users#withdraw"
+   get "/users/unsubscribe" => "users#unsubscribe" , as: "unsubscribe"
+   patch "/users/withdraw" => "users#withdraw" , as: "withdraw"
   resources :families, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :categories, only: [:new, :show, :index, :edit, :create, :update, :destroy]
   resources :incomes, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :expenses, only: [:new, :index, :edit, :create, :update, :destroy]
-  resources :household_accounts, only: [:new, :index, :show, :create, :destroy]
-  resources :households, only: [:index, :destroy] do
-   resource:favorites, only: [:create, :destroy]
-  end
+
 
 
 end

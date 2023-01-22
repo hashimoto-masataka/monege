@@ -1,25 +1,25 @@
-<div class = "container">
-<div class = "row">
-  <div class="col-12">
-    <h2 class= "head-line mt-4 ml-5">収入一覧</h2>
-    <div class= "error" >
-     <!--%= column_chart Income.pluck(:income, :price) %>
-               <!%= pie_chart Income.pluck(:income, :price) % -->
-    </div>
-
-
-
+<div class = "container-fluid">
   <div class="row">
-    <div class="col-10 mt-5 ">
-     <%= link_to "前の月のリンク",incomes_path(month: @month.prev_month) %>
-     <%= link_to "次の月のリンク",incomes_path(month: @month.next_month) %>
+    <div class="col-7 offset-1 mt-5 ">
+      <h2 class= "head-line text-center m-4 ">収入一覧</h2>
+        <h3 class = "text-center">
+         <%= link_to incomes_path(month: @month.prev_month) do %>
+	          <i class="fas-solid fa-arrow-left"></i>
+	       <% end %>
+	       <%= I18n.l @current_month_beginning %>
+	       <strong class="day mr-5 ml-5">~</strong>
+	       <%= I18n.l @current_month_end %>
+	       <%= link_to incomes_path(month: @month.next_month) do %>
+	          <i class="fa-solid fa-arrow-right"></i>
+	       <% end %>
+	     </h3>
 
-       <h2>収入額の合計：
-      <span><%= @sum_price %>円</span></h2>
+       <h2 class ="total mt-5">収入額の合計：
+      <span class="text-success"><%= @sum_price %>円</span></h2>
       <%= link_to "新規登録",new_income_path %>
       <% if @incomes.present? %>
 
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover mt-5">
       <thead>
         <tr>
           <th>日付</th>
@@ -53,6 +53,4 @@
     <% end %>
    </div>
   </div>
-</div>
-</div>
 </div>

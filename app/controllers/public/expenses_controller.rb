@@ -15,6 +15,8 @@ class Public::ExpensesController < ApplicationController
     @expenses = @all_expenses.where(created_at: @month.all_month)
     #where以下でexpensesのうち、created_atが@monthの月のallが表示される。
     @expense= Expense.new
+    @current_month_beginning = @month.beginning_of_month
+    @current_month_end = @month.end_of_month
 
     line_monthes = (1..12)
     current_year = Time.zone.now.year
