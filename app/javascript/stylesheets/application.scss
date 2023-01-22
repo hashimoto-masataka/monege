@@ -11,8 +11,9 @@ body {
 }
 
 .main {
-  padding-bottom: 70px;
+  padding-bottom: 120px;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 
@@ -20,6 +21,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  //padding-top: 300px;
 
       /* 背景色などは割愛します */
 
