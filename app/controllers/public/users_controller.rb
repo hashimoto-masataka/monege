@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   #ゲストユーザーがカスタマーの編集ページに直接入力しても遷移できないようにする。
 
   def index
-    user = User.where(status: false)
+    user = User.where(status: true)
     @users = user.all
 
   end

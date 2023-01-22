@@ -76,7 +76,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'a112fb106bea4c8f854fb20a810349af.vfs.cloud9.ap-northeast-1.amazonaws.com' }
+  #パスワードリセットメール送信時に 「host: cloud9でアプリを立ち上げた際のアドレス」を入力することでメールのリンクからパスワード変更画面に遷移できる
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,

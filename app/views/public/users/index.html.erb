@@ -1,9 +1,16 @@
-<h2>Follow Users</h2>
-<% if @users.exists? %>
-  <%= render 'public/users/index',users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class ="container-fluid">
+  <div class="row">
+    <div class ="col-7 offset-1">
+      <h2 class= "headline mt-5">参考にしたユーザ一覧</h2>
+        <% if @users.exists? %>
+          <%= render 'public/users/index',users: @users %>
+        <% else %>
+          <p>ユーザーはいません</p>
+        <% end %>
+    </div>
+  </div>
+</div>
+
 
 <script>
 

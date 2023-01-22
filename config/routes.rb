@@ -28,8 +28,9 @@ Rails.application.routes.draw do
    get "/users/my_page" => "users#show"
    get "/users/information/edit" => "users#edit"
    patch "users/information" => "users#update"
-   get "/users/unsubscribe" => "users#unsubscribe" , as: "unsubscribe"
-   patch "/users/withdraw" => "users#withdraw" , as: "withdraw"
+   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  # 論理削除用のルーティング
+  patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
   resources :families, only: [:new,:index, :edit, :create, :update, :destroy]
   resources :categories, only: [:new, :show, :index, :edit, :create, :update, :destroy]
   resources :incomes, only: [:new,:index, :edit, :create, :update, :destroy]

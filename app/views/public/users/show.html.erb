@@ -63,45 +63,50 @@
 					<% if current_user.name != "guestuser" %>
 						<p><%=link_to"参考にしたユーザー",user_followings_path(@user) %></p>
 						<p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
-						<p><%= link_to " 編集する", users_information_edit_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %></p>
+						<div class="bottm text-right">
+						  <p><%= link_to " 編集する", users_information_edit_path, class: " btn btn-success ml-4 text-right" %></p>
+						</div>
 					<% end %>
-			<table class="table table-bordered table-condensed" >
-				<tbody>
-					<tr>
-						<td class="info">氏名</td>
-						<td class="text-left "><%= @user.name %>
-					</tr>
-					<tr>
-						<td class="info">年代</td>
-						<td class="text-left"><%= @user.age %></td>
-					</tr>
-					<tr>
-						<td class="info">仕事</td>
-						<td class="text-left"><%= @user.job %></td>
-					</tr>
-					<tr>
-						<td class="info">年収</td>
-						<td class="text-left"><%= @user.annual_income %></td>
-					</tr>
-					<tr>
-						<td class="info">都道府県</td>
-						<td class="text-left"><%= @user.prefecture %></td>
-					</tr>
-					<tr>
-						<td class="info">メールアドレス</td>
-						<td class="text-left"><%= @user.email %></td>
-					</tr>
-					<tr>
-						<td class="info">家計簿ステータス</td>
-						<% if current_user.status == false %>
-					  	<td class="text-left">家計簿は非公開です</td>
-						<% else %>
-						  <td class="text-left">家計簿を公開中</td>
-						<% end %>
-					</tr>
+		    <h2 class="headline m-5">プロフィール</h2>
+			  <table class="table table-bordered table-condensed" >
+			  	<tbody>
+					  <tr>
+					  	<td class="info">氏名</td>
+					  	<td class="text-left "><%= @user.name %>
+				  	</tr>
+					  <tr>
+						  <td class="info">年代</td>
+						  <td class="text-left"><%= @user.age %></td>
+					  </tr>
+					  <tr>
+					  	<td class="info">仕事</td>
+					  	<td class="text-left"><%= @user.job %></td>
+					  </tr>
+					  <tr>
+					  	<td class="info">年収</td>
+					  	<td class="text-left"><%= @user.annual_income %></td>
+					  </tr>
+					  <tr>
+					  	<td class="info">都道府県</td>
+					  	<td class="text-left"><%= @user.prefecture %></td>
+					  </tr>
+					  <tr>
+					    <td class="info">メールアドレス</td>
+					  	<td class="text-left"><%= @user.email %></td>
+					  </tr>
+					  <tr>
+					  	<td class="info">家計簿ステータス</td>
+					  	<% if current_user.status == false %>
+					    	<td class="text-left">家計簿は非公開です</br>
+					    	<sub>＊ユーザ一覧に表示されていない状態です</sub></td>
+					  	
+					  	<% else %>
+						    <td class="text-left">家計簿を公開中</td>
+					  	<% end %>
+				  	</tr>
 
-				</tbody>
-			</table>
+				  </tbody>
+		  	</table>
 		</div>
 	</div>
 </div>
