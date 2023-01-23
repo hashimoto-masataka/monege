@@ -3,20 +3,23 @@
     <div class="col-7 offset-1 mt-5 ">
       <h2 class= "head-line text-center m-4 ">収入一覧</h2>
         <h3 class = "text-center">
-         <%= link_to incomes_path(month: @month.prev_month) do %>
+         <%= link_to incomes_path(month: @month.prev_month) ,'data-turbolinks': false do %>
 	          <i class="fas-solid fa-arrow-left"></i>
 	       <% end %>
 	       <%= I18n.l @current_month_beginning %>
 	       <strong class="day mr-5 ml-5">~</strong>
 	       <%= I18n.l @current_month_end %>
-	       <%= link_to incomes_path(month: @month.next_month) do %>
+	       <%= link_to incomes_path(month: @month.next_month),'data-turbolinks': false do %>
 	          <i class="fa-solid fa-arrow-right"></i>
 	       <% end %>
 	     </h3>
-
+	   </div>
+	   <div class="col-11 ml-5">
        <h2 class ="total mt-5">収入額の合計：
-      <span class="text-success"><%= @sum_price %>円</span></h2>
-      <%= link_to "新規登録",new_income_path %>
+         <span class="text-success"><%= @sum_price %>円</span></h2>
+       <h4><%= link_to "新規登録",new_income_path %></h4>
+      </div>
+      <div class="col-7 offset-1">
       <% if @incomes.present? %>
 
       <table class="table table-bordered table-hover mt-5">
@@ -42,22 +45,22 @@
           <td><%= income.price.floor.to_s(:delimited)%></td>
           <td><%= income.note%></td>
           <td><%= income.family.family_name %></td>
-          <td class= "text-center"><%=link_to "削除する",incomes_path(income),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <td class= "text-center"><%=link_to "削除する",income_path(income),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
        </div>
       </tbody>
      <% end %>
     </table>
     <% else %>
-    登録がありません
+    <h3 class="text-center mt-5">収入の登録がありません</h3>
     <% end %>
    </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-11 ml-5 mt-5">
       <h2>年間の収入</h2>
 
-      <div class= "chart m-5" style='width:600px; height: 400px;'>
+      <div class= "chart m-5" style='width:70%; height: 400px;'>
         <canvas id="line" ></canvas>
       </div>
       </div>
