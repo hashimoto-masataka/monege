@@ -1,9 +1,9 @@
- <div class="col-lg-5">
+ <div class="col-4 offset-1">
       <div class= "chart" style='width:400px; height: 400px;'>
         <canvas id="pie_chart" ></canvas>
       </div>
     </div>
-    <div class="col-lg-6 mt-5">
+    <div class="col-6 mt-5">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -16,6 +16,7 @@
             <tbody>
               <tr>
                 <td class = "col-2"><div style="color: <%= category.color %>;"> <%= category.category_name %></div></td>
+                <td>&yen;<%= "#{category.target_price.to_s(:delimited)} (#{((category.target_price.to_f / sum_target_price.to_f) * 100).round(2)} %)" %>
                 </td>
                 <td class= "text-center"><%= link_to "編集する",edit_category_path(category), class: "btn btn-sm btn-success" %></td>
                 <td class= "text-center"><%=link_to "削除する",category_path(category),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>

@@ -19,7 +19,7 @@
          <span class="text-success"><%= @sum_price %>円</span></h2>
        <h4><%= link_to "新規登録",new_income_path %></h4>
       </div>
-      <div class="col-7 offset-1">
+      <div class="col-7 offset-1 text-center">
       <% if @incomes.present? %>
 
       <table class="table table-bordered table-hover mt-5">
@@ -51,6 +51,7 @@
       </tbody>
      <% end %>
     </table>
+    <%= paginate @incomes,'data-turbolinks': false %>
     <% else %>
     <h3 class="text-center mt-5">収入の登録がありません</h3>
     <% end %>
@@ -72,7 +73,7 @@ const data = {
   labels: <%== @line_monthes %>,
   datasets: [
     {
-      label: '支出金額',
+      label: '収入金額',
       data: <%= @line_datas %>,
       pointStyle: 'circle',
       pointRadius: 10,

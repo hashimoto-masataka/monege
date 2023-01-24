@@ -1,33 +1,7 @@
 <div class ="container">
   <div class="row">
     <div class ="col">
-      <h2>ユーザー一覧</h2>
-      <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-            <th>会員ID</th>
-            <th>名前</th>
-            <th>メールアドレス</th>
-            <th>会員ステータス</th>
-          </tr>
-      </thead>
-      <% @users.each do |user| %>
-      <tbody>
-       <div class="list">
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.name,admin_user_path(user) %></td>
-          <td><%= user.email %></td>
-          <% if user.is_deleted == false %>
-              <td class="text-success font-weight-bold">有効</td>
-          <% else %>
-              <td class="text-muted">退会</td>
-          <% end %>
-        </tr>
-       </div>
-      </tbody>
-     <% end %>
-    </table>
+      <%= render 'index', users: @users %>
     </div>
   </div>
 </div>

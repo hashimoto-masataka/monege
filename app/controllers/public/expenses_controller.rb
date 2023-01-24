@@ -7,23 +7,25 @@ class Public::ExpensesController < ApplicationController
 
 
   def index
-    @all_expenses = current_user.expenses
+    all_expenses = current_user.expenses.page(params[:page]).per(7)
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     #params[:month]?でmonthが渡れば「：」の左側のData .parse (params [:month]）が適応され、
     #monthがなければ右側のTime.zone.todayが適応される。（なのでindexページは最初は今月分のみ表示される）
     #viewの（month @month.prev_month)でmonthを渡すことでDate.parse(params[:month])が適応される。
-    @expenses = @all_expenses.where(created_at: @month.all_month)
+    @expenses = all_expenses.where(created_at: @month.all_month)
     #where以下でexpensesのうち、created_atが@monthの月のallが表示される。
-    @expense= Expense.new
+    
     @current_month_beginning = @month.beginning_of_month
     @current_month_end = @month.end_of_month
-    @sum_price = @expenses.where(id: current_user.expense_ids).sum(:price)
+    expenses_total = current_user.expenses.where(created_at: @month.all_month)
+    @sum_price = expenses_total.where(id: current_user.expense_ids).sum(:price)
 
     line_monthes = (1..12)
     current_year = Time.zone.now.year
     current_year_range = (Time.zone.now.beginning_of_year..Time.zone.now.end_of_year)
     #１年のレンジを定義
-    year_expenses = Expense.where(created_at: current_year_range)
+    expenses = current_user.expenses
+    year_expenses = expenses.where(created_at: current_year_range)
     @line_monthes = line_monthes.map{|i| i.to_s + "月"}
     @line_datas = line_monthes.map do |i|
       time_zone_local = Time.zone.local(current_year, i, 1, 0, 0, 0)

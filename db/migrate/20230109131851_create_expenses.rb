@@ -4,7 +4,7 @@ class CreateExpenses < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.integer :category_id
       t.integer :family_id
-      t.integer :price
+      t.integer :price,  null:false, default: 0
       t.string :note
       t.timestamps
     end

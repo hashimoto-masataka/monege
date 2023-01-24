@@ -40,8 +40,8 @@ class Public::FamiliesController < ApplicationController
     @family = Family.find(params[:id])
     expenses = current_user.expenses
     incomes = current_user.incomes
-    if expenses.where(family_id: params[:id]).present? || incomes.whrere(family_id: params[:id]).present?
-      redirect_to families_path
+    if expenses.where(family_id: params[:id]).present? || incomes.where(family_id: params[:id]).present?
+      redirect_to families_path ,notice: '家族名を収支で使用しているため削除できません'
       flash.now[:notice] = '家族名を収支で使用しているため削除できません'
     else
       @family.delete

@@ -1,2 +1,7 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class ="container-fluid">
+  <div class="row">
+    <div class ="col-12">
+      <%= render 'admin/users/index', users: @users %>
+    </div>
+  </div>
+</div>

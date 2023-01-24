@@ -15,13 +15,13 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings
+    @users = user.followings.page(params[:page]).per(7)
 
   end
 
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers
+    @users = user.followers.page(params[:page]).per(7)
 
   end
 
@@ -29,7 +29,7 @@ class Public::RelationshipsController < ApplicationController
 
   def ensure_guest_user
     if (current_user.name == "guestuser")&&(current_user.email == 'guest@example.com')
-      redirect_to root_path ,notice: 'ゲストユーザーはユーザーのフォローはできません。'
+      redirect_to root_path ,notice: 'ゲストユーザーは他のユーザーを参考登録できません。'
     end
  end
 

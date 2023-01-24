@@ -43,6 +43,9 @@ end
  namespace :admin do
   root to: "homes#top"
   resources :users, only: [:index, :show, :edit, :update]
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  # 論理削除用のルーティング
+    patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
 
  end
 
