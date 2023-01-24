@@ -10,15 +10,15 @@
       
         <div class="form-group col-12 mt-5">
           <div class="form-group ">
-          <%=f.label :category_name, "項目名",class: " control-label" %>
+          <strong><%=f.label :category_name, "項目名",class: " control-label" %></strong>
           <%=f.text_field :category_name, class: "col-6 ml-5 form-control-static" %>
           </div>
           <div class="form-group ">
-          <%= f.label :target_price, "月の目標金額：", class: "form-label" %>
-          <%= f.number_field :target_price, class:"form-control input-price" %>
+          <strong><%= f.label :target_price, "月の目標金額：", class: "form-label" %></strong>
+          <%= f.number_field :target_price, required: true,class:"form-control input-price" %>
           </div>
           <div class="form-group ">
-          <%= f.label :color, "カテゴリカラー：", class: "form-label" %>
+          <strong><%= f.label :color, "カテゴリカラー：", class: "form-label" %></strong>
           <%= f.color_field :color, list: "color-list", class: "ml-5" %>
           </div>
           <div class="form-group ">

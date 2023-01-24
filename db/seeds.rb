@@ -17,6 +17,12 @@ User.create!(
  )
 
 
+Family.create!(
+    user_id: 1,
+    family_name: "太郎",
+
+)
+
 Category.create!(
     user_id: 1,
     category_name: "食費",
@@ -24,11 +30,7 @@ Category.create!(
     target_price: 100000
 )
 
-Family.create!(
-    user_id: 1,
-    family_name: "太郎",
 
-)
 
 Expense.create!(
     user_id: 1,

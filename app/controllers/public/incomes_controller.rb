@@ -20,7 +20,8 @@ class Public::IncomesController < ApplicationController
     current_year = Time.zone.now.year
     current_year_range = (Time.zone.now.beginning_of_year..Time.zone.now.end_of_year)
     #１年のレンジを定義
-    year_incomes = Income.where(created_at: current_year_range)
+    incomes = current_user.incomes
+    year_incomes = incomes.where(created_at: current_year_range)
     @line_monthes = line_monthes.map{|i| i.to_s + "月"}
     @line_datas = line_monthes.map do |i|
       time_zone_local = Time.zone.local(current_year, i, 1, 0, 0, 0)

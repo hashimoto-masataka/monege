@@ -29,8 +29,8 @@
             <%= f.label :job, "職業", class: "col-6 control-label" %>
             <%= f.select :job, User.jobs.map { |k, v| [k, k] },{}, class: "col-5 form-control-static name" %>
           </div>
-          <div class="form-group col-sm-10 px-sm-0 mx-auto">
-            <%= f.label :"家計簿ステータス", class: "col-sm-3 control-label" %>
+          <div class="form-group col-12">
+            <%= f.label :"家計簿ステータス", class: "col-6 control-label" %>
             <%= f.radio_button :status, false, checked: true %><%= f.label :status, "非公開" %>
             <%= f.radio_button :status, true %><%= f.label :status, "公開" %>
           </div>

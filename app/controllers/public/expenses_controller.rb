@@ -45,11 +45,11 @@ class Public::ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     @expense.user_id = current_user.id
     @expenses = current_user.expenses
-    if @expense.save!
+    if @expense.save
       redirect_to expenses_path
       flash.now[:notice] = "新規支出を登録しました"
     else
-      render :index
+      render :new
     end
   end
 

@@ -3,29 +3,38 @@
    <div class="col-7 offset-1 mt-5">
     <h2 class= "head-line mt-4 ml-5">支出登録</h2>
     <div class= "error" >
+      <% if @expense.errors.any? %>
+            <div class="alert alert-danger">
+        <ul class="mb-0">
+          <% @expense.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
     </div>
 
     <%= form_with model: @expense,local: true do |f| %>
       <div class="expense col-12 mt-5">
         <div class="form-group ">
-          <%=f.label :"支出金額",class: "col-3 control-label" %>
+          <strong><%=f.label :"支出金額",class: "col-3 control-label" %></strong>
           <%=f.number_field :price, required: true,class: "col-3 form-control-static " %>円
           <!--required: trueで空白での送信を防ぐ-->
         </div>
         <div class="form-group">
-          <%= f.label :"備考欄", class: 'control-label' %>
+          <strong><%= f.label :"備考欄", class: 'control-label' %></strong>
           <%= f.text_field :note, class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label :created_at, class: 'control-label' %>
+         <strong> <%= f.label :created_at, class: 'control-label' %></strong>
           <%= f.date_field :created_at, class: 'form-control' %>
         </div>
         <div class="form-group col-12">
-          <%= f.label :category, "項目",class: "col-6 control-label" %>
-          <%= f.select :category_id, options_from_collection_for_select(current_user.categories, :id, :category_name) ,class: "col-5 control-label" %>
-           <%= f.label :family,"家族",class: "col-6 control-label" %>
-          <%= f.select :family_id, options_from_collection_for_select(current_user.families, :id, :family_name),class: "col-5 control-label"  %>
+          <strong><%= f.label :category, "項目",class: "col-6 control-label" %></strong>
+          <%= f.select :category_id, options_from_collection_for_select(current_user.categories, :id, :category_name) ,required: true,class: "col-5 control-label" %>
+          <strong> <%= f.label :family,"家族",class: "col-6 control-label" %></strong>
+          <%= f.select :family_id, options_from_collection_for_select(current_user.families, :id, :family_name),required: true,class: "col-5 control-label"  %>
         </div>
 
         <div class="form-group">
