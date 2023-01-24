@@ -1,10 +1,9 @@
-<div class = "container">
+<div class = "container-fluid">
   <div class = "row">
-    <div class = "col-12">
-      <h2 class= "head-line mt-4 ml-5">家計簿作成</h2>
-       <span>目標額の合計：</span>
-       <span><%= @sum_target_price %></span>
-       <%= link_to "項目を",new_category_path %>
+    <div class = "col-11 ml-5" >
+      <h2 class= "head-line text-center mt-5 mr-5">目標家計簿作成</h2>
+       <h3 class="total mt-5">目標額の合計：<%= @sum_target_price %></h3>
+       <h4><%= link_to "項目を新規登録",new_category_path %></h4>
     </div>
 
     <%= render 'index', categories: @categories , sum_target_price: @sum_target_price %>

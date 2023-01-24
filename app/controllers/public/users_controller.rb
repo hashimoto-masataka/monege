@@ -4,9 +4,16 @@ class Public::UsersController < ApplicationController
   #ゲストユーザーがカスタマーの編集ページに直接入力しても遷移できないようにする。
 
   def index
-    user = User.where(status: true)
-    @users = user.all
-
+    user = User.where(status: true) && User.where(is_deleted: false)
+    @users = user.all.includes(:categories).page(params[:page]).per(7)
+    @users_data = @users.map do |user|
+      categories = user.categories
+      {
+        id: user.id,
+        category_names: (categories.any? ? categories.map{|c| c.category_name} : [""]),
+        target_prices: (categories.any? ? categories.map{|c| c.target_price} : [0])
+      }
+    end
   end
 
   def show
@@ -27,6 +34,10 @@ class Public::UsersController < ApplicationController
     @sum_price_expense = @expenses.where(id: current_user.expense_ids).sum(:price)
     @sum_price_income = @incomes.where(id: current_user.income_ids).sum(:price)
     @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
+    
+    @expense_chart = current_user.expenses.where(created_at: @month.all_month).group(:category_id)
+    
+    @saving = @sum_price_income - @sum_price_expense
   end
 
   def edit

@@ -23,3 +23,24 @@ Category.create!(
     color: '#000000',
     target_price: 100000
 )
+
+Family.create!(
+    user_id: 1,
+    family_name: "太郎",
+
+)
+
+Expense.create!(
+    user_id: 1,
+    category_id: 1,
+    family_id: 1,
+    price: 100000,
+    note: "レストランの代金",
+)
+
+Income.create!(
+    user_id: 1,
+    family_id: 1,
+    price: 100000,
+    note: "レストランの代金",
+)

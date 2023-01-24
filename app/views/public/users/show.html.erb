@@ -24,7 +24,7 @@
             <tr>
               <td class= "text-center text-success"><%=@sum_price_income %></p></td>
               <td class= "text-center text-danger"><%= @sum_price_expense %></td>
-              <td class= "text-center"></td>
+              <td class= "text-center"><%= @saving %></td>
             </tr>
           </tbody>
         </table>
@@ -63,11 +63,12 @@
 					<% if current_user.name != "guestuser" %>
 						<p><%=link_to"参考にしたユーザー",user_followings_path(@user) %></p>
 						<p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
-						<div class="bottm text-right">
-						  <p><%= link_to " 編集する", users_information_edit_path, class: " btn btn-success ml-4 text-right" %></p>
-						</div>
+						
 					<% end %>
 		    <h2 class="headline m-5">プロフィール</h2>
+		        <div class="bottm text-right">
+						  <p><%= link_to " 編集する", users_information_edit_path, class: " btn btn-success ml-4" %></p>
+				</div>
 			  <table class="table table-bordered table-condensed" >
 			  	<tbody>
 					  <tr>
@@ -148,7 +149,7 @@ new Chart(pie_ctx, {
 
 const expense_data = {
   labels: [
-    <% @expenses.all.each do |expense| %>
+    <% @expense_chart.each do |expense| %>
       '<%= expense.category.category_name %>',
     <% end %>
     ],
@@ -156,7 +157,7 @@ const expense_data = {
     {
       label: '金額',
       data: [
-        <% @expenses.each do |expense| %>
+        <% @expense_chart.each do |expense| %>
           '<%= expense.price %>',
         <% end %>
       ],

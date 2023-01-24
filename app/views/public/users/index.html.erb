@@ -1,7 +1,7 @@
 <div class ="container-fluid">
   <div class="row">
     <div class ="col-7 offset-1">
-      <h2 class= "headline mt-5">参考にしたユーザ一覧</h2>
+      <h2 class= "headline mt-5">ユーザ一覧</h2>
         <% if @users.exists? %>
           <%= render 'public/users/index',users: @users %>
         <% else %>
@@ -13,43 +13,27 @@
 
 
 <script>
+const users_data = <%== @users_data.to_json %>
 
-const category_data = {
-  labels: [
-    <% @users.each do |user| %>
-     <% user.categories.each do | category| %>
-      '<%= category.category_name %>',
-    <% end %>
-    <% end %>
-    ],
-  datasets: [
-    {
-      label: 'カテゴリー表',
-      data: [
-        <% @users.each do |user| %>
-           <% user.categories.each do | category| %>
-            '<%= category.target_price %>',
-           <% end %>
-        <% end %>
-      ],
-    }
-  ]
-};
-
-const elements = document.getElementsByClassName('pie');
-for(let i = 0; i < elements.length; i++) {
-  new Chart(elements[i], {
-      type: 'pie',
-      data: category_data,
-      options: {
-    /*    scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-        */
+$.each(users_data, (i, data) => {
+  const element = document.getElementById(`pie-${data['id']}`);
+  const category_data = {
+    labels: data['category_names'],
+    datasets: [
+      {
+        label: 'カテゴリー表',
+        data: data['target_prices'],
       }
-    });
-}
-
+    ]
+  };
+  
+  new Chart(element, {
+    type: 'pie',
+    data: category_data,
+    options: {
+    }
+  });
+})
 </script>
+
+

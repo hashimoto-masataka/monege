@@ -14,57 +14,49 @@
 	       <% end %>
 	     </h3>
     </div>
-    <div class="col-11 ml-5">
-      <h2 class ="total mt-5">支出額の合計：
+    <div class= "col-11 ml-5">
+  　  <h2 class ="total mt-5">支出額の合計：
          <span class="text-success"><%= @sum_price %>円</span></h2>
-      <h4><%= link_to "支出を新規登録",new_expense_path %></h4>
+     <h4><%= link_to "新規登録",new_expense_path %></h4>
     </div>
-  　<div class= "col-5">
-      <div class= "chart m-5" style='width:400px; height: 400px;'>
-               <canvas id="pie_chart" ></canvas>
-      </div>
-    </div>
-  <div class="col-6">
-    
-    <% if @expenses.present? %>
-     <h3 class="text-center m-5">支出一覧　</h3>
+    <div class="col-7 offset-1 text-center">
+      <% if @expenses.present? %>
+       <table class="table table-bordered table-hover mt-5">
+         <thead>
+           <tr>
+             <th>日付</th>
+             <th>支出金額</th>
+             <th>項目</th>
+             <th>家族名</th>
+             <th colspan="2"></th>
+           </tr>
+         </thead>
 
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th class="col-2">日付</th>
-            <th class="col-2">支出金額</th>
-            <th>項目</th>
-            <th>家族名</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-
-      <% @expenses.each do |expense| %>
+        <% @expenses.each do |expense| %>
 
         <tbody>
-         <div class="list">
-          <tr>
-            <td ><%= link_to edit_expense_path(expense) do %>
-            <%= I18n.l expense.created_at, format: :short %>
-            <% end %></td>
+          <div class="list">
+           <tr>
+             <td ><%= link_to edit_expense_path(expense) do %>
+                    <%= I18n.l expense.created_at, format: :short %>
+                  <% end %>
+             </td>
                 <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
-            <td><%= expense.price.floor.to_s(:delimited)%> 円 </td>
-            <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></div></td>
-            <% if expense.family.present? %>
-            <td><%= expense.family.family_name %></td>
-            <% else %>
-            <td>未設定</td>
-            <% end %>
-            <td><%= expense.note %></td>
-            <td><%=link_to "削除する",expense_path(expense),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-            </tr>
-         </div>
+             <td><%= expense.price.floor.to_s(:delimited)%> 円 </td>
+             <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></div></td>
+               <% if expense.family.present? %>
+                 <td><%= expense.family.family_name %></td>
+               <% else %>
+                 <td>未設定</td>
+               <% end %>
+             <td><%= expense.note %></td>
+             <td><%=link_to "削除する",expense_path(expense),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+             </tr>
+          </div>
         </tbody>
-
-      <% end %>
-
+        <% end %>
      </table>
+     <%= paginate @expenses,'data-turbolinks': false %>
     <% else %>
    登録がありません
     <% end %>
@@ -72,10 +64,10 @@
    </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-11 ml-5 mt-5">
       <h2>年間の支出</h2>
 
-      <div class= "chart m-5" style='width:600px; height: 400px;'>
+      <div class= "chart m-5" style='width:70%; height: 400px;'>
         <canvas id="line" ></canvas>
       </div>
       </div>

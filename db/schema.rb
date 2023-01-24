@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_020935) do
     t.integer "user_id"
     t.integer "category_id"
     t.integer "family_id"
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_020935) do
   create_table "incomes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "family_id"
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
