@@ -13,7 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import "../stylesheets/public/homes"
-
+import "./progressbar.js"
 import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()

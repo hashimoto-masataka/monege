@@ -18,6 +18,7 @@
                 <td class = "col-2"><div style="color: <%= category.color %>;"> <%= category.category_name %></div></td>
                 <td>&yen;<%= "#{category.target_price.to_s(:delimited)} (#{((category.target_price.to_f / sum_target_price.to_f) * 100).round(2)} %)" %>
                 </td>
+              
                 <td class= "text-center"><%= link_to "編集する",edit_category_path(category), class: "btn btn-sm btn-success" %></td>
                 <td class= "text-center"><%=link_to "削除する",category_path(category),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
               </tr>

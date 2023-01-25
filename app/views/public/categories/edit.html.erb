@@ -15,7 +15,7 @@
           <%= f.color_field :color, list: "color-list" %>
 
           <%= f.label :target_price, "月の目標金額：", class: "form-label" %>
-          <%= f.number_field :target_price, class:"form-control input-price" %>
+          <%= f.number_field :target_price, required: true,class:"form-control input-price" %>
           <%= f.submit '新規登録' ,class: "offset-3 col-2 btn-lg btn-success right" %>
         </div>
       </div>

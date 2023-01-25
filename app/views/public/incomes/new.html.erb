@@ -2,11 +2,9 @@
   <div class = "row">
     <div class="col-7 offset-1 mt-5">
       <h2 class= "head-line text-center">収入登録</h2>
-        <div class= "error" >
-
-
-        </div>
-
+       
+           <%= render "/layouts/error", object: @income %>
+            
             <%= form_with model: @income,local: true do |f| %>
               <div class="income col-12 mt-5">
                 <div class="form-group">

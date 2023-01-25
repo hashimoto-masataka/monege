@@ -47,7 +47,6 @@ class Public::ExpensesController < ApplicationController
     @expenses = current_user.expenses
     if @expense.save
       redirect_to expenses_path
-      flash.now[:notice] = "新規支出を登録しました"
     else
       render :new
     end
@@ -57,7 +56,6 @@ class Public::ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     if @expense.update(expense_params)
       redirect_to expenses_path
-      flash.now[:notice] = '配送先を変更しました'
     else
       render :edit
     end
@@ -67,7 +65,6 @@ class Public::ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     @expense.delete
       redirect_to expenses_path
-      flash.now[:notice] = '配送先を削除しました'
   end
 
    def report
