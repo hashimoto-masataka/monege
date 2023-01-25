@@ -1,19 +1,50 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-12">
-      <h2 class= "head-line mt-4 ml-5">家計簿詳細</h2>
-      　<div class = "plofile">
-      　   <%= @user.name %>
-      　   <%= @user.job %>
-      　   <%= @user.age %>
-      　   <%= @user.annual_income %>
-      　   <%= @user.prefecture %>
-      　   <%= render "relationships/btn", user: @user %>
+      <h2 class= "head-line mt-5 ml-5">目標家計簿詳細</h2>
+      　<div class = "col-7 offset-2 plofile">
+          <table class="table table-bordered table-hover ">
+       
+            <tbody>
+              <tr>
+          　     <td> <%= @user.name %></td>
+          　     <td> <%= @user.job %></td>
+          　     <td> <%= @user.age %></td>
+          　     <td> <%= @user.annual_income %></td>
+          　     <td> <%= @user.prefecture %></td>
+          　     <td><%= render 'public/relationships/btn', user: @user %></td>
+           　  </tr>
+            </tbody>
+          </table>
       　</div>
-
+    </div>
+    <div class="col-lg-4 offset-1">
+      <div class= "chart" style='width:300px; height: 300px;'>
+        <canvas id="pie_chart" ></canvas>
+      </div>
+    </div>
+    <div class="col-lg-6 mt-5 ml-4">
+      <table class="table table-bordered table-hover ">
+        <thead>
+          <tr>
+            <th>項目名</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <% @categories.each do |category| %>
+          <%= link_to edit_category_path(category) do %>
+            <tbody>
+              <tr>
+                <td class = "col-2"><div style="color: <%= category.color %>;"> <%= category.category_name %></div></td>
+                <td class="text-right">&yen;<%= "#{category.target_price.to_s(:delimited)} (#{((category.target_price.to_f / @sum_target_price.to_f) * 100).round(2)} %)" %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        <% end %>
+      </table>
     </div>
 
-    <%= render 'index', categories: @categories , sum_target_price: @sum_target_price %>
 
   </div>
 </div>

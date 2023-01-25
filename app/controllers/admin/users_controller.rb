@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
   def index
-    user = User.where(status: true) && User.where(is_deleted: false)
+    user = User.where(status: true) and User.where(is_deleted: false)
     @users = user.all.page(params[:page]).per(7)
+    
 
   end
 

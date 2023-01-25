@@ -42,9 +42,8 @@ class Public::IncomesController < ApplicationController
     @incomes = current_user.incomes
     if @income.save
       redirect_to incomes_path
-      flash.now[:notice] = "収入を登録しました"
     else
-      render :index
+      render :new
     end
   end
 
@@ -52,7 +51,6 @@ class Public::IncomesController < ApplicationController
     @income = Income.find(params[:id])
     if @income.update(income_params)
       redirect_to incomes_path
-      flash.now[:notice] = '収入を変更しました'
     else
       render :edit
     end
@@ -62,7 +60,6 @@ class Public::IncomesController < ApplicationController
     @income = Income.find(params[:id])
     @income.delete
       redirect_to incomes_path
-      flash.now[:notice] = '収入を削除しました'
   end
 
   private

@@ -12,9 +12,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    
      super
      Family.create(user_id: current_user.id, family_name: current_user.name)
      Category.create(user_id: current_user.id, category_name: '食費', color: '#000000', target_price: 0)
+    
   end
 
   # GET /resource/edit
