@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function() {
     autoStyleContainer: false
   },
   step: function(state, bar) {
-    bar.setText(Math.round(bar.value()*100) + '%');
+    bar.setText(Math.round(bar.value() * 100) + '%');
   }
 });
 

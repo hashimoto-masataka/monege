@@ -1,3 +1,6 @@
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
  <div id="load">
     <div id = "load_text"></div>
     <div class = "loader_cover loader_cover-up"></div>
@@ -17,9 +20,11 @@
             </div>
           <% else %>
           <div class ="bottom">
-            <div><%= link_to "新規登録",new_user_registration_path ,class: "gradient4" %></div>
-            <div><%= link_to "ログイン", new_user_session_path ,class: "gradient4" %></div>
+            <div class="nav-link gradient4 " data-toggle="modal" data-target="#signUpModal">新規登録</div>
+            
+            <div class="nav-link gradient4" data-toggle="modal" data-target="#logInModal">ログイン</div>
             <div><%= link_to "ゲスト", users_guest_sign_in_path, method: :post ,class: "gradient4" %></div>
+          
           </div>
           <% end %>
           </div>
@@ -55,5 +60,6 @@ $(function () {
   });
 });
 });
+
 </script>
  
