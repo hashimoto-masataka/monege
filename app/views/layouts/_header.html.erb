@@ -1,57 +1,53 @@
 <header class="header bg-secondary text-monospace">
-  <nav class="navbar navbar-expand-lg navbar-info">
-    
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+  <nav class="navbar navbar-expand-sm navbar-info">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ">
 
         <!--adminログイン時のヘッダー-->
             <% if admin_signed_in? %>
-              <li>
+              <li class="nav-item active">
                 <%= link_to "トップ", admin_root_path, class: 'nav-link text-light' %>
               </li>
-              <li>
+              <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
-             
-
-
+        
             <!--usersログイン時のヘッダー-->
             <% elsif user_signed_in? %>
-              <li class= "nav-link text-light">
-                ようこそ！ <%= link_to users_my_page_path(current_user), class: "text-white font-weight-bold" do %>
-                <%= current_user.name %>
+              <li class= "nav-item active">
+               <%= link_to users_my_page_path(current_user), class: "nav-link text-white font-weight-bold" do %>
+                <span> Welcome！ <%= current_user.name %>様</span>
                 <% end %>
-                さん
+                
               </li>
-              <li>
+              <li class="nav-item ">
                 <%= link_to "トップ", root_path, class: 'nav-link text-light' %>
               </li>
-              <li>
+              <li class="nav-item">
                 <%= link_to "マイページ", users_my_page_path(current_user), class: 'nav-link text-light' %>
               </li>
 
-              <li>
+             <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: 'nav-link text-light' %>
               </li>
 
 
             <% else %>
             <!--ログイン前時のヘッダー-->
-               <li>
+               <li class="nav-item active">
                 <%= link_to "トップ", root_path, class: 'nav-link text-light' %>
               </li>
-              <li>
+              <li class="nav-item">
                <!--%= link_to "ゲストログイン", users_guest_sign_in_path, data: {"turbolinks" => false}, class: 'nav-link text-light',method: :post %>-->
               </li>
-              <li>
-                <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false}, class: 'nav-link text-light' %>
+              <li class="nav-item ">
+                <a class="nav-link" data-toggle="modal" data-target="#signUpModal">Sign Up</span></a>
               </li>
-              <li>
-                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#logInModal">Log In</a>
               </li>
 
             <% end %>
@@ -60,3 +56,4 @@
         
       </nav>
     </header>
+    

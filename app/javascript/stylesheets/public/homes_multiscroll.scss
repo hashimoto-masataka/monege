@@ -1,191 +1,153 @@
 .ms-section{
-	color:#fff;
+  color: black;
+  padding: 5%;
+  
+  color: white;
+  font-weight: bold;
+  font-color: black;
+}
+
+.text {
+  padding-top: 35%;
+  
+}
+
+.title {
+  font-family: cursive;
+  font-size: 4em;
+}
+
+.sub-title {
+  font-family: serif;
+  font-size: 2em;
+}
+
+#left1 {
+  
+  background-color:rgba(255,255,255,0.4);
+  background-size: 100% 100%;
+  background-image: url("../../images/left1.jpg");
+  
+}
+
+
+
+#left2 {
+  font-size: 6em;
+  
+}
+
+#left3 {
+  background-image: url("../../images/family.jpg");
+  background-size: 100% 100%;
+}
+
+#left4 {
+  background-image: url("../../images/income.jpg");
+  background-size: 100% 100%;
+}
+
+
+#left5 {
+  background-image: url("../../images/user_index.jpg");
+  background-size: 100% 100%;
+}
+
+#right1 {
+  background-image: url("../../images/right1.jpg");
+  background-size: 100% 100%;
+  
+}
+
+#right2 {
+  font-size: 3em;
+}
+
+#right3 {
+  background-image: url("../../images/house.jpg");
+  background-size:cover;
+}
+
+#right4 {
+  background-image: url("../../images/mypage.jpg");
+  background-size: 100% 100%;
+}
+
+#right5 {
+  background-image: url("../../images/follow.jpg");
+  background-size: 100% 100%;
+}
+
+
+
+
+@media screen and (max-width:550px){
+	
+
+
+/*全体のボックスについている余白をリセット*/
+.ms-section{
+	padding:0;
+}
+
+
+
+/*右エリアを横幅100%にして画像＋テキストを出す設定*/
+.ms-left{
+	width: 100%!important;
+}
+
+/*右エリア上部画像設定*/
+    
+#left1{
+    background: url("../../images/image0.jpg")  center;
+    background-size:cover;
+}
+
+// #left2 .sp-top{
+// 	background:url("../img/01.jpg") no-repeat center;
+// 	background-size:cover;
+//     height: 50vh;
+// }
+
+#left3 .sp-top{
+	background: url("../../images/family.jpg") no-repeat top center;
+	background-size:cover;
+    height: 50vh;
+}
+    
+#left4 .sp-top{
+	background: url("../../images/house.jpg") no-repeat top center;
+	background-size:cover;
+    height: 50vh;
+}
+    
+#left4 .sp-bottom{
+	background: url("../../images/family.jpg") no-repeat top center;
+	background-size:cover;
+    height: 50vh;
+}
+
+#left5 .sp-top{
+	background: url("../../images/family.jpg") no-repeat top center;
+	background-size:cover;
+    height: 50vh;
+}
+    
+#left5 .sp-bottom{
+	background: url("../../images/family.jpg")no-repeat center;
+	background-size:cover;
+    height: 50vh;
+}
+
+#left6{
+	background: url("../../images/family.jpg") no-repeat center;
+	background-size:cover;
+}
+
+/*右エリア下部テキスト余白設定*/
+.sp-bottom{
 	padding:20px;
 }
 
-.ms-section a{
-	color:#fff;
-}
-
-
-#left1 {
-    background-image: url("../../images/left1.jpg");
-    height: 100vh;
-    width: 100%;
-}
-  
-#right1 {
-    background-image: url("../../images/right1.jpg");
-    height: 100vh;
-    width: 100%; 
-}
-
-#right2{
-	background-image: url("../../images/left1.jpg");
-	background-size:cover;
-}
-
-#right3{
-	background-image: url("../../images/left1.jpg");
-	background-size:cover;
-}
-
-#right4{
-	background-image: url("../../images/left1.jpg");
-	background-size:cover;
-}
-
-#left4{
-	background-image: url("../../images/left1.jpg");
-	background-size:cover;
-}
-
-#right5{
-	background-image: url("../../images/left1.jpg");
-	background-size:cover;
-}
-
-#left5{
-	background-image: url("../../images/left1.jpg");
-	background-size:cover;
-}
-
-#right6{
-	background-image: url("../../images/left1.jpg");
-	background-size:cover;
-}
-
-@charset "utf-8";
-/* レイアウトのためのCSS */
-
-body{
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-	color: #fff;
-	font-size:1rem;
-	line-height:1.85;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%; 
-	word-wrap: break-word;
-}
-
-ul{
-	margin:0;
-	padding: 0;
-	list-style: none;
-}
-
-a{
-	color: #fff;
-	text-decoration: none;
-    outline: none;
-}
-
-img{
-    max-width:100%;
-    height: auto;
-}
-
-*{
-    box-sizing: border-box
-}
-
-/* HEADER */
-
-nav{
-	position: relative;
-	z-index:999;
-	padding:5px 20px;
-}
-
-h1{
-    font-size: 2rem;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    z-index: 999;
-    letter-spacing: 0.1em;
-    width:10em;
-    opacity: 0;/*ローディング画面では透過*/
-}
-
-@media screen and (max-width:768px){
- h1{
-    font-size: 1.5rem;
-    }
-}
-
-body.appear h1{
-    opacity: 1;
-}
-
-/* area */
-.sp-bottom{
-    text-align: center;
-}
-
-#left6 .sp-bottom{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);    
-}
-
-h2{
-    font-size: 2rem;
-    letter-spacing: 0.2em;
-    margin: 0 0 30px 0;
-}
-
-@media screen and (max-width:550px){
- h2{
-    font-size: 1.5rem;
-    }
-}
-
-
-#left6 .sp-bottom p{
-    margin:0 0 50px 0;
-    letter-spacing: 0.3em;
-    white-space: nowrap;
-}
-
-#left6 .sp-bottom ul{
-    display: flex;
-    justify-content: center;
-}
-
-#left6 .sp-bottom ul li{
-    margin: 0 10px;
-}
-
-#left6 .sp-bottom ul img{
-     height:25px;   
-}
-
-#footer{
-    position: fixed;
-    bottom:20px;
-    left: 20px;
-}
-
-@media screen and (max-width:550px){
- 
-#footer{
-    bottom:inherit;
-    left: 20px;
-    top:20px;
-}   
-}
-
-.ms-section{
-  font-size: 14em;
-  color: black;
-  padding: 10%;
-  text-align: center;
-  color: white;
-  font-weight: bold;
 }
