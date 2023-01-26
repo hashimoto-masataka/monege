@@ -4,12 +4,12 @@
 	    <h2 class= "head-line text-center m-5 ">マイページ</h2>
 	    <h3 class= "total mt-5 text-center">
 	        <%= link_to users_my_page_path(month: @month.prev_month) do %>
-	          <i class="fa-solid fa-arrow-left"></i>
+	          <i class="fas fa-backward"></i>
 	        <% end %>
 	        <%= I18n.l @current_month_beginning %> ~
 	        <%= I18n.l @current_month_end %>
 	        <%= link_to users_my_page_path(month: @month.next_month) do %>
-	          <i class="fa-solid fa-arrow-right"></i>
+	          <i class="fas fa-forward"></i>
 	        <% end %>
 	    </h3>
 		<table class="table table-bordered table-hover mt-5">

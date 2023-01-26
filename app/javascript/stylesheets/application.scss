@@ -7,15 +7,23 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: radial-gradient(#FFF, #FFC778 40%, #F13F79);
+  background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%); 
 }
 
 .main {
-  padding-bottom: 120px;
+  padding-bottom: 70px;
+  padding-top: 70px;
   box-sizing: border-box;
   min-height: 100vh;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  //padding-top: 300px;
+
+}
 
 footer {
   position: fixed;
@@ -23,9 +31,8 @@ footer {
   width: 100%;
   //padding-top: 300px;
 
-      /* 背景色などは割愛します */
-
 }
+
 
 .profiler-results {
   display: none;

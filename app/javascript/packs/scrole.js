@@ -1,12 +1,15 @@
-$('#wrapper').multiscroll({
-	sectionsColor: ['#0f7fa7', '#504237', '#504237','#504237', '#504237', '#504237'],//セクションごとの背景色設定
-	anchors: ['area1', 'area2', 'area3','area4','area5','area6'],//セクションとリンクするページ内アンカーになる名前
-	
-	
-	//navigationTooltips:['Area1', 'Area2', 'Area3','Area4','Area5'],//右のナビゲーション現在地時に入るテキスト
-	//loopTop: true,//最初のセクションを上にスクロールして最後のセクションまでスクロールするかどうかを定義します。
-	loopBottom: true,//最後のセクションを下にスクロールして最初のセクションまでスクロールするかどうかを定義します。
-    //※以下は今回のプラグインの組み合わせのみで使用。ページの途中でリロードしてもトップのタイピング出現
-   
-    
+/**
+* Purchase a key from:
+* https://alvarotrigo.com/multiScroll/pricing/
+*/
+$(function () {
+$(document).ready(function() {
+	$('#multiscroll').multiscroll({
+    licenseKey: 'YOUR KEY HERE',
+
+    sectionsColor: ['#ff5f45', '#0798ec', '#fc6c7c'],
+    anchors: ['first', 'second', 'third'],
+    menu: '#menu',
+  });
+});
 });

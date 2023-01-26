@@ -32,4 +32,3 @@ bar.animate(1.0, function(){
   $("#load").fadeOut();
 });
 });
-

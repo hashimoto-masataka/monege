@@ -4,13 +4,13 @@
       <h2 class= "head-line text-center m-4 ">収入一覧</h2>
         <h3 class = "text-center">
          <%= link_to incomes_path(month: @month.prev_month) ,'data-turbolinks': false do %>
-	          <i class="fas-solid fa-arrow-left"></i>
+	          <i class="fas fa-backward"></i>
 	       <% end %>
 	       <%= I18n.l @current_month_beginning %>
 	       <strong class="day mr-5 ml-5">~</strong>
 	       <%= I18n.l @current_month_end %>
 	       <%= link_to incomes_path(month: @month.next_month),'data-turbolinks': false do %>
-	          <i class="fa-solid fa-arrow-right"></i>
+	          <i class="fas fa-forward"></i>
 	       <% end %>
 	     </h3>
 	   </div>

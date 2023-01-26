@@ -15,8 +15,15 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings.page(params[:page]).per(7)
-
+    @users = user.followings.includes(:categories).page(params[:page]).per(7)
+    @users_data = @users.map do |user|
+      categories = user.categories
+      {
+        id: user.id,
+        category_names: (categories.any? ? categories.map{|c| c.category_name} : [""]),
+        target_prices: (categories.any? ? categories.map{|c| c.target_price} : [0])
+      }
+    end
   end
 
   def followers

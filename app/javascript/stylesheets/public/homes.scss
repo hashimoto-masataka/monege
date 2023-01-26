@@ -59,13 +59,7 @@
   vertical-align: middle;
 }
 
-.title {
-  font-family: cursive;
-}
 
-sub-title {
-  font-family: serif;
-}
 
 .gradient4 {
   /*ボタンの形状*/
@@ -96,4 +90,85 @@ sub-title {
 .bottom {
   display: flex;
   justify-content: center;
+ 
+}
+
+.ms-section{
+  color: black;
+  padding: 5%;
+  
+  color: white;
+  font-weight: bold;
+  font-color: black;
+}
+
+.text {
+  padding-top: 35%;
+  
+}
+
+.title {
+  font-family: cursive;
+  font-size: 4em;
+}
+
+.sub-title {
+  font-family: serif;
+  font-size: 2em;
+}
+
+#left1 {
+  
+  background-color:rgba(255,255,255,0.4);
+  background-size: 100% 100%;
+  background-image: url("../../images/left1.jpg");
+  
+}
+
+
+
+#left2 {
+  font-size: 6em;
+  
+}
+
+#left3 {
+  background-image: url("../../images/family.jpg");
+  background-size: 100% 100%;
+}
+
+#left4 {
+  background-image: url("../../images/income.jpg");
+  background-size: 100% 100%;
+}
+
+
+#left5 {
+  background-image: url("../../images/user_index.jpg");
+  background-size: 100% 100%;
+}
+
+#right1 {
+  background-image: url("../../images/right1.jpg");
+  background-size: 100% 100%;
+  
+}
+
+#right2 {
+  font-size: 3em;
+}
+
+#right3 {
+  background-image: url("../../images/house.jpg");
+  background-size:cover;
+}
+
+#right4 {
+  background-image: url("../../images/mypage.jpg");
+  background-size: 100% 100%;
+}
+
+#right5 {
+  background-image: url("../../images/follow.jpg");
+  background-size: 100% 100%;
 }
