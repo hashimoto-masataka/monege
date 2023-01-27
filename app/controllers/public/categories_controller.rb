@@ -25,9 +25,10 @@ class Public::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    
+    @category.user_id= current_user.id
+    @categories = current_user.categories
     if @category.save
-      redirect_to categories_path,notice:"新規項目を登録しました"
+      redirect_to categories_path,notice:"新たに項目を登録しました"
     else
       render :new
     end
@@ -36,7 +37,7 @@ class Public::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      redirect_to categories_path,notice:'項目を変更しました'
+      redirect_to categories_path,notice:'項目内容を変更しました'
     else
       render :edit
     end
