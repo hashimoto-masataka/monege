@@ -1,35 +1,36 @@
 <div class = "container-fluid">
   <div class = "row">
     <div class="col-7 offset-1 mt-5">
-      <h2 class= "head-line text-center">収入登録</h2>
+      <h2 class= "head-line mt-4 ml-5">
+        <i class="fas fa-money-bill-wave-alt"></i>収入登録</h2>
        
-           <%= render "/layouts/error", object: @income %>
+        <%= render "/layouts/error", object: @income %>
             
-            <%= form_with model: @income,local: true do |f| %>
-              <div class="income col-12 mt-5">
-                <div class="form-group">
-                  <strong><%=f.label :"収入金額",class: "control-label" %></strong>
-                  <%=f.number_field :price, required: true,class: "form-control-static" %>円
-                  <!--required: trueで空白での送信を防ぐ-->
-                </div>
-                <div class="form-group">
-                  <strong><%= f.label :"備考欄", class: 'control-label' %></strong>
-                  <%= f.text_field :note, class: 'form-control' %>
-                </div>
-                <div class="form-group">
-                  <strong><%= f.label :created_at,"日付", class: 'control-label' %></strong>
-                  <%= f.date_field :created_at, class: 'form-control' %>
-                </div>
-                <div class="form-group">
-                  <strong><%= f.label :family,"家族",class: "col-6 control-label" %></strong>
-                  <%= f.select :family_id, options_from_collection_for_select(current_user.families, :id, :family_name),class: "control-label"  %>
-                </div>
+        <%= form_with model: @income,local: true do |f| %>
+          <div class="income col-12 mt-5">
+            <div class="form-group">
+              <strong><%=f.label :"収入金額",class: "col-3 control-label" %></strong>
+              <%=f.number_field :price, required: true,class: "col-3 form-control-static" %>円
+              <!--required: trueで空白での送信を防ぐ-->
+            </div>
+            <div class="form-group">
+              <strong><%= f.label :"備考欄(note)", class: 'control-label' %></strong>
+              <%= f.text_field :note, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <strong><%= f.label :created_at,"日付", class: 'control-label' %></strong>
+              <%= f.date_field :created_at, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <strong><%= f.label :family,"家族",class: "col-6 control-label" %></strong>
+              <%= f.select :family_id, options_from_collection_for_select(current_user.families, :id, :family_name),class: "col-4 control-label"  %>
+            </div>
 
-                <div class="form-group">
-                  <%= f.submit '新規登録' ,class: "offset-3 col-2 btn-lg btn-success right" %>
-                </div>
-              </div>
-            <% end %>
+            <div class="form-group">
+              <%= f.submit '新規登録' ,class: "offset-3 col-2 btn-lg btn-success right" %>
+            </div>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

@@ -1,15 +1,15 @@
 <div class = "container-fluid">
   <div class = "row">
-   <div class="col-7 offset-1 mt-5">
-    <h2 class= "head-line mt-4 ml-5">支出登録</h2>
+    <div class="col-7 offset-1 mt-5">
+      <h2 class= "head-line mt-4 ml-5">支出登録</h2>
    
-      <%= render "/layouts/error", object: @expense %>
+        <%= render "/layouts/error", object: @expense %>
 
     <%= form_with model: @expense,local: true do |f| %>
       <div class="expense col-12 mt-5">
         <div class="form-group ">
           <strong><%=f.label :"支出金額",class: "col-3 control-label" %></strong>
-          <%=f.number_field :price, required: true,class: "col-3 form-control-static " %>円
+          <%=f.number_field :price, required: true,class: "col-3  form-control-static " %>円
           <!--required: trueで空白での送信を防ぐ-->
         </div>
         <div class="form-group">

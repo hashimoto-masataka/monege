@@ -12,7 +12,10 @@
           　     <td> <%= @user.age %></td>
           　     <td> <%= @user.annual_income %></td>
           　     <td> <%= @user.prefecture %></td>
+          　   <% if @user.status = true %>
           　     <td><%= render 'public/relationships/btn', user: @user %></td>
+          　   <% else %>
+              <% end %>
            　  </tr>
             </tbody>
           </table>
