@@ -57,7 +57,12 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="modal" data-target="#logInModal"><i class="fas fa-sign-in-alt"></i>ログイン</a>
             </li>
-    
+            <li class="nav-item active">
+              <%= link_to new_admin_session_path, class: 'nav-link ' do %>
+              <i class="fas fa-heading"></i>ホーム<% end %>
+            </li>
+            
+            
           <% end %>
       </ul>
     </div>

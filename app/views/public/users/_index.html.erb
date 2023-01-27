@@ -14,7 +14,7 @@
        <div class="list">
         <tr>
           <td>
-            <%= link_to category_path(user) do %>
+            <%= link_to category_path(user),'data-turbolinks': false do %>
             <div class="chart" style='width:200px; height: 200px;'>
                <canvas id="pie-<%= user.id %>" ></canvas>
             </div>
@@ -29,7 +29,7 @@
        </div>
       </tbody>
      <% end %>
-     <%= paginate users,'data-turbolinks': false %>
+     <%= paginate users %>
     </table>
 <script>
 

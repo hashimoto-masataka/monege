@@ -53,6 +53,12 @@
 	</div>
 </div>
 
+<% unless user_signed_in? %>
+        <%= render 'public/registrations/new' %>
+        
+        <%= render 'public/sessions/new' %>
+<% end %>
+
 
 <script>
 $(function () {

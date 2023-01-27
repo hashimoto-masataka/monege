@@ -22,12 +22,7 @@
       <%= render 'layouts/header' %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-      <% unless user_signed_in? %>
-        <%= render 'public/registrations/new' %>
-        
-        <%= render 'public/sessions/new' %>
-        <%= render 'public/sessions/new' %>
-      <% end %>
+      
     </div>
   </body>
 </html>
