@@ -3,15 +3,13 @@
     <div class = "col-11 ml-5" >
       <h2 class= "head-line text-center mt-5 mr-5">目標家計簿作成</h2>
        <h3 class="total mt-5">目標額の合計：<%= @sum_target_price %></h3>
-       <h4><%= link_to "項目を新規登録",new_category_path %></h4>
+       
     </div>
 
     <%= render 'index', categories: @categories , sum_target_price: @sum_target_price %>
 
   </div>
 </div>
-
-
 
 <script>
 
@@ -46,20 +44,6 @@ new Chart(pie_ctx, {
       */
     }
   });
-const column_ctx = document.getElementById('column_chart');
-new Chart(column_ctx, {
-    type: 'bar',
-    data: category_data,
-    options: {
-  /*    scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-      */
-    }
-  });
-
 
 
 </script>

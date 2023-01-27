@@ -4,6 +4,7 @@
       <h2>ログイン</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
           <div class="field">
             <%= f.label :email ,class: "col-6 control-label"%><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5 form-control-static" %>
@@ -11,7 +12,7 @@
 
           <div class="field">
             <%= f.label :password ,class: "col-6 control-label"%><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
+            <%= f.password_field :password, autocomplete: "current-password" , class: "col-5 form-control-static"%>
           </div>
 
           <% if devise_mapping.rememberable? %>

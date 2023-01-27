@@ -1,31 +1,31 @@
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
 <div id="load">
     <div id = "load_text"></div>
     <div class = "loader_cover loader_cover-up"></div>
     <div class = "loader_cover loader_cover-down"></div>
 </div>
+
+
 <div id="multiscroll">
   <div class="ms-left">
 	  <div class="ms-section " id="left1">
-		  <div class="text ">
+		  <div class="text ml-5">
         <p class="sub-title mt-5">〜お金と真摯に向き合う〜</p>
         <h1 class="title ">MONEGE</h1></div>
           <% if user_signed_in? %>
-            <div class ="bottom ">
+            <div class ="bottom p-3 ">
               <div><%= link_to "マイページ", users_my_page_path(current_user) ,class: "gradient4" %></div>
               <div><%= link_to "ログアウト", destroy_user_session_path,method: :delete ,class: "gradient4" %></div>
             </div>
           <% else %>
-            <div class ="bottom">
+            <div class ="bottom p-3">
               <div class="nav-link gradient4 " data-toggle="modal" data-target="#signUpModal">新規登録</div>
               <div class="nav-link gradient4" data-toggle="modal" data-target="#logInModal">ログイン</div>
               <div><%= link_to "ゲスト", users_guest_sign_in_path, method: :post ,class: "gradient4" %></div>
             </div>
           <% end %>
     </div>
-		<div class="ms-section text-center" id="left2">What is </br>the </br>MONEGE ?</div>
+		<div class="ms-section text-center" id="left2">
+			<h1 class="lefttitle">What is </br>the </br>MONEGE ?</h1></div>
 		<div class="ms-section" id="left3">
 		  <div class="sp-top"></div>
 			<div class="sp-bottom"></div>
@@ -42,9 +42,9 @@
 	<div class="ms-right">
 		<div class="ms-section"id="right1"></div>
 		<div class="ms-section"id="right2">
-		    <p class="text-center">
+		    <h3 class="text-center mt-5">
 		    manegeとは家計簿アプリ</br>
-		    日々のお金の流れを管理し、自身のお金の使い方を見直そう</p>
+		    日々のお金の流れを管理し、自身のお金の使い方を見直そう</h3>
 		    
 		</div>
 		<div class="ms-section"id="right3"></div>

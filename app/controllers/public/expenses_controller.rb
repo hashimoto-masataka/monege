@@ -19,7 +19,8 @@ class Public::ExpensesController < ApplicationController
     @current_month_end = @month.end_of_month
     expenses_total = current_user.expenses.where(created_at: @month.all_month)
     @sum_price = expenses_total.where(id: current_user.expense_ids).sum(:price)
-
+    @expense_chart = current_user.expenses.where(created_at: @month.all_month).group(:category_id)
+    
     line_monthes = (1..12)
     current_year = Time.zone.now.year
     current_year_range = (Time.zone.now.beginning_of_year..Time.zone.now.end_of_year)
@@ -46,7 +47,7 @@ class Public::ExpensesController < ApplicationController
     @expense.user_id = current_user.id
     @expenses = current_user.expenses
     if @expense.save
-      redirect_to expenses_path
+      redirect_to expenses_path,notice:"新たに支出を登録しました"
     else
       render :new
     end
@@ -55,7 +56,7 @@ class Public::ExpensesController < ApplicationController
   def update
     @expense = Expense.find(params[:id])
     if @expense.update(expense_params)
-      redirect_to expenses_path
+      redirect_to expenses_path,notice:'登録した支出内容を変更しました'
     else
       render :edit
     end
@@ -64,13 +65,12 @@ class Public::ExpensesController < ApplicationController
   def destroy
     @expense = Expense.find(params[:id])
     @expense.delete
-      redirect_to expenses_path
+    flash[:alret] ='登録した支出を削除しました'
+    redirect_to expenses_path
+      
   end
 
-   def report
-    @month = parqams[:month] ? Date.parse(params[:month]) : Timezone.Todey
-    @expensess = Expence.whrer(created_at: @month.all_month)
-   end
+   
 
 
   private

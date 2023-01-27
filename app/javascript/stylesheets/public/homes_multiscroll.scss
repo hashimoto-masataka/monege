@@ -8,8 +8,9 @@
 }
 
 .text {
-  padding-top: 35%;
-  
+  position: absolute;
+  top: 30%;
+  font-color: #333;
 }
 
 .title {
@@ -22,8 +23,20 @@
   font-size: 2em;
 }
 
+.bottom {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 60%;
+  margin-left: 20%;
+ 
+}
+
+
+
+
 #left1 {
-  
+  position: relative;
   background-color:rgba(255,255,255,0.4);
   background-size: 100% 100%;
   background-image: url("../../images/left1.jpg");
@@ -34,8 +47,12 @@
 
 #left2 {
   font-size: 6em;
-  
+  background-size: 100% 100%;
+  position: relative;
+  padding: 30%;
 }
+
+
 
 #left3 {
   background-image: url("../../images/family.jpg");
@@ -60,7 +77,8 @@
 }
 
 #right2 {
-  font-size: 3em;
+ 
+  background-size: 100% 100%;
 }
 
 #right3 {

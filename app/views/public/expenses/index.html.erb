@@ -1,9 +1,10 @@
+<%= render "layouts/flash" %>
+
 <div class = "container-fluid">
   <div class = "row">
-    <div class ="col-7 offset-1 mt-5">
-      <h2 class= "head-line text-center m-4 ">支出一覧</h2>
-
-        <h3 class = "text-center">
+    <div class ="col-7 offset-1 ">
+      <h2 class= "head-line text-center m-4 "><i class="fas fa-receipt"></i>支出一覧</h2>
+      <h3 class = "text-center">
          <%= link_to expenses_path(month: @month.prev_month),'data-turbolinks': false do %>
 	          <i class="fas fa-backward"></i>
 	       <% end %>
@@ -19,9 +20,21 @@
   　<div class= "col-11 ml-5">
   　  <h2 class ="total mt-5">支出額の合計：
          <span class="text-success"><%= @sum_price %>円</span></h2>
-     <h4><%= link_to "新規登録",new_expense_path %></h4>
+     <h4><%= link_to new_expense_path do %>
+     <i class="fas fa-plus-circle"></i>支出を登録
+     <% end %></h4>
     </div>
-    <div class="col-7 offset-1 text-center">
+    <div class = "col-4 mt-5">
+			<h2><i class="fas fa-chart-pie"></i>現在の家計簿</h2>
+			<% if @expenses.present? %>
+        <div class= "chart" style='width:200px; height: 200px;'>
+           <canvas id ="chart" ></canvas>
+        </div>
+      <% else %>
+          <td>未設定</td>
+      <% end %>
+    </div>
+    <div class="col-6 offset-1 text-center">
       <% if @expenses.present? %>
        <table class="table table-bordered table-hover mt-5">
          <thead>
@@ -52,13 +65,14 @@
                  <td>未設定</td>
                <% end %>
              <td><%= expense.note %></td>
-             <td><%=link_to "削除する",expense_path(expense),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+             <td><%=link_to expense_path(expense),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
+             <i class="fas fa-trash-alt"></i>削除する<% end %></td>
              </tr>
           </div>
         </tbody>
         <% end %>
      </table>
-     <%= paginate @expenses,'data-turbolinks': false %>
+     <%= paginate @expenses %>
     <% else %>
    登録がありません
     <% end %>
@@ -66,8 +80,8 @@
    </div>
   </div>
   <div class="row">
-    <div class="col-11 ml-5">
-      <h2>年間の支出</h2>
+    <div class="col-11 mt-5 ml-5">
+      <h2><i class="fas fa-chart-line"></i>年間の支出</h2>
 
       <div class= "chart m-5" style='width:70%; height: 400px;'>
         <canvas id="line" ></canvas>
@@ -79,9 +93,9 @@
 
 <script>
 
-const category_data = {
+const expense_data = {
   labels: [
-    <% @expenses.all.each do |expense| %>
+    <% @expense_chart.each do |expense| %>
       '<%= expense.category.category_name %>',
     <% end %>
     ],
@@ -89,7 +103,7 @@ const category_data = {
     {
       label: '金額',
       data: [
-        <% @expenses.each do |expense| %>
+        <% @expense_chart.each do |expense| %>
           '<%= expense.price %>',
         <% end %>
       ],
@@ -97,10 +111,10 @@ const category_data = {
   ]
 };
 
-const pie_ctx = document.getElementById('pie_chart');
-new Chart(pie_ctx, {
+const expense_ctx = document.getElementById('chart');
+new Chart(expense_ctx, {
     type: 'pie',
-    data: category_data,
+    data: expense_data,
     options: {
   /*    scales: {
         y: {
@@ -110,6 +124,8 @@ new Chart(pie_ctx, {
       */
     }
   });
+
+
 
 /*ここから棒グラフ*/
 

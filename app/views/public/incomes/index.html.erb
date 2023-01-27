@@ -1,37 +1,38 @@
+<%= render "layouts/flash" %>
 <div class = "container-fluid">
   <div class="row">
     <div class="col-7 offset-1 mt-5 ">
-      <h2 class= "head-line text-center m-4 ">収入一覧</h2>
-        <h3 class = "text-center">
-         <%= link_to incomes_path(month: @month.prev_month) ,'data-turbolinks': false do %>
-	          <i class="fas fa-backward"></i>
-	       <% end %>
-	       <%= I18n.l @current_month_beginning %>
-	       <strong class="day mr-5 ml-5">~</strong>
-	       <%= I18n.l @current_month_end %>
+      <h2 class= "head-line text-center m-4 "><i class="fas fa-money-bill-wave-alt"></i>収入一覧</h2>
+      <h3 class = "text-center">
+        <%= link_to incomes_path(month: @month.prev_month) ,'data-turbolinks': false do %>
+          <i class="fas fa-step-backward"></i>
+        <% end %>
+        <i class="fas fa-calendar-alt"></i><%= I18n.l @current_month_beginning %>
+        <strong class="day mr-3 ml-3">~</strong>
+        <%= I18n.l @current_month_end %><i class="fas fa-calendar-alt"></i>
 	       <%= link_to incomes_path(month: @month.next_month),'data-turbolinks': false do %>
-	          <i class="fas fa-forward"></i>
+	          <i class="fas fa-step-forward"></i>
 	       <% end %>
 	     </h3>
-	   </div>
-	   <div class="col-11 ml-5">
-       <h2 class ="total mt-5">収入額の合計：
-         <span class="text-success"><%= @sum_price %>円</span></h2>
-       <h4><%= link_to "新規登録",new_income_path %></h4>
-      </div>
-      <div class="col-7 offset-1 text-center">
+    </div>
+    <div class="col-11 ml-5">
+      <h2 class ="total mt-5">収入額の合計：
+      <span class="text-success"><%= @sum_price %>円</span></h2>
+      <h4><%= link_to new_income_path do %>
+      <i class="fas fa-plus-circle"></i>収入を登録<% end %></h4>
+    </div>
+    <div class="col-7 offset-1 text-center">
       <% if @incomes.present? %>
-
-      <table class="table table-bordered table-hover mt-5">
-      <thead>
-        <tr>
-          <th>日付</th>
-          <th>収入金額</th>
-          <th>備考欄</th>
-          <th>家族名</th>
-          <th colspan="2"></th>
-          </tr>
-      </thead>
+        <table class="table table-bordered table-hover mt-5">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>収入金額</th>
+              <th>備考欄</th>
+              <th>家族名</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
 
       <% @incomes.each do |income| %>
       <tbody>
@@ -42,7 +43,7 @@
             <% end %>
            </td>
           <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
-          <td><%= income.price.floor.to_s(:delimited)%></td>
+          <td><%= income.price.floor.to_s(:delimited)%>円</td>
           <td><%= income.note%></td>
           <td><%= income.family.family_name %></td>
           <td class= "text-center"><%=link_to "削除する",income_path(income),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
@@ -59,13 +60,12 @@
   </div>
   <div class="row">
     <div class="col-11 ml-5 mt-5">
-      <h2>年間の収入</h2>
-
+      <h2><i class="fas fa-chart-line"></i>年間の収入</h2>
       <div class= "chart m-5" style='width:70%; height: 400px;'>
         <canvas id="line" ></canvas>
       </div>
-      </div>
     </div>
+  </div>
 </div>
 
 <script>

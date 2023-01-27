@@ -4,24 +4,19 @@
   <% else %>
   
     <%= link_to expenses_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
-        <i class="fas fa-chart-bar"></i>
-        <p>支出</p>
+        <p><i class="fas fa-receipt"></i>支出</p>
     <% end %>
     <%= link_to incomes_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
-        <i class="fas fa-coins"></i>
-        <p>収入</p>
+       <i class="fas fa-money-bill-wave-alt"></i>収入</p>
     <% end %>
     <%= link_to families_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
-        <i class="fas fa-list-ul"></i>
-        <p>家族</p>
+        <p><i class="fas fa-list-ul"></i>家族</p>
     <% end %>
     <%= link_to categories_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
-        <i class="fas fa-calculator"></i>
-        <p>目標家計簿</p>
+        <p><i class="fas fa-calculator"></i>目標家計簿</p>
     <% end %>
     <%= link_to users_my_page_path(current_user), class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
-        <i class="fas fa-lg fa-pencil-alt"></i>
-        <p>マイページ</p>
+        <p><i class="fas fa-home"></i>マイページ</p>
     <% end %>
     
   <% end %>
