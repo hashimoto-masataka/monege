@@ -10,7 +10,8 @@
 .text {
   position: absolute;
   top: 30%;
-  font-color: #333;
+  
+ 
 }
 
 .title {
@@ -52,6 +53,10 @@
   padding: 30%;
 }
 
+.lefttitle {
+  font-size: 60px;
+}
+
 
 
 #left3 {
@@ -83,7 +88,7 @@
 
 #right3 {
   background-image: url("../../images/house.jpg");
-  background-size:cover;
+  background-size: 100% 100%;
 }
 
 #right4 {
@@ -115,6 +120,11 @@
 	width: 100%!important;
 }
 
+.ms-right{
+	display: none;
+}
+
+
 /*右エリア上部画像設定*/
     
 #left1{
@@ -122,46 +132,44 @@
     background-size:cover;
 }
 
-// #left2 .sp-top{
-// 	background:url("../img/01.jpg") no-repeat center;
-// 	background-size:cover;
-//     height: 50vh;
-// }
+
 
 #left3 .sp-top{
-	background: url("../../images/family.jpg") no-repeat top center;
-	background-size:cover;
+  background: url("../../images/family.jpg") no-repeat top center;
+	background-size: 100% 100%;
     height: 50vh;
+}
+
+#left3 .sp-bottom{
+  background: url("../../images/house.jpg") no-repeat top center;
+	background-size: 100% 100%;
+  height: 50vh;
 }
     
 #left4 .sp-top{
-	background: url("../../images/house.jpg") no-repeat top center;
-	background-size:cover;
+	background: url("../../images/income.jpg") no-repeat top center;
+	background-size: 100% 100%;
     height: 50vh;
 }
     
 #left4 .sp-bottom{
-	background: url("../../images/family.jpg") no-repeat top center;
-	background-size:cover;
+	background: url("../../images/mypage.jpg") no-repeat top center;
+	background-size: 100% 100%;
     height: 50vh;
 }
 
 #left5 .sp-top{
-	background: url("../../images/family.jpg") no-repeat top center;
-	background-size:cover;
+	background: url("../../images/user_index.jpg") no-repeat top center;
+	background-size: 100% 100%;
     height: 50vh;
 }
     
 #left5 .sp-bottom{
-	background: url("../../images/family.jpg")no-repeat center;
-	background-size:cover;
+	background: url("../../images/follow.jpg")no-repeat center;
+	background-size: 100% 100% ;
     height: 50vh;
 }
 
-#left6{
-	background: url("../../images/family.jpg") no-repeat center;
-	background-size:cover;
-}
 
 /*右エリア下部テキスト余白設定*/
 .sp-bottom{

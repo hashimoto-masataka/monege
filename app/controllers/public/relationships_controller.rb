@@ -36,7 +36,8 @@ class Public::RelationshipsController < ApplicationController
 
   def ensure_guest_user
     if (current_user.name == "guestuser")&&(current_user.email == 'guest@example.com')
-      redirect_to root_path ,notice: 'ゲストユーザーは他のユーザーを参考登録できません。'
+      flash[:alret] = 'ゲストユーザーは他のユーザーを参考登録できません。'
+      redirect_to users_my_page_path 
     end
  end
 

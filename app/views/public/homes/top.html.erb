@@ -3,41 +3,43 @@
     <div class = "loader_cover loader_cover-up"></div>
     <div class = "loader_cover loader_cover-down"></div>
 </div>
-
-
 <div id="multiscroll">
-  <div class="ms-left">
-	  <div class="ms-section " id="left1">
-		  <div class="text ml-5">
-        <p class="sub-title mt-5">〜お金と真摯に向き合う〜</p>
-        <h1 class="title ">MONEGE</h1></div>
-          <% if user_signed_in? %>
-            <div class ="bottom p-3 ">
-              <div><%= link_to "マイページ", users_my_page_path(current_user) ,class: "gradient4" %></div>
-              <div><%= link_to "ログアウト", destroy_user_session_path,method: :delete ,class: "gradient4" %></div>
+	<div class="ms-left">
+		<div class="ms-section " id="left1">
+	    	<div class="text ml-5">
+    			<p class="sub-title ml-5 mt-5">〜お金と真摯に向き合う〜</p>
+        		<h1 class="title ml-5 ">MONEGE</h1>
+      		</div>
+        	<% if user_signed_in? %>
+        	<div class ="bottom p-3 ">
+            	<div><%= link_to "マイページ", users_my_page_path(current_user) ,class: "gradient4" %></div>
+            	<div><%= link_to "ログアウト", destroy_user_session_path,method: :delete ,class: "gradient4" %></div>
+			</div>
+        	<% else %>
+        	<div class ="bottom p-3">
+        		<div class="nav-link gradient4 " data-toggle="modal" data-target="#signUpModal">新規登録</div>
+				<div class="nav-link gradient4" data-toggle="modal" data-target="#logInModal">ログイン</div>
+				<div><%= link_to "ゲスト", users_guest_sign_in_path, method: :post ,class: "gradient4" %></div>
             </div>
-          <% else %>
-            <div class ="bottom p-3">
-              <div class="nav-link gradient4 " data-toggle="modal" data-target="#signUpModal">新規登録</div>
-              <div class="nav-link gradient4" data-toggle="modal" data-target="#logInModal">ログイン</div>
-              <div><%= link_to "ゲスト", users_guest_sign_in_path, method: :post ,class: "gradient4" %></div>
-            </div>
-          <% end %>
-    </div>
+			<% end %>
+    	</div>
 		<div class="ms-section text-center" id="left2">
-			<h1 class="lefttitle">What is </br>the </br>MONEGE ?</h1></div>
+			<h1 class="lefttitle">What is </br>the </br>MONEGE ?</h1>
+			
+		</div>
 		<div class="ms-section" id="left3">
-		  <div class="sp-top"></div>
+			<div class="sp-top"></div>
 			<div class="sp-bottom"></div>
 		</div>
 		<div class="ms-section" id="left4">
-		  <div class="sp-top"></div>
+			<div class="sp-top"></div>
 			<div class="sp-bottom"></div>
 		</div>
 		<div class="ms-section" id="left5">
-		  <div class="sp-top"></div>
+			<div class="sp-top"></div>
 			<div class="sp-bottom"></div>
 		</div>
+		
 	</div>
 	<div class="ms-right">
 		<div class="ms-section"id="right1"></div>

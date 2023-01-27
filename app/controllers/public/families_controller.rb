@@ -17,8 +17,8 @@ class Public::FamiliesController < ApplicationController
     @family.user_id= current_user.id
     @families = current_user.families
     if @family.save
-      redirect_to families_path
-      flash.now[:notice] = "新規家族を登録しました"
+      
+      redirect_to families_path,notice:'新規家族を登録しました'
     else
       render :index
     end
@@ -27,8 +27,8 @@ class Public::FamiliesController < ApplicationController
   def update
     @family = Family.find(params[:id])
     if @family.update(family_params)
-      redirect_to families_path
-      flash.now[:notice] = '家族名を変更しました'
+      redirect_to families_path,notice:'家族名を変更しました'
+      
     else
       render :edit
     end
@@ -41,12 +41,13 @@ class Public::FamiliesController < ApplicationController
     expenses = current_user.expenses
     incomes = current_user.incomes
     if expenses.where(family_id: params[:id]).present? || incomes.where(family_id: params[:id]).present?
-      redirect_to families_path ,notice: '家族名を収支で使用しているため削除できません'
-      flash.now[:notice] = '家族名を収支で使用しているため削除できません'
+      flash[:alret] = '家族名を収支で使用しているため削除できません'
+      redirect_to families_path 
+      
     else
       @family.delete
-      redirect_to families_path
-      flash.now[:notice] = '家族名を削除しました'
+      redirect_to families_path,notice:'家族名を削除しました'
+      
     end
   end
 
