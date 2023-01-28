@@ -1,5 +1,5 @@
-<h2>ユーザー一覧</h2>
-      <table class="table table-bordered table-hover">
+<h2 class="top m-5">ユーザー一覧</h2>
+      <table class="table table-bordered table-hover m-5">
       <thead>
         <tr>
             <th>会員ID</th>
@@ -24,5 +24,5 @@
        </div>
       </tbody>
      <% end %>
-     <%= paginate @users,'data-turbolinks': false %>
+     <%= paginate @users %>
     </table>

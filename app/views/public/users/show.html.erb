@@ -54,13 +54,6 @@
 	<div class = "row">
 		<div class="col-md-9 offset-1">
             
-            <%= link_to users_path, 'data-turbolinks': false do %>
-            <i class="fas fa-users"></i>会員一覧<% end %>
-				
-			<% if current_user.name != "guestuser" %>
-				<p><%=link_to"参考にしたユーザー",user_followings_path(@user) %></p>
-				<p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
-			<% end %>
 		    <h2 class="headline m-5"><i class="fas fa-id-badge"></i>プロフィール</h2>
 		    <div class="bottm text-right">
 				  <p><%= link_to users_information_edit_path, class: " btn btn-success ml-4" do %>

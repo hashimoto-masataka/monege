@@ -2,7 +2,11 @@
 <div class ="container-fluid">
   <div class="row">
     <div class ="col-7 offset-1">
-      <h2 class= "headline mt-5">ユーザ一覧</h2>
+      <h2 class= "headline mt-5"><i class="fas fa-users"></i>ユーザ一覧</h2>
+      	<% if current_user.name != "guestuser" %>
+				  <p><%=link_to"参考にしたユーザー",user_followings_path(@user) %></p>
+				  <p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
+		  	<% end %>
         <% if @users.exists? %>
         
           <%= render 'public/users/index',users: @users %>

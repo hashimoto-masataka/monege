@@ -1,6 +1,9 @@
 <header class="header text-monospace ">
   <nav class="navbar navbar-expand-sm navbar-info">
     <div class="container-fluid">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.jpg', size: "80x40" %>
+      <% end %>
       
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,7 +25,7 @@
           <!--usersログイン時のヘッダー-->
           <% elsif user_signed_in? %>
             <li class= "nav-item active">
-             <%= link_to users_my_page_path(current_user), class: "nav-link font-weight-bold" do %>
+             <%= link_to root_path, class: "nav-link font-weight-bold" do %>
               <span> Welcome！ <%= current_user.name %>様</span>
               <% end %>
               
@@ -58,10 +61,7 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="modal" data-target="#logInModal"><i class="fas fa-sign-in-alt"></i>ログイン</a>
             </li>
-            <li class="nav-item active">
-              <%= link_to new_admin_session_path, class: 'nav-link ' do %>
-              <i class="fas fa-heading"></i>ホーム<% end %>
-            </li>
+           
             
             
           <% end %>
