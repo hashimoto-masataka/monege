@@ -16,6 +16,7 @@ class Public::CategoriesController < ApplicationController
   def show
     @user = User.find(params[:id])
     if !@user.status
+      flash[:alret]="指定したユーザーの家計簿は非公開になっています"
       redirect_to users_my_page_path
     end 
     @categories = @user.categories
