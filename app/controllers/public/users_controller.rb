@@ -80,7 +80,8 @@ private
 
  def ensure_guest_user
     if (current_user.name == "guestuser")&&(current_user.email == 'guest@example.com')
-      redirect_to root_path ,notice: 'ゲストユーザーはマイページの編集はできません。'
+      flash[:alret]= 'ゲストユーザーはマイページの編集はできません。'
+      redirect_to users_my_page_path
     end
  end
 end

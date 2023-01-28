@@ -15,12 +15,20 @@ class Public::CategoriesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.status != true
+      redirect_to users_my_page_path
+    end 
     @categories = @user.categories
     @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
   end
 
   def edit
     @category= Category.find(params[:id])
+    if @category.user_id != current_user.id
+      flash[:alret]="他のユーザーの項目の編集はできません"
+      redirect_to users_my_page_path
+    end
+    #urlを直接入力された際の対策
   end
 
   def create
@@ -61,7 +69,7 @@ class Public::CategoriesController < ApplicationController
   def correct_category
       @category = Category.find(params[:id])
         unless @category.user.status == true
-          redirect_to users_path
+          redirect_to root_path
         end
   #urlに直打ちされた際に公開ステータスがtrue以外はuser一覧にリダイレクトされる
   end
