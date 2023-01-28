@@ -1,7 +1,7 @@
 class Public::CategoriesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :correct_category,only: [:edit,:show]
+  
 
   def new
     @category = Category.new
@@ -15,7 +15,7 @@ class Public::CategoriesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user.status != true
+    if !@user.status
       redirect_to users_my_page_path
     end 
     @categories = @user.categories
@@ -66,13 +66,7 @@ class Public::CategoriesController < ApplicationController
     end
   end
   
-  def correct_category
-      @category = Category.find(params[:id])
-        unless @category.user.status == true
-          redirect_to root_path
-        end
-  #urlに直打ちされた際に公開ステータスがtrue以外はuser一覧にリダイレクトされる
-  end
+ 
 
   private
 

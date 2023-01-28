@@ -19,7 +19,7 @@ class Public::ExpensesController < ApplicationController
     @current_month_end = @month.end_of_month
     expenses_total = current_user.expenses.where(created_at: @month.all_month)
     @sum_price = expenses_total.where(id: current_user.expense_ids).sum(:price)
-    @expense_chart = current_user.expenses.where(created_at: @month.all_month).group(:category_id)
+    @expense_chart = current_user.expenses.select('id, sum(price) as price, category_id').where(created_at: @month.all_month).group(:category_id)
     
     line_monthes = (1..12)
     current_year = Time.zone.now.year

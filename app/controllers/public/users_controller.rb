@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
     user = User.where(status: true) 
     user_deleted = user.where(is_deleted: false)
     @users = user_deleted.all.includes(:categories).page(params[:page]).per(7)
+    @user = current_user
     @users_data = @users.map do |user|
       categories = user.categories
       {
@@ -36,7 +37,7 @@ class Public::UsersController < ApplicationController
     @sum_price_income = @incomes.where(id: current_user.income_ids).sum(:price)
     @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
     
-    @expense_chart = current_user.expenses.where(created_at: @month.all_month).group(:category_id)
+    @expense_chart = current_user.expenses.select("id, sum(price) as price , category_id").where(created_at: @month.all_month).group(:category_id)
     
     @saving = @sum_price_income - @sum_price_expense
   end
