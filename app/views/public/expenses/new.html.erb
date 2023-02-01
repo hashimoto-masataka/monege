@@ -1,26 +1,27 @@
+<div id="particles-js"></div>
 <div class = "container-fluid">
   <div class = "row">
-    <div class="col-7 offset-1 mt-5">
-      <h2 class= "head-line mt-4 ml-5">支出登録</h2>
+    <div class="col-11 m-5">
+      <h1 class= "head-line text-center m-5">支出登録</h1>
    
         <%= render "/layouts/error", object: @expense %>
 
     <%= form_with model: @expense,local: true do |f| %>
-      <div class="expense col-12 mt-5">
+      <div class="expense col-9 offset-3">
         <div class="form-group ">
-          <strong><%=f.label :"支出金額",class: "col-3 control-label" %></strong>
-          <%=f.number_field :price, required: true,class: "col-3  form-control-static " %>円
+          <strong><%=f.label :"支出金額",class: "control-label" %></strong>
+          <%=f.number_field :price, required: true,class: "col-4 offset-2  form-control-static " %>円
           <!--required: trueで空白での送信を防ぐ-->
         </div>
         <div class="form-group">
           <strong><%= f.label :"備考欄", class: 'control-label' %></strong>
-          <%= f.text_field :note, class: 'form-control' %>
+          <%= f.text_field :note, class: 'col-7 form-control' %>
         </div>
         <div class="form-group">
          <strong> <%= f.label :created_at,"日付", class: 'control-label' %></strong>
-          <%= f.date_field :created_at, class: 'form-control' %>
+          <%= f.date_field :created_at, class: 'col-7 form-control' %>
         </div>
-        <div class="form-group col-12">
+        <div class="form-group">
           <strong><%= f.label :category, "項目",class: "col-6 control-label" %></strong>
           <%= f.select :category_id, options_from_collection_for_select(current_user.categories, :id, :category_name) ,class: "col-5 control-label" %>
           <strong> <%= f.label :family,"家族",class: "col-6 control-label" %></strong>
@@ -35,3 +36,11 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  particlesJS.load('particles-js', '../assets/particles.json', function() {
+     
+        });
+
+</script>

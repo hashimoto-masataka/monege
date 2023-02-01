@@ -4,6 +4,18 @@ class Public::FamiliesController < ApplicationController
   def index
     @families = current_user.families
     @family_new= Family.new
+   
+    @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
+    @current_month_beginning = @month.beginning_of_month
+    @current_month_end = @month.end_of_month
+    
+    all_expenses = current_user.expenses
+    @expenses = all_expenses.where(created_at: @month.all_month)
+    expenses_total = current_user.expenses.where(created_at: @month.all_month)
+    @sum_price = expenses_total.where(id: current_user.expense_ids).sum(:price)
+    @family_chart = current_user.expenses.select('sum(price) as price, family_id').where(created_at: @month.all_month).group(:family_id)
+    
+
 
   end
 

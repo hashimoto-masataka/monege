@@ -1,8 +1,9 @@
+<div id="particles-js"></div>
 <div class = "container">
   <div class = "row">
-    <div class = "col-12">
-      <h2 class= "head-line mt-5 ml-5"><i class="fas fa-chart-pie"></i>目標家計簿詳細</h2>
-      　<div class = "col-7 offset-2 plofile">
+    <div class = "col-11 m-5">
+      <h1 class= "head-line text-center m-5"><i class="fas fa-chart-pie"></i>目標家計簿詳細</h1>
+      　<div class = "col-9 offset-2 plofile">
           <table class="table table-bordered table-hover ">
        
             <tbody>
@@ -52,6 +53,8 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 <script>
 
 const category_data = {
@@ -98,4 +101,10 @@ new Chart(column_ctx, {
       */
     }
   });
+  
+  particlesJS.load('particles-js', '../assets/particles.json', function() {
+     
+        });
+
+  
 </script>

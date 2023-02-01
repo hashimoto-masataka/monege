@@ -1,16 +1,18 @@
 <%= render "layouts/flash" %>
+<div id="particles-js"></div>
 <div class="container-fluie">
   <div class="row">
-    <div class = "col-6 col- offset-2 ">
-      <h2 class= "head-line text-center m-5 "><i class="fas fa-home"></i>マイページ</h2>
-      <h3 class= "total mt-5 text-center">
+    <div class = "col-12 ">
+      <h1 class= "head-line text-center m-5 "><i class="fas fa-home"></i>マイページ</h1>
+      <h2 class="text-center">表示期間</h2>
+      <h3 class = "head-date ml-5 mr-5 text-center">
         <%= link_to users_my_page_path(month: @month.prev_month),'data-turbolinks': false do %>
-          <i class="fas fa-backward"></i>
+          <%= image_tag 'back.jpg', size: "60x50" %>
         <% end %>
         <%= I18n.l @current_month_beginning %> ~
         <%= I18n.l @current_month_end %>
         <%= link_to users_my_page_path(month: @month.next_month),'data-turbolinks': false do %>
-          <i class="fas fa-forward"></i>
+          <%= image_tag 'next.jpg', size: "60x50" %>
         <% end %>
 	    </h3>
 		  <table class="table table-bordered table-hover mt-5">
@@ -30,20 +32,20 @@
           </tbody>
       </table>
     </div>
-    <div class = "col-4 offset-2 mt-5">
+    <div class = "col-lg-4 offset-2 mt-5">
 		  <h2><i class="fas fa-chart-pie"></i>目標家計簿</h2>
 			  <% if current_user.category_ids.present? %>
-          <div class= "chart" style='width:200px; height: 200px;'>
+          <div class= "chart" style='width:300px; height: 300px;'>
               <canvas id ="pie" ></canvas>
           </div>
         <% else %>
           <td>未設定</td>
         <% end %>
     </div>
-		<div class = "col-4 mt-5">
+		<div class = "col-lg-4 offset-2 mt-5">
 			<h2><i class="fas fa-chart-pie"></i>現在の家計簿</h2>
 			<% if @expenses.present? %>
-        <div class= "chart" style='width:200px; height: 200px;'>
+        <div class= "chart" style='width:300px; height: 300px;'>
            <canvas id ="chart" ></canvas>
         </div>
       <% else %>
@@ -103,7 +105,7 @@
 	</div>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
 
 const category_data = {
@@ -169,6 +171,13 @@ new Chart(expense_ctx, {
       */
     }
   });
+  
+     
+      particlesJS.load('particles-js', '../assets/particles.json', function() {
+     
+        });
+
+   
 
 
 </script>
