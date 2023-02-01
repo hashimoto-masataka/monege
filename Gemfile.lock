@@ -145,6 +145,7 @@ GEM
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    particles-js-rails (2.0.0)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -269,6 +270,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  particles-js-rails (= 2.0.0)
   pry-rails
   puma (~> 3.11)
   rack-mini-profiler (~> 2.0)

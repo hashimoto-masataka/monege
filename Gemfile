@@ -71,3 +71,5 @@ gem 'net-imap'
 
 gem 'enum_help'
 gem 'kaminari'
+
+gem 'particles-js-rails', '2.0.0'

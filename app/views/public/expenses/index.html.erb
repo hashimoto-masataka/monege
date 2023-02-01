@@ -1,28 +1,28 @@
 <%= render "layouts/flash" %>
-
 <div class = "container-fluid">
   <div class = "row">
-    <div class ="col-7 offset-1 ">
-      <h2 class= "head-line text-center m-4 "><i class="fas fa-receipt"></i>支出一覧</h2>
-      <h3 class = "text-center">
+    <div class ="col-11  ">
+      <h1 class= "head-line text-center m-5 "><i class="fas fa-receipt"></i>支出一覧</h1>
+      <h2 class="text-center">表示期間</h2>
+      <h3 class = "head-date ml-5 mr-5 text-center">
          <%= link_to expenses_path(month: @month.prev_month),'data-turbolinks': false do %>
-	          <i class="fas fa-backward"></i>
+	          <%= image_tag 'back.jpg', size: "60x50" %>
 	       <% end %>
 	       <%= I18n.l @current_month_beginning %>
 	       <strong class="day mr-5 ml-5">~</strong>
 	       <%= I18n.l @current_month_end %>
 	       <%= link_to expenses_path(month: @month.next_month),'data-turbolinks': false do %>
-	          <i class="fas fa-forward"></i>
+	          <%= image_tag 'next.jpg', size: "60x50" %>
 	       <% end %>
 	     </h3>
     </div>
     
   　<div class= "col-11 ml-5">
-  　  <h2 class ="total mt-5">支出額の合計：
+      <h2 class ="total mt-5">今月の支出額：
          <span class="text-success"><%= @sum_price %>円</span></h2>
-     <h4><%= link_to new_expense_path do %>
-     <i class="fas fa-plus-circle"></i>支出を登録
-     <% end %></h4>
+      <h4><%= link_to new_expense_path do %>
+        <i class="fas fa-plus-circle"></i>支出を登録
+      <% end %></h4>
     </div>
     <div class = "col-lg-4 offset-1 mt-5">
 			<h2><i class="fas fa-chart-pie"></i>現在の家計簿</h2>
@@ -80,10 +80,10 @@
    </div>
   </div>
   <div class="row">
-    <div class="col-11 mt-5 ml-5">
+    <div class="col-lg-11 offset-lg-1 mt-5">
       <h2><i class="fas fa-chart-line"></i>年間の支出</h2>
 
-      <div class= "chart m-5" style='width:70%; height: 400px;'>
+      <div class= "chart m-5" style='width:80%; height: 400px;'>
         <canvas id="line" ></canvas>
       </div>
       </div>

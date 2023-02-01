@@ -1,8 +1,9 @@
 <%= render "layouts/flash" %>
+
 <div class = "container-fluie">
   <div class = "row">
     <div class="col-12">
-      <h2 class= "head-line mt-5 text-center"><i class="fas fa-list-ul"></i>家族登録/一覧</h2>
+      <h1 class= "head-line m-5 text-center"><i class="fas fa-list-ul"></i>家族登録/一覧</h1>
     
         <%= render "/layouts/error", object: @family_new %>
 
@@ -24,6 +25,7 @@
         <thead>
           <tr>
             <th>家族名</th>
+            <th>今月の支出</th>
             <th colspan="2"></th>
             </tr>
         </thead>
@@ -32,7 +34,7 @@
           <div class="list">
             <tr>
               <td><%= family.family_name %></td>
-    
+              <td><%=  family.expenses.where(created_at: @month.all_month).map{|a| a[:price]}.sum %></td>
               <td class= "text-center"><%= link_to edit_family_path(family), class: "btn btn-sm btn-success" do %>
               <i class="fas fa-lg fa-pencil-alt"></i>編集する<% end %></td>
               <td class= "text-center"><%=link_to family_path(family),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
@@ -44,4 +46,65 @@
     </table>
    </div>
   </div>
+  <div class = "row">
+    <div class ="col-7 offset-1 ">
+      <h2 class= "head-line text-center m-4 "><i class="fas fa-receipt"></i>支出一覧</h2>
+      <h3 class = "text-center">
+         <%= link_to families_path(month: @month.prev_month),'data-turbolinks': false do %>
+	          <i class="fas fa-backward"></i>
+	       <% end %>
+	       <%= I18n.l @current_month_beginning %>
+	       <strong class="day mr-5 ml-5">~</strong>
+	       <%= I18n.l @current_month_end %>
+	       <%= link_to families_path(month: @month.next_month),'data-turbolinks': false do %>
+	          <i class="fas fa-forward"></i>
+	       <% end %>
+	     </h3>
+    </div>
+    <div class="col-7 offset-1 text-center">
+     <div class= "chart" style='width:350px; height: 350px;'>
+           <canvas id ="chart" ></canvas>
+    　</div>
+    </div>
+  </div>
 </div>
+ 
+
+
+
+
+<script>
+
+const expense_data = {
+  labels: [
+    <% @family_chart.each do |expense| %>
+      '<%= expense.family.family_name %>',
+    <% end %>
+    ],
+  datasets: [
+    {
+      label: '金額',
+      data: [
+        <% @family_chart.each do |expense| %>
+          '<%= expense.price %>',
+        <% end %>
+      ],
+    }
+  ]
+};
+
+const expense_ctx = document.getElementById('chart');
+new Chart(expense_ctx, {
+    type: 'pie',
+    data: expense_data,
+    options: {
+  /*    scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+      */
+    }
+  });
+  
+</script>
