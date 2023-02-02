@@ -18,6 +18,9 @@ import "../stylesheets/public/homes_multiscroll"
 import "./progressbar.js"
 import '@fortawesome/fontawesome-free/js/all'
 
+
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
