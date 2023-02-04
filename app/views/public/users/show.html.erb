@@ -1,5 +1,4 @@
 <%= render "layouts/flash" %>
-<div id="particles-js"></div>
 <div class="container-fluie">
   <div class="row">
     <div class = "col-12 ">
@@ -105,7 +104,6 @@
 	</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
 
 const category_data = {
@@ -131,12 +129,7 @@ new Chart(pie_ctx, {
     type: 'pie',
     data: category_data,
     options: {
-  /*    scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-      */
+ 
     }
   });
 
@@ -172,12 +165,5 @@ new Chart(expense_ctx, {
     }
   });
   
-     
-      particlesJS.load('particles-js', '../particles.json', function() {
-     
-        });
-
-   
-
 
 </script>
