@@ -1,5 +1,6 @@
 var ProgressBar = require('progressbar.js')
 $(document).on('turbolinks:load', function() {
+  if(document.getElementById('load_text')) {
   var bar = new ProgressBar.Line(load_text, { //idを指名
   easing: 'easeInOut',
   duration: 1000,
@@ -31,4 +32,5 @@ bar.animate(1.0, function(){
   $(".loader_cover-down").addClass("coveranime");
   $("#load").fadeOut();
 });
+};
 });
