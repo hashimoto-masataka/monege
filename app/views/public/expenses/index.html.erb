@@ -25,13 +25,10 @@
     </div>
     <div class = "col-lg-4 offset-1 mt-5">
 			<h2><i class="fas fa-chart-pie"></i>現在の家計簿</h2>
-			<% if @expenses.present? %>
+		
         <div class= "chart" style='width:350px; height: 350px;'>
            <canvas id ="chart" ></canvas>
         </div>
-      <% else %>
-          <td>未設定</td>
-      <% end %>
     </div>
     <div class="col-lg-5 text-center">
       <% if @expenses.present? %>
@@ -71,7 +68,7 @@
         </table>
         <%= paginate @expenses %>
       <% else %>
-       登録がありません
+       <h2 class= "text-center mt-5">登録がありません</h2>
       <% end %>
     </div>
   </div>
@@ -84,6 +81,7 @@
     </div>
   </div>
 </div>
+
 
 <script>
 

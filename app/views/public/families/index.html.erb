@@ -21,25 +21,27 @@
 			<% if @expenses.present? %>
         <div class= "chart" style='width:350px; height: 350px;'>
            <canvas id ="chart" ></canvas>
-    　</div>
+        </div>
       <% else %>
           <td>未設定</td>
+          <div class= "chart" style='width:350px; height: 350px;'>
+            <canvas id ="chart" ></canvas>
+          </div>
       <% end %>
     </div>
     <div class="col-lg-6 mt-5 ">
         
         <%= render "/layouts/error", object: @family_new %>
 
-    <%= form_with model:@family_new,local: true do |f| %>
-      <div class="family">
-        <div class="form-group ">
-          <%=f.label :"家族名",class: " control-label" %>
-          <%=f.text_field :family_name, required: true, class: "col-3 form-control-static postal_code" %>
-          <%= f.submit '新規登録' ,class: "col-3 ml-3 btn-success right" %>
+      <%= form_with model:@family_new,local: true do |f| %>
+        <div class="family">
+          <div class="form-group ">
+            <%=f.label :"家族名",class: " control-label" %>
+            <%=f.text_field :family_name, required: true, class: "col-3 form-control-static postal_code" %>
+            <%= f.submit '新規登録' ,class: "col-3 ml-3 btn-success right" %>
+          </div>
         </div>
-      </div>
-    <% end %>
-
+      <% end %>
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -48,29 +50,25 @@
             <th colspan="2"></th>
             </tr>
         </thead>
-      <% @families.each do |family| %>
-        <tbody>
-          <div class="list">
-            <tr>
-              <td><%= family.family_name %></td>
-              <td><%=  family.expenses.where(created_at: @month.all_month).map{|a| a[:price]}.sum %></td>
-              <td class= "text-center"><%= link_to edit_family_path(family), class: "btn btn-sm btn-success" do %>
-              <i class="fas fa-lg fa-pencil-alt"></i>編集する<% end %></td>
-              <td class= "text-center"><%=link_to family_path(family),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
-              <i class="fas fa-trash-alt"></i>削除する<% end %></td>
-            </tr>
-          </div>
-        </tbody>
-      <% end %>
-    </table>
-   </div>
+        <% @families.each do |family| %>
+          <tbody>
+            <div class="list">
+              <tr>
+                <td><%= family.family_name %></td>
+                <td><%=  family.expenses.where(created_at: @month.all_month).map{|a| a[:price]}.sum %></td>
+                <td class= "text-center"><%= link_to edit_family_path(family), class: "btn btn-sm btn-success" do %>
+                <i class="fas fa-lg fa-pencil-alt"></i>編集する<% end %></td>
+                <td class= "text-center"><%=link_to family_path(family),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
+                <i class="fas fa-trash-alt"></i>削除する<% end %></td>
+              </tr>
+            </div>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
   </div>
- </div>
+</div>
  
-
-
-
-
 <script>
 
 const expense_data = {
