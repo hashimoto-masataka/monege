@@ -1,104 +1,97 @@
 <div class="container-fluie">
 	<div class="row">
-	  <div class = "col-6 col- offset-2 ">
-	    <h2 class= "head-line text-center m-5 "><%= @user.name %>様</h2>
-	    <h3 class= "total mt-5 text-center">
-	        <%= link_to admin_user_path(month: @month.prev_month) do %>
-	          <i class="fa-solid fa-arrow-left"></i>
-	        <% end %>
-	        <%= I18n.l @current_month_beginning %> ~
-	        <%= I18n.l @current_month_end %>
-	        <%= link_to admin_user_path(month: @month.next_month) do %>
-	          <i class="fa-solid fa-arrow-right"></i>
-	        <% end %>
-	    </h3>
-		<table class="table table-bordered table-hover mt-5">
-	      <thead>
-        	<tr>
-              <th class= "text-center">収入</th>
-              <th class= "text-center">支出</th>
-              <th class= "text-center">貯金</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class= "text-center text-success"><%=@sum_price_income %></p></td>
-              <td class= "text-center text-danger"><%= @sum_price_expense %></td>
-              <td class= "text-center"><%= @saving %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-			<div class = "col-4 offset-2 mt-5">
-				<h2>目標家計簿</h2>
-				<% if @user.category_ids.present? %>
-            <div class= "chart" style='width:200px; height: 200px;'>
-               <canvas id ="pie" ></canvas>
-          </div>
-        <% else %>
-            <td>未設定</td>
-        <% end %>
-
-			</div>
-			<div class = "col-4 mt-5">
-				<h2>現在の家計簿</h2>
-					<% if @expenses.present? %>
-            <div class= "chart" style='width:200px; height: 200px;'>
-               <canvas id ="chart" ></canvas>
-       		 </div>
-        <% else %>
-            <td>未設定</td>
-        <% end %>
-
-			</div>
-
-
+		<div class = "col-6 col- offset-2 ">
+		    <h2 class= "head-line text-center m-5 "><%= @user.name %>様</h2>
+		    <h3 class= "total mt-5 text-center">
+		        <%= link_to admin_user_path(month: @month.prev_month) do %>
+		          <i class="fa-solid fa-arrow-left"></i>
+		        <% end %>
+		        <%= I18n.l @current_month_beginning %> ~
+		        <%= I18n.l @current_month_end %>
+		        <%= link_to admin_user_path(month: @month.next_month) do %>
+		          <i class="fa-solid fa-arrow-right"></i>
+		        <% end %>
+		    </h3>
+			<table class="table table-bordered table-hover mt-5">
+		    	<thead>
+	        		<tr>
+		              <th class= "text-center">収入</th>
+		              <th class= "text-center">支出</th>
+		              <th class= "text-center">貯金</th>
+		            </tr>
+	          	</thead>
+	          	<tbody>
+		            <tr>
+		              <td class= "text-center text-success"><%=@sum_price_income %></p></td>
+		              <td class= "text-center text-danger"><%= @sum_price_expense %></td>
+		              <td class= "text-center"><%= @saving %></td>
+		            </tr>
+				</tbody>
+	    	</table>
+		</div>
+		<div class = "col-4 offset-2 mt-5">
+			<h2>目標家計簿</h2>
+			<% if @user.category_ids.present? %>
+            	<div class= "chart" style='width:200px; height: 200px;'>
+               		<canvas id ="pie" ></canvas>
+            	</div>
+        	<% else %>
+            	<td>未設定</td>
+        	<% end %>
+		</div>
+		<div class = "col-4 mt-5">
+			<h2>現在の家計簿</h2>
+			<% if @expenses.present? %>
+            	<div class= "chart" style='width:200px; height: 200px;'>
+            		<canvas id ="chart" ></canvas>
+       		 	</div>
+        	<% else %>
+            	<td>未設定</td>
+        	<% end %>
+		</div>
 	</div>
 	<div class = "row">
 		<div class="col-md-9 offset-1">
-
-		    <h2 class="headline m-5">プロフィール</h2>
-		        <div class="bottm text-right">
-						  <p><%= link_to " 編集する", edit_admin_user_path, class: " btn btn-success ml-4" %></p>
-				</div>
-			  <table class="table table-bordered table-condensed" >
-			  	<tbody>
-					  <tr>
+			<h2 class="headline m-5">プロフィール</h2>
+			<div class="bottm text-right">
+				<p><%= link_to " 編集する", edit_admin_user_path, class: " btn btn-success ml-4" %></p>
+			</div>
+			<table class="table table-bordered table-condensed" >
+		  		<tbody>
+					<tr>
 					  	<td class="info">氏名</td>
 					  	<td class="text-left "><%= @user.name %>
 				  	</tr>
-					  <tr>
-						  <td class="info">年代</td>
-						  <td class="text-left"><%= @user.age %></td>
-					  </tr>
-					  <tr>
+					<tr>
+						<td class="info">年代</td>
+						<td class="text-left"><%= @user.age %></td>
+					</tr>
+					<tr>
 					  	<td class="info">仕事</td>
 					  	<td class="text-left"><%= @user.job %></td>
-					  </tr>
-					  <tr>
+					</tr>
+				    <tr>
 					  	<td class="info">年収</td>
 					  	<td class="text-left"><%= @user.annual_income %></td>
-					  </tr>
-					  <tr>
+					</tr>
+					<tr>
 					  	<td class="info">都道府県</td>
 					  	<td class="text-left"><%= @user.prefecture %></td>
-					  </tr>
-					  <tr>
+					</tr>
+					<tr>
 					    <td class="info">メールアドレス</td>
-					  	<td class="text-left"><%= @user.email %></td>
-					  </tr>
-					  <tr>
+				  		<td class="text-left"><%= @user.email %></td>
+					</tr>
+					<tr>
 					  	<td class="info">家計簿ステータス</td>
-					  	<% if @user.status == false %>
-					    	<td class="text-left">家計簿は非公開です</br>
-					    	<sub>＊ユーザ一覧に表示されていない状態です</sub></td>
-					  	
-					  	<% else %>
-						    <td class="text-left">家計簿を公開中</td>
-					  	<% end %>
-				  	</tr>
-				  	<tr>
+				  		<% if @user.status == false %>
+				    		<td class="text-left">家計簿は非公開です</br>
+				    		<sub>＊ユーザ一覧に表示されていない状態です</sub></td>
+						<% else %>
+					    	<td class="text-left">家計簿を公開中</td>
+				  		<% end %>
+			  		</tr>
+			  		<tr>
 					  	<td class="info">退会ステータス</td>
 					  	<% if @user.is_deleted == false %>
 					    	<td class="text-left">利用中</td>
@@ -106,9 +99,8 @@
 						    <td class="text-left">退会済み</td>
 					  	<% end %>
 				  	</tr>
-
-				  </tbody>
-		  	</table>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

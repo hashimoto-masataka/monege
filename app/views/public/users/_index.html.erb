@@ -1,38 +1,37 @@
+<table class="table table-bordered table-hover mt-4">
+  <thead>
+    <tr>
+        <th>家計簿</th>
+        <th>仕事</th>
+        <th>年代</th>
+        <th>都道府県</th>
+        <th>年収</th>
+      </tr>
+  </thead>
+  <% users.each do |user| %>
+    <tbody>
+     <div class="list">
+      <tr>
+        <td>
+          <%= link_to category_path(user),'data-turbolinks': false do %>
+          <div class="chart" style='width:200px; height: 200px;'>
+             <canvas id="pie-<%= user.id %>" ></canvas>
+          </div>
+          <% end %>
+        </td>
+        <td><%= user.job %></td>
+        <td><%= user.age %></td>
+        <td><%= user.prefecture %></td>
+        <td><%= user.annual_income %></td>
+        <td><%= render 'public/relationships/btn', user: user %></td>
+      </tr>
+     </div>
+    </tbody>
+  <% end %>
+  <%= paginate users %>
+</table>
 
-      <table class="table table-bordered table-hover mt-4">
-      <thead>
-        <tr>
-            <th>家計簿</th>
-            <th>仕事</th>
-            <th>年代</th>
-            <th>都道府県</th>
-            <th>年収</th>
-          </tr>
-      </thead>
-      <% users.each do |user| %>
-      <tbody>
-       <div class="list">
-        <tr>
-          <td>
-            <%= link_to category_path(user),'data-turbolinks': false do %>
-            <div class="chart" style='width:200px; height: 200px;'>
-               <canvas id="pie-<%= user.id %>" ></canvas>
-            </div>
-            <% end %>
-          </td>
-          <td><%= user.job %></td>
-          <td><%= user.age %></td>
-          <td><%= user.prefecture %></td>
-          <td><%= user.annual_income %></td>
-          <td><%= render 'public/relationships/btn', user: user %></td>
-        </tr>
-       </div>
-      </tbody>
-     <% end %>
-     <%= paginate users %>
-    </table>
 <script>
-
 
 const users_data = <%== @users_data.to_json %>
 

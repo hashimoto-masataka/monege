@@ -3,9 +3,8 @@
     <div class="col-11 m-5">
        <h2 class= "head-line text-center m-5">項目編集</h2>
       <div class= "error" >
-       <%= render "/layouts/error", object: @category %>
+        <%= render "/layouts/error", object: @category %>
       </div>
-
       <%= form_with model: @category,local: true do |f| %>
         <div class="category col-9 offset-3">
           <div class="form-group">

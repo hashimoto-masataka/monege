@@ -1,7 +1,5 @@
 class Public::CategoriesController < ApplicationController
-
   before_action :authenticate_user!
-  
 
   def new
     @category = Category.new
@@ -63,12 +61,9 @@ class Public::CategoriesController < ApplicationController
     else
       @category.delete
        redirect_to categories_path,notice:'項目を削除しました'
-       
     end
   end
   
- 
-
   private
 
   def category_params

@@ -1,5 +1,5 @@
 var ProgressBar = require('progressbar.js')
-$(document).on('turbolinks:load', function() {
+document.addEventListener("turbolinks:load", function(){
   if(document.getElementById('load_text')) {
   var bar = new ProgressBar.Line(load_text, { //idを指名
   easing: 'easeInOut',

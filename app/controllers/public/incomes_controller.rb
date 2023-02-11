@@ -1,5 +1,6 @@
 class Public::IncomesController < ApplicationController
   before_action :authenticate_user!
+  
   def new
     @income = Income.new
   end
@@ -25,7 +26,6 @@ class Public::IncomesController < ApplicationController
     @line_monthes = line_monthes.map{|i| i.to_s + "月"}
     @line_datas = line_monthes.map do |i|
       time_zone_local = Time.zone.local(current_year, i, 1, 0, 0, 0)
-      #time.zone.local
       year_incomes.where(created_at: time_zone_local..time_zone_local.end_of_month)
     end.map{|o| o.any? ? o.pluck(:price).sum : 0 }
     #「o」はobjectの略、取り出したexpenseにobject（要素）が入っていればpluckでpriceを取り出し、要素がなければ0で取り出す。
@@ -33,7 +33,6 @@ class Public::IncomesController < ApplicationController
 
   def edit
     @income= Income.find(params[:id])
-
   end
 
   def create

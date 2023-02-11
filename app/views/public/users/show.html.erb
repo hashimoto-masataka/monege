@@ -1,5 +1,5 @@
 <%= render "layouts/flash" %>
-<div class="container-fluie">
+<div class="container-fluid">
   <div class="row">
     <div class = "col-12 ">
       <h1 class= "head-line text-center m-5 "><i class="fas fa-home"></i>マイページ</h1>
@@ -33,13 +33,13 @@
     </div>
     <div class = "col-lg-4 offset-2 mt-5">
 		  <h2><i class="fas fa-chart-pie"></i>目標家計簿</h2>
-			  <% if current_user.category_ids.present? %>
-          <div class= "chart" style='width:300px; height: 300px;'>
-              <canvas id ="pie" ></canvas>
-          </div>
-        <% else %>
-          <td>未設定</td>
-        <% end %>
+		  <% if current_user.category_ids.present? %>
+        <div class= "chart" style='width:300px; height: 300px;'>
+            <canvas id ="pie" ></canvas>
+        </div>
+      <% else %>
+        <td>未設定</td>
+      <% end %>
     </div>
 		<div class = "col-lg-4 offset-2 mt-5">
 			<h2><i class="fas fa-chart-pie"></i>現在の家計簿</h2>
@@ -54,7 +54,6 @@
   </div>
 	<div class = "row">
 		<div class="col-md-9 offset-1">
-            
 		    <h2 class="headline m-5"><i class="fas fa-id-badge"></i>プロフィール</h2>
 		    <div class="bottm text-right">
 				  <p><%= link_to users_information_edit_path, class: " btn btn-success ml-4" do %>
@@ -92,12 +91,10 @@
 					  	<% if current_user.status == false %>
 					    	<td class="text-left">家計簿は非公開です</br>
 					    	<sub>＊ユーザ一覧に表示されていない状態です</sub></td>
-					  	
 					  	<% else %>
 						    <td class="text-left">家計簿を公開中</td>
 					  	<% end %>
 				  	</tr>
-
 				  </tbody>
 		  	</table>
 		</div>

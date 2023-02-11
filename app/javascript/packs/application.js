@@ -16,6 +16,7 @@ import "../stylesheets/public/homes"
 import "../stylesheets/public/homes_multiscroll"
 
 import "./progressbar.js"
+import "./multiscroll.js"
 import '@fortawesome/fontawesome-free/js/all'
 
 
