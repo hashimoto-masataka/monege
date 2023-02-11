@@ -2,24 +2,23 @@
   <div class = "row">
     <div class = "col-11 m-5">
       <h1 class= "head-line text-center m-5"><i class="fas fa-chart-pie"></i>目標家計簿詳細</h1>
-      　<div class = "col-9 offset-2 plofile">
-          <table class="table table-bordered table-hover ">
-       
-            <tbody>
-              <tr>
-          　     <td> <%= @user.name %></td>
-          　     <td> <%= @user.job %></td>
-          　     <td> <%= @user.age %></td>
-          　     <td> <%= @user.annual_income %></td>
-          　     <td> <%= @user.prefecture %></td>
-          　   <% if @user.status = true %>
-          　     <td><%= render 'public/relationships/btn', user: @user %></td>
-          　   <% else %>
-              <% end %>
-           　  </tr>
-            </tbody>
-          </table>
-      　</div>
+    　<div class = "col-9 offset-2 plofile">
+        <table class="table table-bordered table-hover ">
+          <tbody>
+            <tr>
+        　     <td> <%= @user.name %></td>
+        　     <td> <%= @user.job %></td>
+        　     <td> <%= @user.age %></td>
+        　     <td> <%= @user.annual_income %></td>
+        　     <td> <%= @user.prefecture %></td>
+        　   <% if @user.status = true %>
+        　     <td><%= render 'public/relationships/btn', user: @user %></td>
+        　   <% else %>
+            <% end %>
+         　  </tr>
+          </tbody>
+        </table>
+    　</div>
     </div>
     <div class="col-lg-4 offset-1">
       <div class= "chart" style='width:300px; height: 300px;'>
@@ -47,12 +46,8 @@
         <% end %>
       </table>
     </div>
-
-
   </div>
 </div>
-
-
 
 <script>
 
@@ -87,18 +82,5 @@ new Chart(pie_ctx, {
       */
     }
   });
-const column_ctx = document.getElementById('column_chart');
-new Chart(column_ctx, {
-    type: 'bar',
-    data: category_data,
-    options: {
-  /*    scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-      */
-    }
-  });
-  
+
 </script>

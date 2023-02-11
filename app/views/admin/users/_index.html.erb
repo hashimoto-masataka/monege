@@ -1,28 +1,28 @@
 <h2 class="top m-5">ユーザー一覧</h2>
-      <table class="table table-bordered table-hover m-5">
-      <thead>
+<table class="table table-bordered table-hover m-5">
+    <thead>
         <tr>
             <th>会員ID</th>
             <th>名前</th>
             <th>メールアドレス</th>
             <th>会員ステータス</th>
-          </tr>
-      </thead>
-      <% users.each do |user| %>
-      <tbody>
-       <div class="list">
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.name,admin_user_path(user),'data-turbolinks': false %></td>
-          <td><%= user.email %></td>
-          <% if user.is_deleted == false %>
-              <td class="text-success font-weight-bold">有効</td>
-          <% else %>
-              <td class="text-muted">退会</td>
-          <% end %>
         </tr>
-       </div>
-      </tbody>
-     <% end %>
-     <%= paginate @users %>
-    </table>
+    </thead>
+    <% users.each do |user| %>
+        <tbody>
+            <div class="list">
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= link_to user.name,admin_user_path(user),'data-turbolinks': false %></td>
+                    <td><%= user.email %></td>
+                    <% if user.is_deleted == false %>
+                      <td class="text-success font-weight-bold">有効</td>
+                    <% else %>
+                      <td class="text-muted">退会</td>
+                    <% end %>
+                </tr>
+            </div>
+        </tbody>
+    <% end %>
+    <%= paginate @users %>
+</table>

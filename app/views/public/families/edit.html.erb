@@ -3,7 +3,7 @@
    <div class="col-7 offset-1 mt-5">
     <h2 class= "head-line mt-4 ml-5">家族編集</h2>
     <div class= "error" >
-
+       <%= render "/layouts/error", object: @family %>
     </div>
     <%= form_with(model: @family, url:family_path, local: true ) do |f| %>
       <div class="expense col-12 mt-5">

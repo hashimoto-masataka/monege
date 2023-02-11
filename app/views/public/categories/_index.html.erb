@@ -5,8 +5,9 @@
 </div>
 <div class="col-lg-6 mb-3">
   <h4><%= link_to new_category_path do %>
-       <i class="fas fa-plus-circle"></i>項目を追加
-       <% end %></h4>
+        <i class="fas fa-plus-circle"></i>項目を追加
+      <% end %>
+  </h4>
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -21,16 +22,14 @@
             <td class = "col-2"><div style="color: <%= category.color %>;"> <%= category.category_name %></div></td>
             <td>&yen;<%= "#{category.target_price.to_s(:delimited)} (#{((category.target_price.to_f / sum_target_price.to_f) * 100).round(2)} %)" %>
             </td>
-          
             <td class= "text-center"><%= link_to edit_category_path(category), class: "btn btn-sm btn-success" do %>
-            <i class="fas fa-lg fa-pencil-alt"></i>編集する<% end %></td>
+              <i class="fas fa-lg fa-pencil-alt"></i>編集する<% end %></td>
             <td class= "text-center"><%=link_to category_path(category),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
-            <i class="fas fa-trash-alt"></i>削除する<% end %></td>
+              <i class="fas fa-trash-alt"></i>削除する<% end %></td>
           </tr>
         </tbody>
       <% end %>
     <% end %>
   </table>
-  
 </div>
 

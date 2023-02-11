@@ -16,7 +16,6 @@
 	       <% end %>
 	     </h3>
     </div>
-    
   　<div class= "col-11 ml-5">
       <h2 class ="total mt-5">今月の支出額：
          <span class="text-success"><%= @sum_price %>円</span></h2>
@@ -36,60 +35,55 @@
     </div>
     <div class="col-lg-5 text-center">
       <% if @expenses.present? %>
-       <table class="table table-bordered table-hover mt-5">
-         <thead>
-           <tr>
-             <th>日付</th>
-             <th>支出金額</th>
-             <th>項目</th>
-             <th>家族名</th>
-             <th colspan="2"></th>
-           </tr>
-         </thead>
-
-        <% @expenses.each do |expense| %>
-
-        <tbody>
-          <div class="list">
-           <tr>
-             <td ><%= link_to edit_expense_path(expense) do %>
-                    <%= I18n.l expense.created_at, format: :short %>
-                  <% end %>
-             </td>
-                <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
-             <td><%= expense.price.floor.to_s(:delimited)%> 円 </td>
-             <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></div></td>
-               <% if expense.family.present? %>
-                 <td><%= expense.family.family_name %></td>
-               <% else %>
-                 <td>未設定</td>
-               <% end %>
-             <td><%= expense.note %></td>
-             <td><%=link_to expense_path(expense),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
-             <i class="fas fa-trash-alt"></i>削除する<% end %></td>
-             </tr>
-          </div>
-        </tbody>
-        <% end %>
-     </table>
-     <%= paginate @expenses %>
-    <% else %>
-   登録がありません
-    <% end %>
-
-   </div>
+        <table class="table table-bordered table-hover mt-5">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>支出金額</th>
+              <th>項目</th>
+              <th>家族名</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <% @expenses.each do |expense| %>
+            <tbody>
+              <div class="list">
+               <tr>
+                 <td ><%= link_to edit_expense_path(expense) do %>
+                        <%= I18n.l expense.created_at, format: :short %>
+                      <% end %>
+                 </td>
+                    <!--config/locales/ja.ymlでcreated_atとformat: :shortを日本語表記になるように定義-->
+                 <td><%= expense.price.floor.to_s(:delimited)%> 円 </td>
+                 <td class = "col-2"><div style="color: <%= expense.category.color %>;"><%= expense.category.category_name %></div></td>
+                   <% if expense.family.present? %>
+                     <td><%= expense.family.family_name %></td>
+                   <% else %>
+                     <td>未設定</td>
+                   <% end %>
+                 <td><%= expense.note %></td>
+                 <td><%=link_to expense_path(expense),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
+                 <i class="fas fa-trash-alt"></i>削除する<% end %></td>
+                 </tr>
+              </div>
+            </tbody>
+          <% end %>
+        </table>
+        <%= paginate @expenses %>
+      <% else %>
+       登録がありません
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <div class="col-lg-11 offset-lg-1 mt-5">
       <h2><i class="fas fa-chart-line"></i>年間の支出</h2>
-
       <div class= "chart m-5" style='width:80%; height: 400px;'>
         <canvas id="line" ></canvas>
       </div>
-      </div>
     </div>
   </div>
-
+</div>
 
 <script>
 

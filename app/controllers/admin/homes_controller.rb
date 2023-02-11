@@ -4,7 +4,5 @@ class Admin::HomesController < ApplicationController
   def top
     @users = User.all.page(params[:page]).per(7)
   end
-  
-  
 
 end

@@ -1,21 +1,22 @@
-<div class="container-fluied">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12 text-center m-5">
       <h1 class="head mt-5"><strong>本当に退会しますか？</strong></h1>
-
-    <h3 class="unsubscribe-msg mt-5">
-      <strong>
-      退会すると会員情報登録や<br>
-      これまでの収支の履歴が閲覧できなくなります。<br>
-      退会する場合は,「退会する」をクリックしてください。
-      </strong>
-    </h3>
-    <div class="botom mt-5">
-      <%= link_to users_path, class: 'glyphicon glyphicon-home btn-lg btn-primary' do %>
-      <i class="fas fa-user"></i>退会しない<% end %>
-      <%= link_to withdraw_path, method: :patch, data: {confirm: "本当に退会してもよろしいですか？"}, class: "glyphicon glyphicon-tint btn-lg btn-danger ml-5" do %>
-      <i class="fas fa-user-slash"></i>退会する<% end %>
-    </div>
+      <h3 class="unsubscribe-msg mt-5">
+        <strong>
+          退会すると会員情報登録や<br>
+          これまでの収支の履歴が閲覧できなくなります。<br>
+          退会する場合は,「退会する」をクリックしてください。
+        </strong>
+      </h3>
+      <div class="botom mt-5">
+        <%= link_to users_path, class: 'glyphicon glyphicon-home btn-lg btn-primary' do %>
+          <i class="fas fa-user"></i>退会しない
+        <% end %>
+        <%= link_to withdraw_path, method: :patch, data: {confirm: "本当に退会してもよろしいですか？"}, class: "glyphicon glyphicon-tint btn-lg btn-danger ml-5" do %>
+          <i class="fas fa-user-slash"></i>退会する
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

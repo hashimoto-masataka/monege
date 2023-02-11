@@ -7,7 +7,6 @@
 				  <p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
 		  	<% end %>
         <% if @users.exists? %>
-        
           <%= render 'public/users/index',users: @users %>
         <% else %>
           <p>ユーザーはいません</p>

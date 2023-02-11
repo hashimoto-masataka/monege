@@ -21,13 +21,10 @@ class Public::UsersController < ApplicationController
   def show
     @user = current_user
     @categories = @user.categories
-
-
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     #params[:month]?でmonthが渡れば「：」の左側のData .parse (params [:month]）が適応され、
     #monthがなければ右側のTime.zone.todayが適応される。（なのでindexページは最初は今月分のみ表示される）
     #viewの（month @month.prev_month)でmonthを渡すことでDate.parse(params[:month])が適応される。
-
     @current_month_beginning = @month.beginning_of_month
     @current_month_end = @month.end_of_month
     @expenses = current_user.expenses.where(created_at: @month.all_month)

@@ -2,20 +2,15 @@ class Admin::UsersController < ApplicationController
   def index
     user = User.where(status: true) and User.where(is_deleted: false)
     @users = user.all.page(params[:page]).per(7)
-    
-
   end
 
   def show
     @user = User.find(params[:id])
     @categories = @user.categories
-
-
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     #params[:month]?でmonthが渡れば「：」の左側のData .parse (params [:month]）が適応され、
     #monthがなければ右側のTime.zone.todayが適応される。（なのでindexページは最初は今月分のみ表示される）
     #viewの（month @month.prev_month)でmonthを渡すことでDate.parse(params[:month])が適応される。
-
     @current_month_beginning = @month.beginning_of_month
     @current_month_end = @month.end_of_month
     @expenses = @user.expenses.where(created_at: @month.all_month)
@@ -24,7 +19,6 @@ class Admin::UsersController < ApplicationController
     @sum_price_expense = @expenses.where(id: @user.expense_ids).sum(:price)
     @sum_price_income = @incomes.where(id: @user.income_ids).sum(:price)
     @sum_target_price = Category.where(id: @user.category_ids).sum(:target_price)
-    
     @saving = @sum_price_income - @sum_price_expense
   end
 
@@ -54,8 +48,6 @@ class Admin::UsersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-
-  
 
 private
 
