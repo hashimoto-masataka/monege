@@ -13,7 +13,7 @@
               <%= search_form_for @q, url: users_search_path do |f| %>
                 <div class="form-group col-12">
                   <%= f.label :prefecture, "都道府県", class: "col-6 control-label" %>
-                  <%= f.select :prefecture_cont, User.prefectures.map{ |k, v| [k, v] }, {}, class: "form-control-static name" %>
+                  <%= f.select :prefecture_eq, User.prefectures.map{ |k, v| [k, v] }, {}, class: "form-control-static name" %>
                 </div>
                 <div class="form-group col-12">
                   <%= f.label :age, "年代", class: "col-6 control-label" %>

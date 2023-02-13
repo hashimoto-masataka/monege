@@ -104,7 +104,7 @@ private
  end
  
  def process_params_q
-   if params[:q][:prefecture_cont] == "0"
+   if params[:q][:prefecture_eq] == "0"
       params[:q].delete("prefecture_cont")
     end
     if params[:q][:age_cont] == "0"
