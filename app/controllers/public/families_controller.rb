@@ -2,11 +2,9 @@ class Public::FamiliesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    day_zone
     @families = current_user.families
     @family_new= Family.new
-    @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
-    @current_month_beginning = @month.beginning_of_month
-    @current_month_end = @month.end_of_month
     all_expenses = current_user.expenses
     @expenses = all_expenses.where(created_at: @month.all_month)
     expenses_total = current_user.expenses.where(created_at: @month.all_month)
@@ -57,5 +55,11 @@ class Public::FamiliesController < ApplicationController
 
   def family_params
     params.require(:family).permit(:family_name)
+  end
+  
+  def day_zone
+    @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
+    @current_month_beginning = @month.beginning_of_month
+    @current_month_end = @month.end_of_month
   end
 end

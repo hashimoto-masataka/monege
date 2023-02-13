@@ -64,7 +64,18 @@ class User < ApplicationRecord
 
    def active_for_authentication?
     super && (is_deleted == false)
-  end
+   end
+  
+   def self.ransackable_attributes(auth_object = nil)
+    #ransackable_attributesで検索対象に許可するカラムを指定
+     ["age", "annual_income", "created_at", "email", "encrypted_password", "id", "is_deleted", "job", "name", "prefecture" ]
+   end
+   
+   def self.ransackable_associations(auth_object = nill)
+     []
+   end 
+  
+  
 
 
    def self.guest
