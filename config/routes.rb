@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
  devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -26,11 +21,11 @@ Rails.application.routes.draw do
     get 'followings' =>'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
    end
-
-   get "/users/my_page" => "users#show"
-   get "/users/information/edit" => "users#edit"
-   patch "users/information" => "users#update"
-   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  get '/users/search' => "users#search" 
+  get "/users/my_page" => "users#show"
+  get "/users/information/edit" => "users#edit"
+  patch "users/information" => "users#update"
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
   # 論理削除用のルーティング
   patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
   resources :families, only: [:new,:index, :edit, :create, :update, :destroy]

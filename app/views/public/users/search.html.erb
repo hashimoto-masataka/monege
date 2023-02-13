@@ -1,7 +1,7 @@
 <div class ="container-fluid">
   <div class="row">
     <div class ="col-10 offset-1">
-      <h2 class= "headline mt-5"><i class="fas fa-users"></i>ユーザ一覧</h2>
+      <h2 class= "headline mt-5"><i class="fas fa-users"></i>ユーザー検索結果</h2>
       <div class="nav-link gradient4 " data-toggle="modal" data-target="#searchModal">ユーザー検索</div>
       
       	<% if current_user.name != "guestuser" %>
@@ -17,4 +17,5 @@
     </div>
   </div>
 </div>
+
 <%= render 'public/users/modal_search' %>
