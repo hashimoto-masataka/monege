@@ -5,8 +5,8 @@
       <div class="nav-link gradient4 " data-toggle="modal" data-target="#searchModal">ユーザー検索</div>
       
       	<% if current_user.name != "guestuser" %>
-				  <p><%=link_to"参考にしたユーザー",user_followings_path(@user) %></p>
-				  <p><%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) %></p>
+				  <%=link_to"参考にしたユーザー",user_followings_path(@user), class: "gradient4" %>
+				  <%=link_to"あなたを参考にしたユーザー",user_followers_path(@user) , class: "gradient4"%>
 		  	<% end %>
         <% if @users.exists? %>
          

@@ -19,9 +19,7 @@
   　<div class= "col-11 ml-5">
       <h2 class ="total mt-5">今月の支出額：
          <span class="text-success"><%= @sum_price %>円</span></h2>
-      <h4><%= link_to new_expense_path do %>
-        <i class="fas fa-plus-circle"></i>支出を登録
-      <% end %></h4>
+      <h4><%= link_to"支出を登録",new_expense_path, class: "gradient2" %></h4>
     </div>
     <div class = "col-lg-4 offset-1 mt-5">
 			<h2><i class="fas fa-chart-pie"></i>現在の家計簿</h2>

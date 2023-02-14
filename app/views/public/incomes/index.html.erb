@@ -19,8 +19,7 @@
     <div class="col-11 ml-5">
       <h2 class ="total mt-5">収入額の合計：
         <span class="text-success"><%= @sum_price %>円</span></h2>
-      <h4><%= link_to new_income_path do %>
-        <i class="fas fa-plus-circle"></i>収入を登録<% end %></h4>
+      <h4><%= link_to"収入を登録", new_income_path,class: "gradient2" %></h4>
     </div>
     <div class="col-7 offset-1 text-center">
       <% if @incomes.present? %>

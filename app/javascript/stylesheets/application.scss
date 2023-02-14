@@ -113,6 +113,85 @@ footer {
   z-index : 2;
 }
 
+.gradient {
+  display: inline-block;
+  color: #fff;
+  padding: 18px 50px;
+  border-radius: 30px;
+  text-decoration: none;
+  outline: none;
+  background: linear-gradient(to right, #44ea76 0%, #39fad7 80%, #39fad7 100%);
+  transition: all 0.3s;
+}
+
+.gradient:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 15px rgba(57,250,215,0.4);
+}
+
+.gradient1 {
+  display: inline-block;
+  color: #fff;
+  padding: 18px 50px;
+  border-radius: 30px;
+  text-decoration: none;
+  outline: none;
+  background: linear-gradient(270deg, #fa6c9f 0%, #ffe140 50%, #ff357f 100%);
+  transition: all 0.3s;
+}
+
+.gradient1:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 15px rgba(57,250,215,0.4);
+}
+
+.gradient2 {
+  display: inline-block;
+  color: #fff;
+  padding: 18px 50px;
+  border-radius: 30px;
+  text-decoration: none;
+  outline: none;
+  background: linear-gradient(to right, #44ea76 0%, #39fad7 80%, #39fad7 100%);
+  transition: all 0.3s;
+}
+
+.gradient2:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 15px rgba(57,250,215,0.4);
+}
+
+
+
+.gradient4 {
+  /*ボタンの形状*/
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  border: 1px solid #fa6c9f;
+  color: #fa6c9f;
+  outline: none;
+
+  transition: all 0.4s ease-out;
+}
+
+
+.gradient4:hover {
+  /*ボタンの形状*/
+  border-color: transparent;
+  color: #fff;
+  /*背景の色との形状*/
+  background: linear-gradient(270deg,#fa6c9f 0%, #ffe140 50%, #ff357f 100%);
+  background-size: 200% auto;
+  background-position: right center;
+  /*ボックスの影*/
+  box-shadow: 0 5px 10px rgb(250, 108,159,0.4);
+}
+
+
+
+
 .bordercenter span::before,
 .bordercenter span::after {
   content: '';
