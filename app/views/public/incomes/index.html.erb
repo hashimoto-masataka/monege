@@ -3,18 +3,18 @@
   <div class="row">
     <div class="col-12">
       <h1 class= "head-line text-center mt-5 "><i class="fas fa-money-bill-wave-alt"></i>収入一覧</h1>
-      <h2 class="text-center">表示期間</h2>
-      <h3 class = "head-date ml-5 mr-5 text-center">
+      <h2 class="text-center mt-5">表示期間</h2>
+      <h4 class = "head-date text-center">
         <%= link_to incomes_path(month: @month.prev_month) ,'data-turbolinks': false do %>
           <%= image_tag 'back.jpg', size: "50x40" %>
         <% end %>
-        <i class="fas fa-calendar-alt"></i><%= I18n.l @current_month_beginning %>
+        <%= I18n.l @current_month_beginning %>
         <strong class="day mr-2 ml-2">~</strong>
-        <%= I18n.l @current_month_end %><i class="fas fa-calendar-alt"></i>
+        <%= I18n.l @current_month_end %>
 	       <%= link_to incomes_path(month: @month.next_month),'data-turbolinks': false do %>
 	          <%= image_tag 'next.jpg', size: "50x40" %>
 	       <% end %>
-	     </h3>
+	     </h4>
     </div>
     <div class="col-11 ml-5 mt-5">
       <h2 class ="total mt-5">収入額の合計：
