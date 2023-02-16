@@ -1,22 +1,22 @@
 <%= render "layouts/flash" %>
 <div class = "container-fluid">
   <div class = "row">
-    <div class ="col-11  ">
-      <h1 class= "head-line text-center m-5 "><i class="fas fa-receipt"></i>支出一覧</h1>
-      <h2 class="text-center">表示期間</h2>
-      <h3 class = "head-date ml-5 mr-5 text-center">
+    <div class ="col-12  ">
+      <h1 class= "head-line text-center mt-5 "><i class="fas fa-receipt"></i>支出一覧</h1>
+      <h2 class="text-center mt-5">表示期間</h2>
+      <h4 class = "head-date text-center">
          <%= link_to expenses_path(month: @month.prev_month),'data-turbolinks': false do %>
-	          <%= image_tag 'back.jpg', size: "60x50" %>
+	          <%= image_tag 'back.jpg', size: "50x40" %>
 	       <% end %>
 	       <%= I18n.l @current_month_beginning %>
-	       <strong class="day mr-5 ml-5">~</strong>
+	       <strong class="day mr-2 ml-2">~</strong>
 	       <%= I18n.l @current_month_end %>
 	       <%= link_to expenses_path(month: @month.next_month),'data-turbolinks': false do %>
-	          <%= image_tag 'next.jpg', size: "60x50" %>
+	          <%= image_tag 'next.jpg', size: "50x40" %>
 	       <% end %>
-	     </h3>
+	     </h4>
     </div>
-  　<div class= "col-11 ml-5">
+  　<div class= "col-12 mt-5">
       <h2 class ="total mt-5">今月の支出額：
          <span class="text-success"><%= @sum_price %>円</span></h2>
       <h4><%= link_to"支出を登録",new_expense_path, class: "gradient2" %></h4>

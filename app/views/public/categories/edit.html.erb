@@ -1,26 +1,27 @@
-<div class = "containerfluid">
+<div class = "container-fluid">
   <div class = "row">
-    <div class="col-11 m-5">
-       <h2 class= "head-line text-center m-5">項目編集</h2>
+    <div class="col-12 mt-5">
+       <h2 class= "head-line text-center mt-5">項目編集</h2>
       <div class= "error" >
        <%= render "/layouts/error", object: @category %>
       </div>
 
       <%= form_with model: @category,local: true do |f| %>
-        <div class="category col-9 offset-3">
+        <div class="col-lg-9 offset-lg-3 mb-5">
           <div class="form-group mt-5">
-            <%=f.label :category_name, "項目名",class: "control-label" %>
-            <%=f.text_field :category_name, required: true,class: "col-6 ml-5 offset-1 form-control-static" %>
+            <%=f.label :category_name, "項目名",class: "col-6 control-label" %>
+            <%=f.text_field :category_name, required: true,class: "col-lg-7 form-control-static" %>
           </div>
           <div class="form-group">
-            <%= f.label :target_price, "月の目標金額：", class: "form-label" %>
-            <%= f.number_field :target_price, required: true,class:"col-8 form-control input-price" %>
+            <%= f.label :target_price, "月の目標金額：", class: "col-lg-6 form-label" %>
+            <%= f.number_field :target_price, required: true,class:"col-lg-7 form-control input-price" %>
           </div>
           <div class="form-group">
             <%= f.label :color, "カテゴリカラー：", class: "form-label" %>
             <%= f.color_field :color, list: "col-7 offset-2 color-list" %>
           </div>
-            <%= f.submit '更新' ,class: "offset-3 col-2 m-5 btn-lg btn-success right" %>
+          <div class="form-group mb-5">
+            <%= f.submit '更新' ,class: "mb-5 btn-lg btn-success right" %>
           </div>
         </div>
       <% end %>

@@ -1,23 +1,23 @@
 <div class = "container-fluid">
   <div class = "row">
-    <div class="col-11 m-5">
-      <h1 class= "head-line text-center m-5">収入編集</h1>
+    <div class="col-12 mt-5">
+      <h1 class= "head-line text-center mt-5">収入編集</h1>
     
      <%= render "/layouts/error", object: @income %>
     
     <%= form_with(model: @income, url:income_path, local: true ) do |f| %>
-      <div class="col-9 offset-3">
+      <div class="col-lg-9 offset-lg-3 mb-lg-5">
         <div class="form-group ">
           <%=f.label :price,"収入金額",class: "control-label" %>
-          <%=f.number_field :price, required: true,class: "col-4 offset-2 form-control-static" %>円
+          <%=f.number_field :price, required: true,class: "col-lg-4 offset-lg-2 form-control-static" %>円
         </div>
         <div class="form-group">
           <%= f.label :"備考欄", class: 'control-label' %>
-          <%= f.text_field :note, class: 'col-7 form-control' %>
+          <%= f.text_field :note, class: 'col-lg-7 form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :"日付", class: 'control-label' %>
-          <%= f.date_field :created_at, class: 'col-7 form-control' %>
+          <%= f.date_field :created_at, class: 'col-lg-7 form-control' %>
         </div>
         <div class="form-group col-12">
            <%= f.label :family,"家族",class: "col-6 control-label" %>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit '更新する' ,class: "offset-3 col-2 btn-lg btn-success right" %>
+          <%= f.submit '更新する' ,class: "mb-5 btn-lg btn-success right" %>
         </div>
       </div>
     <% end %>

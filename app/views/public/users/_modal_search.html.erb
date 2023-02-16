@@ -1,4 +1,4 @@
-<div class="modal fade " id="searchModal">
+<div class="modal fade mt-5 " id="searchModal">
   <div class="modal-dialog">
     <div class="modal-content background-color: bg-light">
       <div class="modal-header">
@@ -11,20 +11,20 @@
           <div class="row">
             <div class="col-12 ">
               <%= search_form_for @q, url: users_search_path do |f| %>
-                <div class="form-group col-12">
-                  <%= f.label :prefecture, "都道府県", class: "col-6 control-label" %>
+                <div class="form-group">
+                  <%= f.label :prefecture, "都道府県", class: "col-lg-6 control-label" %>
                   <%= f.select :prefecture_eq, User.prefectures.map{ |k, v| [k, v] }, {}, class: "form-control-static name" %>
                 </div>
-                <div class="form-group col-12">
-                  <%= f.label :age, "年代", class: "col-6 control-label" %>
+                <div class="form-group ">
+                  <%= f.label :age, "年代", class: "col-lg-6 control-label" %>
                   <%= f.select :age_cont, User.ages.map { |k, v| [k, v] }, {}, class: "col-5 form-control-static name" %>
                 </div>
-                <div class="form-group col-12">
-                  <%= f.label :annual_income, "収入", class: "col-6 control-label" %>
+                <div class="form-group">
+                  <%= f.label :annual_income, "収入", class: "col-lg-6 control-label" %>
                   <%= f.select :annual_income_cont, User.annual_incomes.map { |k, v| [k, v] }, {}, class: "col-5 form-control-static name" %>
                 </div>
-                <div class="form-group col-12">
-                  <%= f.label :job, "職業", class: "col-6 control-label" %>
+                <div class="form-group ">
+                  <%= f.label :job, "職業", class: "col-lg-6 control-label" %>
                   <%= f.select :job_cont, User.jobs.map { |k, v| [k, v] },{}, class: "col-5 form-control-static name" %>
                 </div>    
                     

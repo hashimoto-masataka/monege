@@ -1,20 +1,20 @@
 <div class = "container-fluid">
   <div class = "row">
-    <div class="col-11 m-5">
-      <h1 class= "head-line text-center m-5">支出登録</h1>
+    <div class="col-12 mt-5">
+      <h1 class= "head-line text-center mt-5">支出登録</h1>
    
         <%= render "/layouts/error", object: @expense %>
 
       <%= form_with model: @expense,local: true do |f| %>
-        <div class="expense col-9 offset-3">
+        <div class="col-lg-9 offset-lg-3 pb-lg-5">
           <div class="form-group ">
             <strong><%=f.label :"支出金額",class: "control-label" %></strong>
-            <%=f.number_field :price, required: true,class: "col-4 offset-2  form-control-static " %>円
+            <%=f.number_field :price, required: true,class: "col-lg-5 offset-lg-1  form-control-static " %>円
             <!--required: trueで空白での送信を防ぐ-->
           </div>
           <div class="form-group">
             <strong><%= f.label :"備考欄", class: 'control-label' %></strong>
-            <%= f.text_field :note, class: 'col-7 form-control' %>
+            <%= f.text_field :note, class: 'col-lg-7 form-control' %>
           </div>
           <div class="form-group">
            <strong> <%= f.label :created_at,"日付", class: 'control-label' %></strong>
@@ -27,7 +27,7 @@
             <%= f.select :family_id, options_from_collection_for_select(current_user.families, :id, :family_name),class: "col-5 control-label"  %>
           </div>
           <div class="form-group">
-            <%= f.submit '新規登録' ,class: "offset-3 col-2 btn-lg btn-success right" %>
+            <%= f.submit '新規登録' ,class: "mb-5 btn-lg btn-success right" %>
           </div>
         </div>
       <% end %>
