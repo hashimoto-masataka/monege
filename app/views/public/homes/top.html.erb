@@ -7,16 +7,16 @@
 	<div class="ms-left">
 		<div class="ms-section " id="left1">
 	    	<div class="text ml-5">
-    			<p class="sub-title ml-5 mt-5">〜お金と真摯に向き合う〜</p>
+    			<p class="sub-title ml-5 ">〜お金と真摯に向き合う〜</p>
         		<h1 class="title ml-5 ">MONEGE</h1>
       		</div>
         	<% if user_signed_in? %>
-        	<div class ="bottom p-3 ">
+        	<div class ="bottom ">
             	<div><%= link_to "マイページ", users_my_page_path(current_user) ,class: "gradient4" %></div>
             	<div><%= link_to "ログアウト", destroy_user_session_path,method: :delete ,class: "gradient4" %></div>
 			</div>
         	<% else %>
-        	<div class ="bottom p-3">
+        	<div class ="bottom">
         		<div class="nav-link gradient4 " data-toggle="modal" data-target="#signUpModal">新規登録</div>
 				<div class="nav-link gradient4" data-toggle="modal" data-target="#logInModal">ログイン</div>
 				<div><%= link_to "ゲスト", users_guest_sign_in_path, method: :post ,class: "gradient4" %></div>

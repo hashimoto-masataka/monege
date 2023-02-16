@@ -1,18 +1,18 @@
 <div class = "container-fluid">
   <div class = "row">
-    <div class = "col-7 offset-3 mt-5">
+    <div class = "col-lg-9 offset-2 mt-5">
       <h2>ログイン</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
           <div class="field">
-            <%= f.label :email ,class: "col-6 control-label"%><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5 form-control-static" %>
+            <%= f.label :email ,class: "col-lg-6 control-label"%><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-5 form-control-static" %>
           </div>
 
           <div class="field">
-            <%= f.label :password ,class: "col-6 control-label"%><br />
-            <%= f.password_field :password, autocomplete: "current-password" , class: "col-5 form-control-static"%>
+            <%= f.label :password ,class: "col-lg-6 control-label"%><br />
+            <%= f.password_field :password, autocomplete: "current-password" , class: "col-lg-5 form-control-static"%>
           </div>
 
           <% if devise_mapping.rememberable? %>
