@@ -1,41 +1,41 @@
 <div class="container-fluid">
 　<div class="row">
-　  <div class="col-7 offset-1 ">
+　  <div class="col-lg-7 offset-lg-1 mb-5">
 　    <h2 class="headline text-center">プロフィール編集</h2>
 　      <%= form_with(model:@user, url:users_information_path, local: true ) do |f| %>
-          <div class="form-group col-12 mt-5">
-            <%= f.label :name, "ニックネーム", class: "col-6 control-label" %>
-            <%= f.text_field :name, class: "col-5 form-control-static" %>
+          <div class="form-group col-lg-12 mt-5">
+            <%= f.label :name, "ニックネーム", class: "col-lg-6 control-label" %>
+            <%= f.text_field :name, class: "col-lg-5 form-control-static" %>
           </div>
-          <div class="form-group col-12">
-            <%= f.label :prefecture, "都道府県", class: "col-6 control-label" %>
+          <div class="form-group col-lg-12">
+            <%= f.label :prefecture, "都道府県", class: "col-lg-6 control-label" %>
             <%= f.select :prefecture, User.prefectures.map{ |k, v| [k, k] }, {}, class: "form-control-static name" %>
               <%#mapメソッドはprefecture変数の要素をk＝文字、v＝id で定義、enum_helpを実装し、prefectureであればprefecture_i18nと記述することで日本語で実装できる
                 が今回はすでに日本語で登録しているため不要。[k, k] と記述することで保存されるのはIDだが表示は文字になる。[k,v ] と保存するとshow.htmlにはIDが表示される%>
           </div>
           <div class="form-group col-12">
-            <%= f.label :email, "メールアドレス", class: "col-6 control-label" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5 form-control-static" %>
+            <%= f.label :email, "メールアドレス", class: "col-lg-6 control-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-5 form-control-static" %>
           </div>
           <div class="form-group col-12">
-            <%= f.label :age, "年代", class: "col-6 control-label" %>
-            <%= f.select :age, User.ages.map { |k, v| [k, k] }, {}, class: "col-5 form-control-static name" %>
+            <%= f.label :age, "年代", class: "col-lg-6 control-label" %>
+            <%= f.select :age, User.ages.map { |k, v| [k, k] }, {}, class: "col-lg-5 form-control-static name" %>
           </div>
           <div class="form-group col-12">
-            <%= f.label :annual_income, "収入", class: "col-6 control-label" %>
-            <%= f.select :annual_income, User.annual_incomes.map { |k, v| [k, k] }, {}, class: "col-5 form-control-static name" %>
+            <%= f.label :annual_income, "収入", class: "col-lg-6 control-label" %>
+            <%= f.select :annual_income, User.annual_incomes.map { |k, v| [k, k] }, {}, class: "col-lg-5 form-control-static name" %>
           </div>
           <div class="form-group col-12">
-            <%= f.label :job, "職業", class: "col-6 control-label" %>
-            <%= f.select :job, User.jobs.map { |k, v| [k, k] },{}, class: "col-5 form-control-static name" %>
+            <%= f.label :job, "職業", class: "col-lg-6 control-label" %>
+            <%= f.select :job, User.jobs.map { |k, v| [k, k] },{}, class: "col-lg-5 form-control-static name" %>
           </div>
           <div class="form-group col-12">
-            <%= f.label :"家計簿ステータス", class: "col-6 control-label" %>
+            <%= f.label :"家計簿ステータス", class: "col-lg-6 control-label" %>
             <%= f.radio_button :status, false, checked: true %><%= f.label :status, "非公開" %>
             <%= f.radio_button :status, true %><%= f.label :status, "公開" %>
           </div>
 
-          <div class="actions  ">
+          <div class="actions mb-5 ">
             <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-4 offset-md-3 mr-3" %>
             <%= link_to '退会する', unsubscribe_path(@user), data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger ml-4"%>
           </div>

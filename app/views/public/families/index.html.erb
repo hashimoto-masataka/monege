@@ -1,18 +1,18 @@
 <%= render "layouts/flash" %>
-<div class = "container-fluie">
+<div class = "container-fluid">
   <div class = "row">
-    <div class="col-11">
-      <h1 class= "head-line text-center m-5"><i class="fas fa-list-ul"></i>家族登録/一覧</h1>
+    <div class="col-12">
+      <h1 class= "head-line text-center mt-5"><i class="fas fa-list-ul"></i>家族登録/一覧</h1>
       <h2 class="text-center">表示期間</h2>
-      <h3 class = "head-date ml-5 mr-5 text-center">
+      <h3 class = "head-date text-center">
         <%= link_to families_path(month: @month.prev_month),'data-turbolinks': false do %>
-	          <i class="fas fa-backward"></i>
+	          <%= image_tag 'back.jpg', size: "50x40" %>
 	       <% end %>
 	       <%= I18n.l @current_month_beginning %>
-	       <strong class="day mr-5 ml-5">~</strong>
+	       <strong class="day mr-2 ml-2">~</strong>
 	       <%= I18n.l @current_month_end %>
 	       <%= link_to families_path(month: @month.next_month),'data-turbolinks': false do %>
-	          <i class="fas fa-forward"></i>
+	          <%= image_tag 'next.jpg', size: "50x40" %>
 	       <% end %>
       </h3>
     </div>
@@ -29,7 +29,7 @@
           </div>
       <% end %>
     </div>
-    <div class="col-lg-6 mt-5 ">
+    <div class="col-lg-6 mt-5 mb-5 ">
         
         <%= render "/layouts/error", object: @family_new %>
 
@@ -38,11 +38,11 @@
           <div class="form-group ">
             <%=f.label :"家族名",class: " control-label" %>
             <%=f.text_field :family_name, required: true, class: "col-3 form-control-static postal_code" %>
-            <%= f.submit '新規登録' ,class: "col-3 ml-3 btn-success right" %>
+            <%= f.submit '新規登録' ,class: " ml-3 btn-success right" %>
           </div>
         </div>
       <% end %>
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover mb-5">
         <thead>
           <tr>
             <th>家族名</th>
@@ -52,7 +52,7 @@
         </thead>
         <% @families.each do |family| %>
           <tbody>
-            <div class="list">
+            <div class="list mb-5">
               <tr>
                 <td><%= family.family_name %></td>
                 <td><%=  family.expenses.where(created_at: @month.all_month).map{|a| a[:price]}.sum %></td>

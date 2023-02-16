@@ -1,25 +1,25 @@
 <div class = "container-fluid">
   <div class = "row">
-    <div class="col-11 m-5">
-      <h1 class= "head-line text-center m-5">
+    <div class="col-12 mt-5">
+      <h1 class= "head-line text-center mt-5">
         <i class="fas fa-money-bill-wave-alt"></i>収入登録</h1>
        
         <%= render "/layouts/error", object: @income %>
             
         <%= form_with model: @income,local: true do |f| %>
-          <div class="income col-9 offset-3">
+          <div class="income col-lg-9 offset-lg-3 mb-5">
             <div class="form-group">
               <strong><%=f.label :"収入金額",class: " control-label" %></strong>
-              <%=f.number_field :price, required: true,class: "col-4 offset-2 form-control-static" %>円
+              <%=f.number_field :price, required: true,class: "col-lg-4 offset-lg-2 form-control-static" %>円
               <!--required: trueで空白での送信を防ぐ-->
             </div>
             <div class="form-group">
               <strong><%= f.label :"備考欄(note)", class: 'control-label' %></strong>
-              <%= f.text_field :note, class: 'col-7 form-control' %>
+              <%= f.text_field :note, class: 'col-lg-7 form-control' %>
             </div>
             <div class="form-group">
               <strong><%= f.label :created_at,"日付", class: 'control-label' %></strong>
-              <%= f.date_field :created_at, class: 'col-7 form-control' %>
+              <%= f.date_field :created_at, class: 'col-lg-7 form-control' %>
             </div>
             <div class="form-group">
               <strong><%= f.label :family,"家族",class: "col-6 control-label" %></strong>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-group">
-              <%= f.submit '新規登録' ,class: "offset-3 col-2 btn-lg btn-success right" %>
+              <%= f.submit '新規登録' ,class: "mb-5 btn-lg btn-success right" %>
             </div>
           </div>
         <% end %>
