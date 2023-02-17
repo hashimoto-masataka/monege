@@ -2,7 +2,6 @@
   <% if admin_signed_in? %>
   
   <% else %>
-  
     <%= link_to expenses_path, class: "btn04 bordercenter text-center", 'data-turbolinks': false do %>
         <p><i class="fas fa-receipt"></i>支出</p>
     <% end %>
