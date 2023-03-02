@@ -42,6 +42,9 @@ class Public::ExpensesController < ApplicationController
 
   def destroy
     @expense = Expense.find(params[:id])
+    if @expense.user_id = current_user.id
+      flash[:alret]="他のユーザーの支出の削除はできません"
+    end
     @expense.delete
     flash[:alret] ='登録した支出を削除しました'
     redirect_to expenses_path

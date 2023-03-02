@@ -110,14 +110,10 @@
 
 @media screen and (max-width:550px){
 	
-
-
 /*全体のボックスについている余白をリセット*/
 .ms-section{
 	padding:0;
 }
-
-
 
 /*右エリアを横幅100%にして画像＋テキストを出す設定*/
 .ms-left{
@@ -128,15 +124,11 @@
 	display: none;
 }
 
-
 /*右エリア上部画像設定*/
-    
 #left1{
     background: url("../../images/image0.jpg")  center;
     background-size:cover;
 }
-
-
 
 #left3 .sp-top{
   background: url("../../images/family.jpg") no-repeat top center;

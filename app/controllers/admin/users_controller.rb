@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationController
+  before_action :check_admin       
+  
+  
   def index
     user = User.where(status: true) and User.where(is_deleted: false)
     @users = user.all.page(params[:page]).per(7)
@@ -55,4 +58,16 @@ private
   	params.require(:user).permit(:name, :email, :job, :age, :annual_income, :prefecture, :status ,:is_deleted)
 
  end
+
+  def check_admin
+    if ((user_signed_in?) && (current_user.admin))
+      flash[:notice] = '権限がありません' 
+      redirect_to root_path
+    end
+  end
+  if (current_user.name == "guestuser")&&(current_user.email == 'guest@example.com')
+      flash[:alret]= 'ゲストユーザーはマイページの編集はできません。'
+      redirect_to users_my_page_path
+    end
+  
 end
