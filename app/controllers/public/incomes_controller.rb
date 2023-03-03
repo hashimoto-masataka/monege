@@ -33,6 +33,10 @@ class Public::IncomesController < ApplicationController
 
   def edit
     @income= Income.find(params[:id])
+    if @income.user_id != current_user.id
+      flash[:alret]="他のユーザーの収入の編集はできません"
+      redirect_to users_my_page_path
+    end
   end
 
   def create
@@ -57,6 +61,9 @@ class Public::IncomesController < ApplicationController
 
   def destroy
     @income = Income.find(params[:id])
+    if @income.user_id = current_user.id
+      flash[:alret]="他のユーザーの支出の削除はできません"
+    end
     @income.delete
       flash[:alret] ='登録した収入を削除しました'
       redirect_to incomes_path

@@ -18,6 +18,10 @@ class Public::ExpensesController < ApplicationController
 
   def edit
     @expense= Expense.find(params[:id])
+    if @expense.user_id != current_user.id
+      flash[:alret]="他のユーザーの支出の編集はできません"
+      redirect_to users_my_page_path
+    end
   end
 
   def create

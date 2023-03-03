@@ -1,5 +1,5 @@
 class Expense < ApplicationRecord
-  validates :price, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :note,
     length: { minimum: 0, maximum: 25 }
   
