@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :check_admin       
+  before_action :authenticate_admin!
   
   
   def index
@@ -59,15 +59,7 @@ private
 
  end
 
-  def check_admin
-    if ((user_signed_in?) && (current_user.admin))
-      flash[:notice] = '権限がありません' 
-      redirect_to root_path
-    end
-  end
-  if (current_user.name == "guestuser")&&(current_user.email == 'guest@example.com')
-      flash[:alret]= 'ゲストユーザーはマイページの編集はできません。'
-      redirect_to users_my_page_path
-    end
+  
+ 
   
 end
