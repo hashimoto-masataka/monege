@@ -27,14 +27,12 @@ class Public::UsersController < ApplicationController
     day_zone
     @user = current_user
     @categories = @user.categories
-    
     @expenses = current_user.expenses.where(created_at: @month.all_month)
     @incomes = current_user.incomes.where(created_at: @month.all_month)
     #where以下でexpensesのうち、created_atが@monthの月のallが表示される。
     @sum_price_expense = @expenses.where(id: current_user.expense_ids).sum(:price)
     @sum_price_income = @incomes.where(id: current_user.income_ids).sum(:price)
     @sum_target_price = Category.where(id: current_user.category_ids).sum(:target_price)
-    
     @expense_chart = current_user.expenses.select("id, sum(price) as price , category_id").where(created_at: @month.all_month).group(:category_id)
     
     @saving = @sum_price_income - @sum_price_expense
